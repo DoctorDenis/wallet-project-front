@@ -1,0 +1,17 @@
+@mixin media-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+// в стилях компонента в классе пишем
+// @include media-tablet {
+// padding-top: 90px;
+// width: 380px;
+// }

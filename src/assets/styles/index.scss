@@ -1,0 +1,69 @@
+// @import-normalize; /* bring in normalize.css styles */
+
+/* Подключение 2х шрифтов использующихся на проекте  */
+@import url('https://fonts.cdnfonts.com/css/circe');
+@import './fonts/poppins.scss';
+
+@import './colors';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Circe', 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-main-text;
+  background-color: $color-wight;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.125;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.list {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* класс для всех ссылок <a>, убираем подчеркивание и задаем цвет */
+.link {
+  text-decoration: none;
+  color: inherit;
+}
