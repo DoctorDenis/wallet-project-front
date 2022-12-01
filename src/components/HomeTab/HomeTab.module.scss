@@ -1,0 +1,49 @@
+.home_tab {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 549px;
+    top: 126px;
+    margin-top: 46px;
+
+}
+
+.table_head {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-right: none;
+
+    border-radius: 30px;
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+}
+
+.header_table {
+    min-width: 100px;
+    height: 52px;
+    padding: 0 0 0 8px;
+    text-align: center;
+}
+
+
+.div {
+    border-radius: 30px;
+    background-color: white;
+}
+
+.rows {
+    text-align: center;
+    min-width: 100px;
+    height: 52px;
+    padding-left: 8px;
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}

@@ -1,0 +1,46 @@
+.navigation {
+    margin-bottom: 28px;
+}
+
+.item_nav {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+.list {
+    margin: 0;
+}
+
+.item_link {
+    list-style: none;
+    width: min-content;
+
+    &:first-child {
+        margin-bottom: 12px;
+    }
+
+}
+
+.svg_home {
+    width: 18px;
+    height: 18px;
+    margin-right: 23px;
+}
+
+.svg_statistics {
+    margin-right: 23px;
+    width: 18px;
+    height: 18px;
+}
+
+.text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0;
+    line-height: 27px;
+    color: #000000;
+}
