@@ -1,3 +1,4 @@
+// Some comment
 export const App = () => {
   return (
     <div
