@@ -1,17 +1,20 @@
-// Some comment
+import {Route, Routes} from 'react-router-dom'
+import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
+import HomeTab from './HomeTab/HomeTab.jsx';
+import StatisticsDiagram from './StatisticsDiagram/StatisticsDiagram.jsx';
+
+
+
 export const App = () => {
+  
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      Wallet project. Team #1
-    </div>
+  <Routes>
+    <Route path='/' element={<DashboardPage/>} >
+        <Route index element={<HomeTab />} />
+        <Route path="statistics" element={<StatisticsDiagram />} />
+            
+    </Route>
+    </Routes>
+  
   );
 };
