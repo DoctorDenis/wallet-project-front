@@ -1,0 +1,40 @@
+@mixin font-circe-small {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.47;
+}
+
+@mixin font-circe-light-small {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.43;
+}
+
+@mixin font-circe-medium {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.47;
+}
+
+@mixin font-poppins-small {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@mixin font-poppins-medium {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+}
+
+@mixin font-poppins-light-medium {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+// в стилях компонента в классе пишем
+// @include  font-circe-small;
