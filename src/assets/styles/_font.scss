@@ -1,3 +1,4 @@
+// mixin for font Circle
 @mixin font-circe-small {
   font-family: 'Circe';
   font-weight: 400;
@@ -5,11 +6,18 @@
   line-height: 1.47;
 }
 
-@mixin font-circe-light-small {
+@mixin font-circe-small-light {
   font-family: 'Circe';
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.43;
+  font-size: 12;
+  line-height: 1.47;
+}
+
+@mixin font-circe-small-big {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.47;
 }
 
 @mixin font-circe-medium {
@@ -18,23 +26,40 @@
   line-height: 1.47;
 }
 
-@mixin font-poppins-small {
+// mixins for font Poppins
+@mixin font-poppins-small-light {
   font-weight: 400;
   font-size: 18px;
+  line-height: 1.5;
+}
+@mixin font-poppins-small {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.5;
+}
+@mixin font-poppins-small-big {
+  font-weight: 400;
+  font-size: 30px;
   line-height: 1.5;
 }
 
 @mixin font-poppins-medium {
   font-weight: 700;
-  font-size: 30px;
-  line-height: 1.5;
-}
-
-@mixin font-poppins-light-medium {
-  font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
 }
 
+@mixin font-poppins-medium-light {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.47;
+}
+
+@mixin font-poppins-medium-big {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+}
+
 // в стилях компонента в классе пишем
-// @include  font-circe-small;
+// @include  font-circe-small и т.п
