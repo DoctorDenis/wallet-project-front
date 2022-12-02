@@ -1,9 +1,10 @@
-import style from './LogoWallet.module.scss';
+import logoWallet from '../../assets/images/Wallet-min.svg';
+import style from './logoWallet.module.scss';
 
 const LogoWallet = () => {
   return (
     <div className={style.container}>
-      <svg className={style.svg}></svg>
+      <img className={style.logo} src={logoWallet} alt="wallet" />
       <span className={style.text}>Wallet</span>
     </div>
   );

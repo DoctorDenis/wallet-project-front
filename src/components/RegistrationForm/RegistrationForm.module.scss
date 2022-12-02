@@ -2,31 +2,6 @@
 @import '../../assets/styles/_font.scss';
 @import '../../assets/styles/colors';
 
-/* @media (min-width: 1024px) {
-  .container {
-    background-color: black;
-  }
-} */
-
 .container {
   padding: 32px 0px 36px;
 }
-
-// .input {
-//   @include font-circe-small;
-//   display: flex;
-//   margin: 0 auto;
-//   margin-bottom: 40px;
-//   padding-left: 54px;
-//   width: 280px;
-
-//   outline: none;
-//   border: none;
-//   border-bottom: 1px solid $color-grey-light-more;
-
-//   // &:focus {
-//   //   // border-bottom: 1px solid $color-red;
-//   // }
-//   // @include media-tablet {
-//   // }
-// }

@@ -4,7 +4,11 @@ import * as Yup from 'yup';
 import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
-import style from './RegistrationForm.module.scss';
+import style from './registrationForm.module.scss';
+
+// import emailIcon from '../../assets/images/Email-min.svg';
+// import passwordIcon from '../../assets/images/Password-min.svg';
+// import nameIcon from '../../assets/images/NameSvg-min.svg';
 
 const initialValues = {
   email: '',
@@ -47,14 +51,30 @@ const RegistrationForm = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <TextField type="email" name="email" placeholder="E-mail" />
-          <TextField type="password" name="password" placeholder="Password" />
+          <TextField
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            // svg={emailIcon}
+          />
+          <TextField
+            type="password"
+            name="password"
+            placeholder="Password"
+            // svg={passwordIcon}
+          />
           <TextField
             type="password"
             name="confirmPass"
             placeholder="Confirm password"
+            // svg={passwordIcon}
           />
-          <TextField type="text" name="name" placeholder="First name" />
+          <TextField
+            type="text"
+            name="name"
+            placeholder="First name"
+            // svg={nameIcon}
+          />
 
           <Button text="Register" />
           <Button text="Log in" />

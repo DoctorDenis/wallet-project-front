@@ -3,9 +3,17 @@
 @import '../../assets/styles/colors';
 
 .container {
+  // display: flex;
+  // TODO: іконки окремим дівом, розібратись з розтягненням іконки і перекриттям повідомлень
   position: relative;
   width: 280px;
   margin: 0 auto;
+}
+
+.icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
 }
 
 .input {
