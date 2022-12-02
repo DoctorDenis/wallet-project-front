@@ -1,0 +1,19 @@
+@import '../../assets/styles/font';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.logo {
+  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+}
+
+.text {
+  @include font-poppins-medium-light;
+  font-size: 18px;
+}

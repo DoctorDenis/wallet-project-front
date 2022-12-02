@@ -1,0 +1,24 @@
+@import '../../assets/styles/font';
+@import '../../assets/styles/colors';
+
+.btn {
+  display: block;
+  width: 280px;
+  margin: 0 auto;
+  padding: 13px 0px;
+
+  border: 1px solid $color-accent;
+  border-radius: 20px;
+
+  @include font-circe-light-medium;
+  text-align: center;
+  text-transform: uppercase;
+
+  background-color: transparent;
+  color: $color-accent;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

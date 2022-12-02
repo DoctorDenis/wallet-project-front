@@ -1,0 +1,40 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
+.container {
+  // display: flex;
+  // TODO: іконки окремим дівом, розібратись з розтягненням іконки і перекриттям повідомлень
+  position: relative;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+.input {
+  @include font-circe-small;
+  display: flex;
+  margin-bottom: 40px;
+  padding-left: 54px;
+  width: 100%;
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $color-grey-light-more;
+}
+
+.isInvalid {
+  border-bottom: 1px solid $color-red;
+}
+
+.error {
+  position: absolute;
+  top: 125%;
+  font-size: 10px;
+  color: $color-red;
+}
