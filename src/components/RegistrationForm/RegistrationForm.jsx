@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
-import style from './registrationForm.module.scss';
+import style from './RegistrationForm.module.scss';
 
 // import emailIcon from '../../assets/images/Email-min.svg';
 // import passwordIcon from '../../assets/images/Password-min.svg';
