@@ -1,5 +1,5 @@
 import logoWallet from '../../assets/images/Wallet-min.svg';
-import style from './logoWallet.module.scss';
+import style from './LogoWallet.module.scss';
 
 const LogoWallet = () => {
   return (
