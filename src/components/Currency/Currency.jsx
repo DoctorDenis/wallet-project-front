@@ -58,7 +58,8 @@ const Table = (props) => {
 }
 
 const Currency = () => {
- const [rows, setRows] = useState(currency)   
+    const [rows, setRows] = useState(currency) 
+ console.log(setRows)   
   return (
       <div className={css.currency}>
         

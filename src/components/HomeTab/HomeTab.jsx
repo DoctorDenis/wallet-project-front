@@ -98,7 +98,8 @@ const Table = (props) => {
 }
 
 const HomeTab = () => {
-    const [rows, setRows] = useState(currency)   
+    const [rows, setRows] = useState(currency)  
+    console.log(setRows)
   return (
       <div className={css.home_tab}>
           <Table data={rows} />
