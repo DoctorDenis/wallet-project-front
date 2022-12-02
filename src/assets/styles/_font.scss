@@ -17,6 +17,13 @@
   line-height: 1.47;
 }
 
+@mixin font-circe-light-medium {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 @mixin font-circe-medium {
   font-weight: 700;
   font-size: 18px;
