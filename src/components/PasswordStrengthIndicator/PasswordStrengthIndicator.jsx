@@ -22,25 +22,21 @@ const PasswordStrengthIndicator = ({ password }) => {
     if (result >= 0 && result < 25) {
       return {
         color: '#ff6596',
-        label: 'Very weak',
         width: 25,
       };
     } else if (result >= 25 && result < 50) {
       return {
         color: '#fed057',
-        label: 'Weak',
         width: 50,
       };
     } else if (result >= 50 && result < 75) {
       return {
         color: '#24cca7',
-        label: 'Good',
         width: 75,
       };
     } else if (result >= 75) {
       return {
         color: '#00ad84',
-        label: 'Strong',
         width: 100,
       };
     } else {
@@ -57,19 +53,11 @@ const PasswordStrengthIndicator = ({ password }) => {
   });
 
   return (
-    <div className="position-absolute bottom-50 end-0">
+    <div className="position-absolute top-100 end-0 w-100">
       {password.length > 0 && (
         <div className="progress" style={{ height: '4px' }}>
           <div className="progress-bar" style={changeIndicatorColor()}></div>
         </div>
-      )}
-      {password.length > 0 && (
-        <p
-          style={{ color: indicator.color }}
-          className="fs-6"
-        >
-          {indicator.label}
-        </p>
       )}
     </div>
   );

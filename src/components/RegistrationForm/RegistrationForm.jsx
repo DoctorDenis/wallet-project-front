@@ -56,7 +56,7 @@ const RegistrationForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
+        <Form className={style.form}>
           <TextField
             type="email"
             name="email"
