@@ -11,9 +11,18 @@
   margin-right: 15px;
   width: 30px;
   height: 30px;
+
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .text {
   @include font-poppins-medium-light;
   font-size: 18px;
+
+  @media (min-width: 768px) {
+    @include font-poppins-medium-big;
+  }
 }
