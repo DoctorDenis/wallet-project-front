@@ -23,7 +23,9 @@ const ModalLogout = ({ isOpened, closeModal }) => {
         </button>
         <h2>Do you want to exit?</h2>
         <button type="button">Yes</button>
-        <button type="button">No</button>
+        <button type="button" onClick={() => closeModal()}>
+          No
+        </button>
       </div>
     </div>
   );
