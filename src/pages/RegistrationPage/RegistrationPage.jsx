@@ -1,8 +1,14 @@
-// import Container from '../../components/Container/Container';
+import Container from '../../components/Container/Container';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 const RegistrationPage = () => {
-  return <RegistrationForm />;
+  return (
+    <section>
+      <Container>
+        <RegistrationForm />
+      </Container>
+    </section>
+  );
 };
 
 export default RegistrationPage;
