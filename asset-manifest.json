@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.d0e9c100.css",
-    "main.js": "/wallet-project-front/static/js/main.052ebe82.js",
+    "main.css": "/wallet-project-front/static/css/main.09915eb0.css",
+    "main.js": "/wallet-project-front/static/js/main.247be4fe.js",
+    "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
     "static/media/Vector.png": "/wallet-project-front/static/media/Vector.cdb4a1d0c530ac6dbaaf.png",
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
     "static/media/Statistic-min.svg": "/wallet-project-front/static/media/Statistic-min.a6b0de5e917d48b4ad1851a848d72db3.svg",
     "index.html": "/wallet-project-front/index.html",
     "static/media/Exit-min.svg": "/wallet-project-front/static/media/Exit-min.3ba889c029f87ad8c958717af7a1093f.svg",
+    "static/media/Password-min.svg": "/wallet-project-front/static/media/Password-min.921004438d74937db0fe3b491e78e088.svg",
+    "static/media/NameSvg-min.svg": "/wallet-project-front/static/media/NameSvg-min.c17fc32bcfc37501a4cd1fd586e358b0.svg",
     "static/media/Home-min.svg": "/wallet-project-front/static/media/Home-min.eb0028be86e5e8e8b41c3b17c650ac97.svg",
-    "main.d0e9c100.css.map": "/wallet-project-front/static/css/main.d0e9c100.css.map",
-    "main.052ebe82.js.map": "/wallet-project-front/static/js/main.052ebe82.js.map"
+    "static/media/Email-min.svg": "/wallet-project-front/static/media/Email-min.1a28b4acb0020926377e6cb5afe77241.svg",
+    "main.09915eb0.css.map": "/wallet-project-front/static/css/main.09915eb0.css.map",
+    "main.247be4fe.js.map": "/wallet-project-front/static/js/main.247be4fe.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0e9c100.css",
-    "static/js/main.052ebe82.js"
+    "static/css/main.09915eb0.css",
+    "static/js/main.247be4fe.js"
   ]
 }
