@@ -1,29 +1,107 @@
-import React from 'react'
-import Container from 'components/Container/Container'
-import Header from '../../components/Header/Header'
-import css from './DashboardPage.module.scss'
-import SideBar from 'components/SideBar/SideBar'
-import { Outlet } from 'react-router-dom'
+import React, { Fragment } from 'react';
+import Container from 'components/Container/Container';
+import Header from '../../components/Header/Header';
+import css from './DashboardPage.module.scss';
+import {  useLocation } from 'react-router-dom';
+import Media from 'react-media';
+import Navigation from 'components/Navigation/Navigation';
+import Balance from 'components/Balance/Balance';
+import Currency from 'components/Currency/Currency';
+import CurrencyHome from 'components/CurrencyHome/CurrencyHome'
+import HomeTab from 'components/HomeTab/HomeTab';
+import StatisticsDiagram from 'components/StatisticsDiagram/StatisticsDiagram';
 
 const DashboardPage = () => {
-  
-  
+  // const [display, setDisplay] = useState();
+  const location = useLocation();
+  const path = location.pathname;
+  //  useEffect(() => {
+  //   setDisplay(path === "/home" ? true : false);
+  // }, [path]);
+
+
   return (
-      <Container>
-        <div className={css.home_side}>
-      <div className={css.container}>
-          <Header />
-          <div className={css.backg}>
-            <SideBar />
-
-          </div>
-        
-       <Outlet />
-        </div>
+    
+     
+ <>
+        <Header />
+        <div className={css.backg}>
+         <Container>
+        <Navigation/>
+          <Media
+                queries={{
+                  mobile: { maxWidth: 767 },
+                  other: { minWidth: 768 },
+                }}
+              >
+                {(matches) => {
+                  return (
+                    <Fragment>
+                      {matches.mobile && path==='/home' && <Balance />}
+                      {matches.other && <Balance />}
+                    </Fragment>
+                  );
+                }}
+        </Media>
+         <>
+ <Media queries={{ mobile: { maxWidth: 767 } }}>
+                  {matches =>
+          matches.mobile && (
+            <>
+              {location.pathname === '/currency' && 
+            <Currency/>}
+            </>
           
-      </div>
-      </Container>
-  )
-}
+                    )
+                  }
+                </Media>
+ <Media queries={{ table: { minWidth: 768 } }}>
+                {matches =>
+                  matches.table && <CurrencyHome/>
+                }
+              </Media>
 
-export default DashboardPage
+        </> 
+
+        <>
+          {location.pathname === "/home" && <HomeTab />}
+          {location.pathname==="/statistics" && <StatisticsDiagram/>}
+        </>
+        {/* <>
+ <Media queries={{ mobile: { maxWidth: 767 } }}>
+                  {matches =>
+          matches.mobile && (
+            <>
+              {location.pathname === '/home' && 
+            <HomeTab/>}
+            </>
+          
+                    )
+                  }
+                </Media>
+ <Media queries={{ mobile: { maxWidth: 767 } }}>
+                  {matches =>
+          matches.mobile && (
+            <>
+              {location.pathname === '/statistics' && 
+            <StatisticsDiagram/>}
+            </>
+          
+                    )
+                  }
+                </Media>
+
+</>  */}
+
+       
+       
+ {/* <Currency/> */}
+      {/* <Outlet /> */}
+    
+        </Container>
+         </div>
+    </>
+  );
+};
+
+export default DashboardPage;

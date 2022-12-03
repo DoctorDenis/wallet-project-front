@@ -1,8 +1,16 @@
-.diagram {
-    width: 400px;
-    height: 400px;
-    background-color: wheat;
-    position: absolute;
-    left: 700px;
-    top: 150px;
+ .diagram {
+@media screen and (min-width: 768px) {
+position: absolute;
+ 
+    top: 250px;
+        left: 100px;
 }
+@media screen and (min-width: 1280px) {
+   
+        top: 10px;
+            left: 600px;
+}
+
+ }
+
+       

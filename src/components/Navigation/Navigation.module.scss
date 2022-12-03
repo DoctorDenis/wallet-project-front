@@ -1,46 +1,70 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
 .navigation {
-    margin-bottom: 28px;
+    padding-top: 15px;
+    margin-bottom: 31px;
+    
+    @media screen and (min-width: 768px) {
+        padding-top: 40px;
+        padding-bottom: 28px;
+        margin-bottom: 0;
+    }
+    
+        @media screen and (min-width: 1280px) {}
 }
 
 .item_nav {
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    text-decoration: none;
+ 
+}
+.item_nav_tabl{
     display: flex;
     align-items: center;
     text-decoration: none;
-
-}
-
-.list {
+    padding: 0;
     margin: 0;
 }
+
+
+.list {
+    display: flex;
+    justify-content: center;
+ 
+}
+
 
 .item_link {
     list-style: none;
-    width: min-content;
-
-    &:first-child {
-        margin-bottom: 12px;
-    }
+    &:not(:last-child) {
+            margin-right: 38px;
+            margin-bottom: 21px;
+        }
+  
 
 }
 
-.svg_home {
-    width: 18px;
-    height: 18px;
-    margin-right: 23px;
+.svg {
+    width: 38px;
+    height: 38px;
+    
+}
+.svg_tabl{
+    width: 24px;
+        height: 24px;
+        margin-right: 23px;
 }
 
-.svg_statistics {
-    margin-right: 23px;
-    width: 18px;
-    height: 18px;
-}
 
 .text {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    margin: 0;
-    line-height: 27px;
-    color: #000000;
+@include font-poppins-small-light;
+  margin: 0;
+  color: $color-main-text;
+  &:active{
+    font-weight: 700;
+  }
 }
