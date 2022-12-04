@@ -8,7 +8,7 @@ import styles from './StatisticsDiagram.module.scss';
 import ProductСategories from 'components/ProductСategories';
 import TotalSum from 'components/TotalSum';
 import Diagram from 'components/Diagram';
-import Container from 'components/Container/Container';
+// import Container from 'components/Container/Container';
 
 const StatisticsDiagram = () => {
   return (
