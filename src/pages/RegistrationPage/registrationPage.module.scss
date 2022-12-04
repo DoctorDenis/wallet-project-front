@@ -3,16 +3,41 @@
 @import '../../assets/styles/font';
 
 .section {
-  @media (min-width: 768px) {
-    padding: 60px 118px 48px 118px;
+  @include media-tablet {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 48px;
     background-color: $color-grey-bg-register;
+    margin: 0 auto;
+  }
+}
+
+.ellipseTop {
+  display: none;
+
+  @include media-tablet {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.ellipseBottom {
+  display: none;
+
+  @include media-tablet {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }
 
 .bgContainer {
   display: none;
 
-  @media (min-width: 768px) {
+  @include media-tablet {
     display: flex;
     align-items: center;
     justify-content: space-between;

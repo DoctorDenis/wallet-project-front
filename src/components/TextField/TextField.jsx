@@ -1,6 +1,7 @@
 import { useField, ErrorMessage, Field } from 'formik';
 import PasswordStrengthIndicator from '../PasswordStrengthIndicator/PasswordStrengthIndicator';
 import style from './textField.module.scss';
+import star from '../../assets/images/star.svg';
 
 const TextField = ({ svg, ...props }) => {
   const [field, meta] = useField(props);
@@ -19,6 +20,14 @@ const TextField = ({ svg, ...props }) => {
           {...field}
           {...props}
           autoComplete="off"
+        />
+
+        <img
+          src={star}
+          alt="Star"
+          className={`${style.iconStar} ${
+            meta.touched && meta.error && style.isShowIcon
+          }`}
         />
       </div>
       {field.name === 'password' && (
