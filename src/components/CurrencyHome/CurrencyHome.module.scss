@@ -2,97 +2,78 @@
 @import '../../assets/styles/_font.scss';
 @import '../../assets/styles/colors';
 
-
 .currency_tab {
-@media screen and (min-width: 768px) {
-       position: absolute;
-        top: 30px;
-        left: 420px;
-        background-color:$color-accent;
-        border-radius: 30px;
-        height: 182px;
-        // width: 336px;
-        background-repeat: no-repeat;
-        background-image: url(../../assets/images/Rectangle.png);
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 30px;
+    left: 420px;
+    background-color: $color-accent;
+    border-radius: 30px;
+    height: 182px;
+    // width: 336px;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/Rectangle.png);
+  }
 
+  @media screen and (min-width: 1280px) {
+    top: 250px;
+    left: 20px;
+    height: 347px;
+    width: 393px;
+  }
 }
 
-    @media screen and (min-width: 1280px) {
-            top: 250px;
-            left: 20px;
-            height: 347px;
-            width: 393px;
-    }
-
-
-
-
+.tr {
+  text-align: center;
 }
-
-.tr{
-    text-align: center;
-}
-
 
 .header_table {
-    @include font-circe-medium;
-    color: $color-wight;
-    margin: 0 auto;
-    text-align: center;
-        
-    
-
+  @include font-circe-medium;
+  color: $color-white;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .rows {
-    // padding: 10px;
-    font-family: 'Circe';
-    @include font-circe-small;
-    color: $color-wight;
-    text-align: center;
-    height: 40px;
-    width: 100px;
-    @media screen and (min-width: 1280px) {
-            height: 60px;
-        height: 45px;
-        }
-
-
+  // padding: 10px;
+  font-family: 'Circe';
+  @include font-circe-small;
+  color: $color-white;
+  text-align: center;
+  height: 40px;
+  width: 100px;
+  @media screen and (min-width: 1280px) {
+    height: 60px;
+    height: 45px;
+  }
 }
-.body{
-    text-align: center;
+.body {
+  text-align: center;
 }
 
 .svg {
-    top: 68px;
-    left: 2px;
-    position: absolute;
-    width: 336px;
-    @media screen and (min-width: 1280px) {
-        width: 393px;
-        top: 150px;
-        }
+  top: 68px;
+  left: 2px;
+  position: absolute;
+  width: 336px;
+  @media screen and (min-width: 1280px) {
+    width: 393px;
+    top: 150px;
+  }
 }
 
 .table_head {
-    height: 50px;
-    @media screen and (min-width: 1280px) {
-          
-            height: 60px;
-           
-        }
+  height: 50px;
+  @media screen and (min-width: 1280px) {
+    height: 60px;
+  }
 }
 
 .table {
-        height: 182px;
-width: 336px;
-    @media screen and (min-width: 1280px) {
-         margin-left: 0;
-        width: 393px;
-        }
+  height: 182px;
+  width: 336px;
+  @media screen and (min-width: 1280px) {
+    margin-left: 0;
+    width: 393px;
+  }
 }
-
-
-
-
-

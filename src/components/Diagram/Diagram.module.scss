@@ -1,0 +1,39 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/font';
+
+.diagram {
+  position: relative;
+  margin: 0 auto;
+  // outline: 1px solid black;
+  width: 280px;
+  height: 280px;
+  margin-bottom: 32px;
+
+  @include media-tablet {
+    width: 336px;
+    height: 336px;
+  }
+
+  @include media-desktop {
+    width: 288px;
+    height: 288px;
+  }
+}
+
+.sumExpensesIntoDiagram {
+  position: absolute;
+  left: 140px;
+  transform: translateX(-50%);
+  top: 135px;
+
+  @include font-poppins-medium;
+  @include media-tablet {
+    top: 160px;
+    left: 168px;
+  }
+
+  @include media-desktop {
+    top: 132px;
+    left: 144px;
+  }
+}
