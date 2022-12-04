@@ -1,46 +1,54 @@
-.currency {
-    width: 393px;
-    height: 347px;
-    position: relative;
-    background-color: #4A56E2;
+@import '../../assets/styles/media';
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
+.currency_mobil {
+    display: block;
+    background-color: $color-accent;
     border-radius: 30px;
-
+    height: 174px;
+    position: relative;
+    width: 280px;
+    margin: 0 auto;
     background-repeat: no-repeat;
-    background-image: url(../../assets/images/Rectangle.png);
+    background-image: url(../../assets/images/RectangleMob.svg);
 
 }
 
-
-
-.header_table {
-
-
+.header_table{
+    @include font-circe-medium;
+    color: $color-wight;
+    padding-left: 8px;
+    padding-right: 8px;
+      
+}
+.rows {
+ padding: 8px;
     font-family: 'Circe';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    color: #FFFFFF;
+@include font-circe-small;
+    color: $color-wight;
+
 }
 
+   .svg {
+    top: 90px;
+       
+ position: absolute;
+        width: 280px;
+}
 .table_head {
-
-    height: 60px;
+height: 50px;
 }
 
 .table {
-    margin-left: 44px;
-    margin-right: 64px;
-    width: 300px;
+margin-left: 20px;
 }
 
-.rows {
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    padding-top: 24px;
-    color: #FFFFFF;
 
-}
+
+
+
+
+
+
+

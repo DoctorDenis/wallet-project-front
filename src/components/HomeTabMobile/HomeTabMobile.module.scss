@@ -1,0 +1,46 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
+
+.table{
+    width: 280px;
+    height: 282px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-bottom: 8px;
+}
+
+.transactions{
+  margin-bottom: 1px;
+    padding-right: 15px;
+    height: 47px;
+    display: flex;
+   align-items: center;
+    border-bottom: 1px solid #DCDCDF;
+&::before{
+    content:'';
+    width: 5px;
+    background-color: #FF6596;
+    height: 47px;
+    border-radius: 20px 0 0 0;
+   
+}
+}
+
+.name{
+    margin-left: 10px;
+    @include font-circe-medium;
+}
+
+.value{
+margin-right: 5px;
+margin-left: auto;
+@include font-circe-small;
+}
+
+.mobile_table{
+    
+    margin-bottom: 20px;
+}

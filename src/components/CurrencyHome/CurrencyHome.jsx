@@ -1,6 +1,5 @@
 import React from 'react';
-
-import css from './Currency.module.scss';
+import css from './CurrencyHome.module.scss';
 import Svg from '../../assets/images/Vector.png';
 import { nanoid } from 'nanoid';
 
@@ -46,7 +45,7 @@ const Table = props => {
   return (
     <table className={css.table}>
       <thead className={css.table_head}>
-        <tr>
+        <tr className={css.tr}>
           <td key={nanoid()} className={css.header_table}>
             Currency
           </td>
@@ -58,9 +57,9 @@ const Table = props => {
           </td>
         </tr>
       </thead>
-      <tbody>
+      <tbody className={css.body}>
         {data.map(row => (
-          <Row
+          <Row 
             key={nanoid()}
             currency={row.currency}
             purchase={row.purchase}
@@ -73,14 +72,16 @@ const Table = props => {
 };
 
 const Currency = () => {
-return (
-                <div className={css.currency_mobil}>
+
+
+
+
+  return (
+                <div className={css.currency_tab}>
                   <Table data={currency} />
                     <img className={css.svg} src={Svg} alt="svg" /> 
-                 </div>
-
-    
-  );
+        </div>
+        );
 };
 
 export default Currency;

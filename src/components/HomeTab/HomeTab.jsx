@@ -1,9 +1,10 @@
 import React from 'react';
 import css from './HomeTab.module.scss'
-import { useState } from 'react'
+// import { useState } from 'react'
 import EllipsisText from "react-ellipsis-text";
 import { nanoid } from 'nanoid';
-
+import Media from 'react-media';
+import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
 
 const currency = [
     {
@@ -57,7 +58,7 @@ comment,
 sum,
 balance } = props;   
     return (
-        <tr>
+        <tr className={css.tr}>
             <td key={nanoid()} className={css.rows}>{date}</td>
             <td key={nanoid()} className={css.rows}>{type}</td>
             <td key={nanoid()} className={css.rows}>{category}</td>
@@ -72,10 +73,10 @@ const Table = (props) => {
     const { data } = props
     
     return (
-        <table className={css.table}>
-            <div className={css.div}>
+        <table className={css.table} >
+            {/* <div className={css.div}> */}
             <thead className={css.table_head}>
-                <tr className={css.tr}>
+                <tr >
                     <td key={nanoid()} className={css.header_table}>Date</td>
                     <td key={nanoid()} className={css.header_table}>Type</td>
                     <td key={nanoid()} className={css.header_table}>Category</td>
@@ -84,26 +85,98 @@ const Table = (props) => {
                     <td key={nanoid()} className={css.header_table}>Balance</td>
                 </tr>
             </thead>
-            </div>
-            <div>
-            <tbody>
+            {/* </div> */}
+            {/* <div> */}
+            <tbody className={css.table_body}>
             {data.map(row => (
-              <Row key={nanoid()} type={row.type} date={row.date}
+              <Row className={css.tr} key={nanoid()} type={row.type} date={row.date}
                 category={row.category}  comment={<EllipsisText  text={row.comment}  length={13} />} sum={row.sum} balance={row.balance}/>
-            ))} 
+            ))}
                 </tbody>
-                </div>
-   </table> 
+                {/* </div> */}
+   </table>
 )
 }
 
+// const Table = () => {
+  
+
+
+
+//   return (
+
+
+//     <table className="table">
+//   <thead>
+//         <tr className="table-light" >
+//       <th scope="col">#</th>
+//       <th scope="col">First</th>
+//       <th scope="col">Last</th>
+//       <th scope="col">Handle</th>
+//     </tr>
+//   </thead>
+//   <tbody>
+//     <tr classsName={css.row}>
+//       <th scope="row">1</th>
+//       <td>Mark</td>
+//       <td>Otto</td>
+//       <td>@mdo</td>
+//     </tr>
+//     <tr classsName={css.row}>
+//       <th scope="row">2</th>
+//       <td>Jacob</td>
+//       <td>Thornton</td>
+//       <td>@fat</td>
+//     </tr>
+//     <tr classsName={css.row}>
+//       <th scope="row">3</th>
+//       <td colSpan="2">Larry the Bird</td>
+//       <td>@twitter</td>
+//     </tr>
+//   </tbody>
+//       </table>
+   
+//   )
+// }
+
 const HomeTab = () => {
-    const [rows, setRows] = useState(currency)  
-    console.log(setRows)
-  return (
+    // const [rows, setRows] = useState(currency)  
+    //console.log(setRows)
+    return (
+    <>
+         <Media queries={{ mobile: { maxWidth: 767 } }}>
+                  {matches =>
+                    matches.mobile && (
+                      <HomeTabMobile/>)
+                  }
+                </Media>
+             
+              <Media queries={{ table: { minWidth: 768 } }}>
+                {matches =>
+                  matches.table && (
+
+    <>
       <div className={css.home_tab}>
-          <Table data={rows} />
-      </div>
+          <Table data={currency} />
+             </div> 
+             </> 
+         
+                  )
+                }
+              </Media>
+</>
+
+
+
+
+
+    //     <div className={css.backg}>
+    //   <Container>
+    //   <div className={css.home_tab}>
+    //       <Table data={rows} />
+    //         </div>
+    //         </Container>
+    //         </div>
   )
 }
 

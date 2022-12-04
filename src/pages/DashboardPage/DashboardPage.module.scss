@@ -4,17 +4,28 @@
 
 
 .container {
-    margin: 0 auto;
-    width: 1280px;
-    position: relative;
+    @media screen and (min-width: 768px) {
+         position: relative;
+    }
+    
+        @media screen and (min-width: 1280px) {}
+    
 }
 
 .backg {
-    padding-top: 16px;
-    padding-bottom: 40px;
-    background-image: url(../../assets/images/BackgrDesctop.png)
+background-color:#E5E5E5;
+@media screen and (min-width: 768px) {
+    height: 800px;
+ background-size:cover;
+background-image: url(../../assets/images/BackgrTablet.png);
+
+
 }
 
-// .home_side{
-//     display: flex;
-// }
+    @media screen and (min-width: 1280px) {
+        height: 1000px;
+background-image: url(../../assets/images/BackgrDesctop.png)
+    }
+   
+}
+
