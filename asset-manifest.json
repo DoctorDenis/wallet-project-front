@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.09915eb0.css",
-    "main.js": "/wallet-project-front/static/js/main.ad84118d.js",
+    "main.css": "/wallet-project-front/static/css/main.c4217200.css",
+    "main.js": "/wallet-project-front/static/js/main.5ca7c3c5.js",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
+    "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
     "static/media/Vector.png": "/wallet-project-front/static/media/Vector.cdb4a1d0c530ac6dbaaf.png",
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
     "static/media/Statistic-min.svg": "/wallet-project-front/static/media/Statistic-min.a6b0de5e917d48b4ad1851a848d72db3.svg",
     "index.html": "/wallet-project-front/index.html",
+    "static/media/Dollar-min.svg": "/wallet-project-front/static/media/Dollar-min.4fa883125be758555c393c8603ebd96d.svg",
     "static/media/Exit-min.svg": "/wallet-project-front/static/media/Exit-min.3ba889c029f87ad8c958717af7a1093f.svg",
     "static/media/Password-min.svg": "/wallet-project-front/static/media/Password-min.921004438d74937db0fe3b491e78e088.svg",
     "static/media/NameSvg-min.svg": "/wallet-project-front/static/media/NameSvg-min.c17fc32bcfc37501a4cd1fd586e358b0.svg",
     "static/media/Home-min.svg": "/wallet-project-front/static/media/Home-min.eb0028be86e5e8e8b41c3b17c650ac97.svg",
     "static/media/Email-min.svg": "/wallet-project-front/static/media/Email-min.1a28b4acb0020926377e6cb5afe77241.svg",
-    "main.09915eb0.css.map": "/wallet-project-front/static/css/main.09915eb0.css.map",
-    "main.ad84118d.js.map": "/wallet-project-front/static/js/main.ad84118d.js.map"
+    "static/media/RectangleMob.svg": "/wallet-project-front/static/media/RectangleMob.5128f0511d2c4b8b5d07.svg",
+    "main.c4217200.css.map": "/wallet-project-front/static/css/main.c4217200.css.map",
+    "main.5ca7c3c5.js.map": "/wallet-project-front/static/js/main.5ca7c3c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.09915eb0.css",
-    "static/js/main.ad84118d.js"
+    "static/css/main.c4217200.css",
+    "static/js/main.5ca7c3c5.js"
   ]
 }
