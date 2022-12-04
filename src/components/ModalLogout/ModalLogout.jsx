@@ -11,7 +11,7 @@ const ModalLogout = ({ isOpened, closeModal }) => {
     };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, []);
+  }, [closeModal]);
   return (
     <div
       className={`modal_wrapper ${isOpened ? 'open' : 'close'}`}
@@ -22,10 +22,14 @@ const ModalLogout = ({ isOpened, closeModal }) => {
           ×
         </button>
         <h2>Do you want to exit?</h2>
-        <button type="button">Yes</button>
-        <button type="button" onClick={() => closeModal()}>
-          No
-        </button>
+        <div className='modal_button'>
+          <button className="button" type="button">
+            Yes
+          </button>
+          <button className="button" type="button" onClick={() => closeModal()}>
+            No
+          </button>
+        </div>
       </div>
     </div>
   );
