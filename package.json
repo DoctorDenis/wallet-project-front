@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://doctordenis.github.io/wallet-project-front/",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -19,6 +20,7 @@
     "react-dom": "^18.1.0",
     "react-ellipsis-text": "^1.2.1",
     "react-media": "^1.10.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
     "sass": "^1.56.1",
