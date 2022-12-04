@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.c4217200.css",
-    "main.js": "/wallet-project-front/static/js/main.5ca7c3c5.js",
+    "main.css": "/wallet-project-front/static/css/main.453d3e0e.css",
+    "main.js": "/wallet-project-front/static/js/main.2dc3ce42.js",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
@@ -16,11 +16,11 @@
     "static/media/Home-min.svg": "/wallet-project-front/static/media/Home-min.eb0028be86e5e8e8b41c3b17c650ac97.svg",
     "static/media/Email-min.svg": "/wallet-project-front/static/media/Email-min.1a28b4acb0020926377e6cb5afe77241.svg",
     "static/media/RectangleMob.svg": "/wallet-project-front/static/media/RectangleMob.5128f0511d2c4b8b5d07.svg",
-    "main.c4217200.css.map": "/wallet-project-front/static/css/main.c4217200.css.map",
-    "main.5ca7c3c5.js.map": "/wallet-project-front/static/js/main.5ca7c3c5.js.map"
+    "main.453d3e0e.css.map": "/wallet-project-front/static/css/main.453d3e0e.css.map",
+    "main.2dc3ce42.js.map": "/wallet-project-front/static/js/main.2dc3ce42.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4217200.css",
-    "static/js/main.5ca7c3c5.js"
+    "static/css/main.453d3e0e.css",
+    "static/js/main.2dc3ce42.js"
   ]
 }
