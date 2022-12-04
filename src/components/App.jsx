@@ -11,10 +11,16 @@ export const App = () => {
  
   return (
     <Routes>
-      <Route path="registration" element={<RegistrationPage />} />
-             <Route path="/" element={<DashboardPage />}>
+
+      <Route path="register" element={<RegistrationPage />} />
+        <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
         <Route path="home" element={<HomeTab />} />
+
+      
+      {/* <Route path="/" element={<DashboardPage />}> */}
+        {/* <Route index element={<HomeTab />} /> */}
+
         <Route path="statistics" element={<StatisticsDiagram />} />
         {/* <Route path="currency" element={<Currency/> } /> */}
         <Route path="currency" element={<Media query={{ maxWidth: 767 }}>

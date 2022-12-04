@@ -16,7 +16,7 @@ display: block;
 }
 
 .table_head {
-  
+  display: block;
   @include font-circe-medium;
   border-radius: 30px;
    overflow: hidden;
