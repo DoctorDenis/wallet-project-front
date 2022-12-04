@@ -24,8 +24,11 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Header openModal={() => setModalLogout(true)} />
-      <ModalLogout isOpened={modalLogout} closeModal={() => setModalLogout(false)} />
+      <Header openModalLogout={() => setModalLogout(true)} />
+      <ModalLogout
+        isOpened={modalLogout}
+        closeModal={() => setModalLogout(false)}
+      />
       <div className={css.backg}>
         <Container>
           <Navigation />

@@ -5,7 +5,7 @@ import Exit from '../../assets/images/Exit-min.svg';
 import { Link } from 'react-router-dom';
 import Container from 'components/Container/Container';
 
-const Header = ({ openModal }) => {
+const Header = ({ openModalLogout }) => {
   return (
     <Container>
       <header className={css.header}>
@@ -16,7 +16,7 @@ const Header = ({ openModal }) => {
         <div className={css.header_left}>
           <p className={css.text}>Name</p>
           <img className={css.exit_svg} src={Exit} alt="exit" />
-          <button className={css.exit_button} onClick={() => openModal()}>
+          <button className={css.exit_button} onClick={() => openModalLogout()}>
             Exit
           </button>
         </div>
