@@ -6,6 +6,7 @@ import {  useLocation } from 'react-router-dom';
 import Media from 'react-media';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import Currency from 'components/Currency/Currency';
 import CurrencyHome from 'components/CurrencyHome/CurrencyHome'
 import HomeTab from 'components/HomeTab/HomeTab';
@@ -64,7 +65,7 @@ const DashboardPage = () => {
         </> 
 
         <>
-          {location.pathname === "/home" && <HomeTab />}
+            {location.pathname === "/home" && <HomeTab />}
           {location.pathname==="/statistics" && <StatisticsDiagram/>}
         </>
         {/* <>
@@ -96,9 +97,9 @@ const DashboardPage = () => {
        
        
  {/* <Currency/> */}
-      {/* <Outlet /> */}
-    
-        </Container>
+          {/* <Outlet /> */}
+        <ButtonAddTransactions/>  
+        </Container>        
          </div>
     </>
   );
