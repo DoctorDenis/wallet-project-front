@@ -8,18 +8,14 @@
 @mixin media-tablet {
   @media (min-width: 768px) {
     @content;
-    margin: 0 auto;
-      padding-left: 32px;
-      padding-right: 32px;
+  
   }
 }
 
 @mixin media-desktop {
   @media (min-width: 1280px) {
     @content;
-      margin: 0 auto;
-        padding-left: 16px;
-        padding-right: 16px;
+   
   }
 }
 

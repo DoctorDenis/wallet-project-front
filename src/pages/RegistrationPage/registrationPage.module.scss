@@ -1,0 +1,36 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/colors';
+@import '../../assets/styles/font';
+
+.section {
+  @media (min-width: 768px) {
+    padding: 60px 118px 48px 118px;
+    background-color: $color-grey-bg-register;
+  }
+}
+
+.bgContainer {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 532px;
+    margin: 0 auto;
+
+    margin-bottom: 50px;
+  }
+}
+
+.img {
+  width: 248px;
+  height: 250px;
+}
+
+.text {
+  @media (min-width: 768px) {
+    @include font-poppins-small-big;
+  }
+}
