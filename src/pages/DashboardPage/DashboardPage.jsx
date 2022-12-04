@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import Media from 'react-media';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import Currency from 'components/Currency/Currency';
 import CurrencyHome from 'components/CurrencyHome/CurrencyHome';
 import HomeTab from 'components/HomeTab/HomeTab';
@@ -60,11 +61,13 @@ const DashboardPage = () => {
             </Media>
           </>
 
+
           <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
           </>
           {/* <>
+
  <Media queries={{ mobile: { maxWidth: 767 } }}>
                   {matches =>
           matches.mobile && (
@@ -90,10 +93,13 @@ const DashboardPage = () => {
 
 </>  */}
 
+
           {/* <Currency/> */}
           {/* <Outlet /> */}
+        <ButtonAddTransactions/>
         </Container>
       </div>
+
     </>
   );
 };
