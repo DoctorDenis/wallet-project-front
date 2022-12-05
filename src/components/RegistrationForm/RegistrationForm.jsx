@@ -5,8 +5,9 @@ import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
 
-import style from './RegistrationForm.module.scss';
+import style from './registrationForm.module.scss';
 
+// import bgImage from '../../assets/images/BackgrDesckRideSide.png';
 import emailIcon from '../../assets/images/Email-min.svg';
 import passwordIcon from '../../assets/images/Password-min.svg';
 import nameIcon from '../../assets/images/NameSvg-min.svg';
@@ -18,11 +19,9 @@ const initialValues = {
   name: '',
 };
 
-// const emailSymbol = /^[A-Za-z0-9.]{1}[A-Za-z0-9.-]{1,}@[A-Za-z0-9]+.\w{2,3}$/;
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    // .matches(emailSymbol, 'Must be at least 2 characters before the "@" symbol')
     .email('E-mail is invalid')
     .min(10, 'E-mail must contain at least 10 characters')
     .max(63)
@@ -58,6 +57,8 @@ const RegistrationForm = () => {
 
   return (
     <div className={style.container}>
+      {/* <img className={style.bgImage} src={bgImage} alt="Background" /> */}
+
       <LogoWallet />
       <Formik
         initialValues={initialValues}
