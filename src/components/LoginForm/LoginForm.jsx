@@ -5,17 +5,14 @@ import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
 
-import style from './registrationForm.module.scss';
+import style from './loginForm.module.scss';
 
 import emailIcon from '../../assets/images/Email-min.svg';
 import passwordIcon from '../../assets/images/Password-min.svg';
-import nameIcon from '../../assets/images/NameSvg-min.svg';
 
 const initialValues = {
   email: '',
   password: '',
-  confirmPass: '',
-  name: '',
 };
 
 const validationSchema = Yup.object().shape({
@@ -36,16 +33,9 @@ const validationSchema = Yup.object().shape({
     .min(6, 'Password must contain at least 6 characters')
     .max(16, 'Password must contain 16 characters or less')
     .required('Password is required'),
-  confirmPass: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Password must match')
-    .required('Confirm password is required'),
-  name: Yup.string()
-    .min(2, 'Name must contain at least 2 character')
-    .max(12, 'Name must contain 12 characters or less')
-    .required('Name is required'),
 });
 
-const RegistrationForm = () => {
+const LoginForm = () => {
   const handleSubmit = (value, { resetForm }) => {
     const emailToLowerCase = value.email.toLowerCase();
     console.log(emailToLowerCase);
@@ -60,7 +50,7 @@ const RegistrationForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={style.form}>
+        <Form>
           <TextField
             type="email"
             name="email"
@@ -73,26 +63,13 @@ const RegistrationForm = () => {
             placeholder="Password"
             svg={passwordIcon}
           />
-          <TextField
-            type="password"
-            name="confirmPass"
-            placeholder="Confirm password"
-            svg={passwordIcon}
-          />
 
-          <TextField
-            type="text"
-            name="name"
-            placeholder="First name"
-            svg={nameIcon}
-          />
-
-          <Button text="Register" />
           <Button text="Log in" />
+          <Button text="Register" />
         </Form>
       </Formik>
     </div>
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;

@@ -1,12 +1,13 @@
 import Container from '../../components/Container/Container';
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
-import style from './registrationPage.module.scss';
+// import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import style from '../RegistrationPage/registrationPage.module.scss';
 
 import registrationImage from '../../assets/images/registerImg.svg';
 import ellipsePink from '../../assets/images/EllipsePink-min.svg';
 import ellipsePurple from '../../assets/images/EllipsePurple-min.svg';
 
-const RegistrationPage = () => {
+const LoginPage = () => {
   return (
     <section className={style.section}>
       <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />
@@ -22,11 +23,11 @@ const RegistrationPage = () => {
             <p className={style.text}>Finance App</p>
           </div>
 
-          <RegistrationForm />
+          <LoginForm />
         </div>
       </Container>
     </section>
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;

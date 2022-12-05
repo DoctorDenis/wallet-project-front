@@ -3,6 +3,7 @@ import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
 import HomeTab from './HomeTab/HomeTab.jsx';
 import StatisticsDiagram from './StatisticsDiagram/StatisticsDiagram.jsx';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import LoginPage from '../pages/LoginPage/LoginPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Currency from './Currency/Currency.jsx';
 import Media from 'react-media';
@@ -13,6 +14,8 @@ export const App = () => {
     <Routes>
 
       <Route path="register" element={<RegistrationPage />} />
+      <Route path="login" element={<LoginPage />} />
+      
         <Route path="/" element={<DashboardPage />}>
         <Route index element={<Navigate to="/home" />} />
         <Route path="home" element={<HomeTab />} />
