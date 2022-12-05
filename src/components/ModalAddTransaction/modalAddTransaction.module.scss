@@ -1,0 +1,133 @@
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
+@keyframes showBackdrop {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-500px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all .3s;
+    animation: showBackdrop .3s ease-out;
+}
+
+.modal {
+    background: $color-white;
+    width: 320px;
+    height: 660px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all .3s;
+    animation: showModal .3s ease-out;
+};
+
+.modalHeader {
+    display: flex;
+    padding-bottom: 35px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logoWallet {
+    width: 30px;
+    height: 30px;
+}
+
+.logoTitle {
+    margin-left: 15px;
+    width: 74px;
+    height: 17px;
+}
+
+.modalTitle {
+    @include font-poppins-small;
+    text-align: center;
+    height: 31px;
+}
+
+.vert{
+    width: 2px;
+    height: 20px;
+    background-color: $color-white;
+    position: absolute;
+    top: 12px;
+    left: 21px;
+}
+
+.svg {
+    width: 20px;
+    height: 2px;
+    background-color: $color-white;
+    position: absolute;
+    left: 12px;
+    top: 21px;
+}
+
+.switchWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid $color-grey-light-more;
+    border-radius: 30px;
+}
+
+.switchBox {
+    display: flex;
+    padding-top: 40px;
+    justify-content: center;
+    align-items: center;
+    height: 84px;
+    cursor: pointer;
+}
+
+.switchTitle {
+    @include font-circe-medium-light;
+    color: $color-grey-light-more;
+}
+
+.switchTitleIncome {
+    @include font-circe-medium-light;
+    color: $color-green;
+}
+
+.switchTitleExpense {
+    @include font-circe-medium-light;
+    color: $color-red;
+}
