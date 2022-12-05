@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.959e18f6.css",
-    "main.js": "/wallet-project-front/static/js/main.32cd9808.js",
+    "main.css": "/wallet-project-front/static/css/main.47c66181.css",
+    "main.js": "/wallet-project-front/static/js/main.3416d251.js",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
     "static/media/Vector.png": "/wallet-project-front/static/media/Vector.cdb4a1d0c530ac6dbaaf.png",
+    "static/media/Wallet.svg": "/wallet-project-front/static/media/Wallet.3b2035495ffafb0331cdf9f90b68371c.svg",
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
     "static/media/Vectors.svg": "/wallet-project-front/static/media/Vectors.5433e683ecf5277df81396cd768c649c.svg",
     "static/media/Statistic-min.svg": "/wallet-project-front/static/media/Statistic-min.a6b0de5e917d48b4ad1851a848d72db3.svg",
@@ -19,11 +20,11 @@
     "static/media/RectangleMob.svg": "/wallet-project-front/static/media/RectangleMob.5128f0511d2c4b8b5d07.svg",
     "static/media/Vector 5.svg": "/wallet-project-front/static/media/Vector 5.464fa8a52b2ad3b82320f08a3ac437c8.svg",
     "static/media/vector-on-select.svg": "/wallet-project-front/static/media/vector-on-select.77b989b3724c69122981.svg",
-    "main.959e18f6.css.map": "/wallet-project-front/static/css/main.959e18f6.css.map",
-    "main.32cd9808.js.map": "/wallet-project-front/static/js/main.32cd9808.js.map"
+    "main.47c66181.css.map": "/wallet-project-front/static/css/main.47c66181.css.map",
+    "main.3416d251.js.map": "/wallet-project-front/static/js/main.3416d251.js.map"
   },
   "entrypoints": [
-    "static/css/main.959e18f6.css",
-    "static/js/main.32cd9808.js"
+    "static/css/main.47c66181.css",
+    "static/js/main.3416d251.js"
   ]
 }
