@@ -16,23 +16,8 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('E-mail is invalid')
-    .min(10, 'E-mail must contain at least 10 characters')
-    .max(63)
-    .matches(/^.{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.\w{2,3}$/, {
-      message: 'Name section of email must have at least 2 characters',
-      excludeEmptyString: true,
-    })
-    .matches(/^[A-Za-z0-9.]{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.\w{2,3}$/, {
-      message: 'Email must not start with "-"',
-      excludeEmptyString: true,
-    })
-    .required('E-mail is required'),
-  password: Yup.string()
-    .min(6, 'Password must contain at least 6 characters')
-    .max(16, 'Password must contain 16 characters or less')
-    .required('Password is required'),
+  email: Yup.string().email('E-mail is invalid').required('E-mail is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 const LoginForm = () => {
@@ -58,6 +43,7 @@ const LoginForm = () => {
             svg={emailIcon}
           />
           <TextField
+            style={{ marginBottom: '42px' }}
             type="password"
             name="password"
             placeholder="Password"

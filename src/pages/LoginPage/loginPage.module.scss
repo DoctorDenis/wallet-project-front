@@ -1,0 +1,22 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/media';
+
+.sectionLogin {
+  @include media-tablet {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 196px;
+    background-color: $color-grey-bg-register;
+    margin: 0 auto;
+  }
+
+  @include media-desktop {
+    padding-top: 52px;
+    padding-bottom: 52px;
+
+    background-image: url('../../assets/images/BackgrDesckRideSide.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top right;
+  }
+}
