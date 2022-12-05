@@ -2,26 +2,11 @@ import React from 'react';
 import css from './CurrencyHome.module.scss';
 import Svg from '../../assets/images/Vector.png';
 import { nanoid } from 'nanoid';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 
 
-const currency = [
-  {
-    currency: 'USD',
-    purchase: 28.55,
-    sale: 27.65,
-  },
-  {
-    currency: 'EUR',
-    purchase: 30.05,
-    sale: 30.15,
-  },
-  {
-    currency: 'CHF',
-    purchase: 86.15,
-    sale: 86.23,
-  },
-];
 
 const Row = props => {
   const { currency, purchase, sale } = props;
@@ -41,6 +26,8 @@ const Row = props => {
 };
 const Table = props => {
   const { data } = props;
+  
+
 
   return (
     <table className={css.table}>
@@ -58,12 +45,12 @@ const Table = props => {
         </tr>
       </thead>
       <tbody className={css.body}>
-        {data.map(row => (
+        {data?.map(row => (
           <Row 
             key={nanoid()}
-            currency={row.currency}
-            purchase={row.purchase}
-            sale={row.sale}
+            currency={row.currencyCodeA===840 ? "USD" : "EUR"}
+            purchase={row.rateBuy.toFixed(2)}
+            sale={row.rateSell.toFixed(2)}
           />
         ))}
       </tbody>
@@ -72,7 +59,28 @@ const Table = props => {
 };
 
 const Currency = () => {
+ const [currency, setCurrency] = useState([]);
+  
 
+
+useEffect(() => {
+  
+   axios
+      .get(`https://api.monobank.ua/bank/currency`)
+   .then((res) => {
+       
+       localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
+      })
+      .catch(err => {
+      
+        throw err
+        
+      });
+  
+  
+  
+  setCurrency(JSON.parse(localStorage.getItem('currency')))
+},[])
 
 
 
