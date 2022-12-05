@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import Container from 'components/Container/Container';
 import Header from '../../components/Header/Header';
@@ -13,6 +14,8 @@ import CurrencyHome from 'components/CurrencyHome/CurrencyHome';
 import HomeTab from 'components/HomeTab/HomeTab';
 import StatisticsDiagram from 'components/StatisticsDiagram/StatisticsDiagram';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
+import ModalAddTransactions from 'components/ModalAddTransaction/ModalAddTransaction';
+import { changeModalStatus } from '../../redux/global/global-actions'
 
 const DashboardPage = () => {
   // const [display, setDisplay] = useState();
@@ -22,6 +25,17 @@ const DashboardPage = () => {
   //  useEffect(() => {
   //   setDisplay(path === "/home" ? true : false);
   // }, [path]);
+
+  const modalAddTransactionStatus = useSelector(
+    state => state.global.isModalAddTransactionOpen
+  );
+
+  const dispatch = useDispatch()
+  
+  const togleModal = () => {
+    dispatch(changeModalStatus(!modalAddTransactionStatus))
+  };
+
 
   return (
     <>
@@ -96,7 +110,8 @@ const DashboardPage = () => {
 
           {/* <Currency/> */}
           {/* <Outlet /> */}
-        <ButtonAddTransactions/>
+          <ButtonAddTransactions />
+          {modalAddTransactionStatus && <ModalAddTransactions onClose={togleModal} />}
         </Container>
       </div>
 
