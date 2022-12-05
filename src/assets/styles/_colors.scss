@@ -2,14 +2,18 @@
 
 $color-main-text: #000000;
 $color-accent: #4a56e2;
-$color-wight: #ffffff;
+$color-white: #ffffff;
 
 $color-grey: #a6a6a6;
 $color-grey-light: #bdbdbd;
 $color-grey-light-transparent: #e7eaf2;
 $color-grey-bg: rgba(255, 255, 255, 0.7);
 $color-grey-light-more: #e0e0e0;
+
 $color-grey-bg-register: #E7EAF2;
+
+$color-grey-dark: #dcdcdf;
+$color-grey-bg-register: #e5e5e5;
 
 
 $color-red: #ff6596;
@@ -25,3 +29,15 @@ $color-blue-notactive: #6E78E8;
 $color-green-light: #81e1ff;
 $color-green: #24cca7;
 $color-green-deep: #00ad84;
+
+:export {
+  colorYellow: $color-yellow;
+  colorPink: $color-pink;
+  colorPinkDeep: $color-pink-deep;
+  colorBlueLight: $color-blue-light;
+  colorBlue: $color-blue;
+  colorAccent: $color-accent;
+  colorGreenLight: $color-green-light;
+  colorGreen: $color-green;
+  colorGreenDeep: $color-green-deep;
+}

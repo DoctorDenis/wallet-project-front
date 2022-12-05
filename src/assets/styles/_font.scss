@@ -1,9 +1,8 @@
 // mixin for font Circle
 @mixin font-circe-small {
-  font-family: 'Circe';
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.47;
 }
 
 @mixin font-circe-small-light {
@@ -13,7 +12,6 @@
 }
 
 @mixin font-circe-small-big {
-  font-family: 'Circe';
   font-weight: 400;
   font-size: 18px;
   line-height: 1.47;
@@ -27,10 +25,15 @@
 }
 
 @mixin font-circe-medium {
-  font-family: 'Circe';
   font-weight: 700;
   font-size: 18px;
   line-height: 1.47;
+}
+
+@mixin font-circe-medium-light {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.125;
 }
 
 // mixins for font Poppins

@@ -1,16 +1,60 @@
- .diagram {
-@media screen and (min-width: 768px) {
-position: absolute;
- 
-    top: 250px;
-        left: 100px;
-}
-@media screen and (min-width: 1280px) {
-   
-        top: 10px;
-            left: 600px;
+@import '../../assets/styles/font';
+@import '../../assets/styles/media';
+
+.blockdiagram {
+  // outline: 1px solid tomato;
+  display: flex;
+  flex-direction: column;
+  @include media-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @include media-desktop {
+    position: absolute;
+    // outline: 1px solid black;
+    // width: 784px;
+    // height: 773px;
+    top: 0;
+    left: 480px;
+    padding: 32px 0px 44px 69px;
+    border-left: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
 }
 
- }
+.title {
+  text-align: left;
+  margin-bottom: 8px;
+  @include font-poppins-small-big;
+  @include media-desktop {
+    margin-bottom: 20px;
+    padding-left: 15px;
+  }
+}
 
-       
+.blockSelect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include media-tablet {
+    flex-direction: inherit;
+    justify-content: space-between;
+    width: 336px;
+    // padding-top: 20px;
+  }
+
+  @include media-desktop {
+    width: 395px;
+  }
+}
+
+.listStatistics {
+  @include media-tablet {
+    padding-top: 20px;
+  }
+  @include media-desktop {
+    margin-left: 32px;
+    padding-top: 65px;
+  }
+}

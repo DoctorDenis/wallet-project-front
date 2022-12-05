@@ -1,0 +1,35 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/font';
+
+.titleTable {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  background-color: $color-white;
+
+  @include font-circe-medium;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px 15px 20px;
+  @include font-circe-small;
+
+  border-bottom: 1px solid $color-grey-dark;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.square {
+  width: 24px;
+  height: 24px;
+  background-color: $color-red;
+  margin-right: 16px;
+}
+
+.itemExpenses {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

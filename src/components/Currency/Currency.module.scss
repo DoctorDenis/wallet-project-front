@@ -3,52 +3,40 @@
 @import '../../assets/styles/colors';
 
 .currency_mobil {
-    display: block;
-    background-color: $color-accent;
-    border-radius: 30px;
-    height: 174px;
-    position: relative;
-    width: 280px;
-    margin: 0 auto;
-    background-repeat: no-repeat;
-    background-image: url(../../assets/images/RectangleMob.svg);
-
+  display: block;
+  background-color: $color-accent;
+  border-radius: 30px;
+  height: 174px;
+  position: relative;
+  width: 280px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/images/RectangleMob.svg);
 }
 
-.header_table{
-    @include font-circe-medium;
-    color: $color-wight;
-    padding-left: 8px;
-    padding-right: 8px;
-      
+.header_table {
+  @include font-circe-medium;
+  color: $color-white;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .rows {
- padding: 8px;
-    font-family: 'Circe';
-@include font-circe-small;
-    color: $color-wight;
-
+  padding: 8px;
+  font-family: 'Circe';
+  @include font-circe-small;
+  color: $color-white;
 }
 
-   .svg {
-    top: 90px;
-       
- position: absolute;
-        width: 280px;
+.svg {
+  top: 90px;
+
+  position: absolute;
+  width: 280px;
 }
 .table_head {
-height: 50px;
+  height: 50px;
 }
 
 .table {
-margin-left: 20px;
+  margin-left: 20px;
 }
-
-
-
-
-
-
-
-
-
