@@ -39,6 +39,7 @@
 
 
 .item_link {
+
     list-style: none;
     &:not(:last-child) {
             margin-right: 38px;
@@ -47,24 +48,58 @@
   
 
 }
-
-.svg {
+.svg{
     width: 38px;
-    height: 38px;
+    transition: 2s;
+        height: 38px;
+    filter:opacity(75%) ;
+}
+.svg:hover {
+     transition: 1s;
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+     
+  
     
 }
-.svg_tabl{
-    width: 24px;
-        height: 24px;
-        margin-right: 23px;
+.svg_active{
+    // filter:brightness(0.9) contrast(100%) drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.9));
+    width: 38px;
+    height: 38px;
 }
 
+
+.svg_tabl{
+    width: 24px;
+    height: 24px;
+    margin-right: 23px;
+}
+.svg_tabl:hover {
+    transition: 1s;
+    filter: brightness(0.9) drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+
+
+}
+
+.svg_tabl_active {
+    filter: brightness(0.9) contrast(100%) drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    width: 24px;
+    height: 24px;
+    margin-right: 23px;
+}
 
 .text {
 @include font-poppins-small-light;
   margin: 0;
   color: $color-main-text;
-  &:active{
-    font-weight: 700;
-  }
+//   &:active{
+//     font-weight: 700;
+//   }
 }
+
+.active{
+    @include font-poppins-small-light;
+    font-weight: 700;
+    color: $color-main-text;
+}
+
+
