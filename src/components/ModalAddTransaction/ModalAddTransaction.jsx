@@ -1,7 +1,10 @@
 import { useState } from 'react'
 
-import { Formik, Form } from 'formik';
+import { Formik, Field, Form  } from 'formik';
 import Switch from 'react-switch';
+// import CustomSelect from '../CustomSelect/CustomSelect'
+// import Button from '../Button/Button';
+
 
 
 import LogoWallet from '../../assets/images/Wallet-min.svg';
@@ -13,7 +16,25 @@ import vertical from '../../assets/images/Vector 5.svg';
 import  { useEffect } from 'react'
 import style from './modalAddTransaction.module.scss';
 
+// const options = [
+//     { value: 'Main expenses', label: 'Main expenses' },
+//     { value: 'Products', label: 'Products' },
+//     { value: 'Car', label: 'Car' },
+//     { value: 'Self care', label: 'Self care' },
+//     { value: 'Child care', label: 'Child care' },
+//     { value: 'Household products', label: 'Household products' },
+//     { value: 'Education', label: 'Education' },
+//     { value: 'Leisure', label: 'Leisure' },
+//     { value: 'Other expenses', label: 'Other expenses' },
+//     { value: 'Entertainment', label: 'Entertainment' },
+// ];
 
+    const initialValues = {
+  category: '',
+  summ: '',
+  date: '',
+  coment: '',
+};
 
 const ModalAddTransactions = ({ onClose }) => {
 
@@ -40,6 +61,12 @@ const ModalAddTransactions = ({ onClose }) => {
         setExpense(!expense);
     };
 
+    const handleSubmit = (value, { resetForm }) => {
+        console.log("777");
+        resetForm();
+    };
+
+
 
 
     return (
@@ -57,7 +84,7 @@ const ModalAddTransactions = ({ onClose }) => {
                 </div>
                 <h2 className={style.modalTitle}>Add transaction</h2>
                 <div className={style.switchBox}>
-                    <p className={ expense ? style.switchTitleIncome : style.switchTitle}>Income</p>
+                    <p className={expense ? style.switchTitleIncome : style.switchTitle}>Income</p>
                     <div className={style.switchWrapper}>
                         <Switch
                             onChange={handleChangeSwitch}
@@ -86,13 +113,55 @@ const ModalAddTransactions = ({ onClose }) => {
                             checkedHandleIcon={<img className={style.svg} src={minus} alt="minus" />}
                         />
                     </div>
-                    <p className={ expense ? style.switchTitle : style.switchTitleExpense}>Expense</p>
+                    <p className={expense ? style.switchTitle : style.switchTitleExpense}>Expense</p>
                 </div>
-                <Formik>
+
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                >
                     <Form className={style.form}>
+                        {!expense && <Field as="select"
+                            name="category"
+                            placeholder="Select a category"                            
+                            className={`${style.select} ${style.input}`}>
+                            <option value="Main expenses">Main expenses</option>
+                            <option value="Products">Products</option>
+                            <option value="Car">Car</option>
+                            <option value="Self care">Self care</option>
+                            <option value="Child care">Child care</option>
+                            <option value="Household products">Household products</option>
+                            <option value="Education">Education</option>
+                            <option value="Leisure">Leisure</option>
+                            <option value="Other expenses">Other expenses</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </Field>}
+                        <div className={style.inputWrapper}>
+                        <Field
+                            type="text"
+                            name="summ"
+                            placeholder="0.00"
+                            className={style.inputTablet}
+                        />
+                        <Field
+                            type="date"
+                            name="date"
+                            placeholder="Select date"
+                            className={style.inputTablet}
+                        />
+                        </div>
+                        <Field
+                            type="text"
+                            name="coment"
+                            placeholder="Coment"
+                            className={`${style.inputText} ${style.input}`}
+                        />
+
+                        <button type="submit" className={style.btn}>ADD</button>
+                        <button type='button' className={style.btn}>CANCEL</button>
                     </Form>
                 </Formik>
-                
+
             </div>
         </div>
     )
