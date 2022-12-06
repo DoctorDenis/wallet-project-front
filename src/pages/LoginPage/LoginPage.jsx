@@ -15,7 +15,7 @@ const LoginPage = () => {
       <Container>
         <div className={style.container}>
           <div className={style.bgContainer}>
-            <img className={style.img} src={loginImage} alt="Finance App" />
+            <img className={css.imgLogin} src={loginImage} alt="Finance App" />
             <p className={style.text}>Finance App</p>
           </div>
 
