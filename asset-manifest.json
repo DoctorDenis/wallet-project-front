@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.4effa51f.css",
-    "main.js": "/wallet-project-front/static/js/main.152fef25.js",
+    "main.css": "/wallet-project-front/static/css/main.8104a95d.css",
+    "main.js": "/wallet-project-front/static/js/main.1fa6bf3a.js",
+    "static/media/loginImg.svg": "/wallet-project-front/static/media/loginImg.8f727c9a88d2012b1c04baf40beae307.svg",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
@@ -16,18 +17,21 @@
     "static/media/Dollar-min.svg": "/wallet-project-front/static/media/Dollar-min.4fa883125be758555c393c8603ebd96d.svg",
     "static/media/Exit-min.svg": "/wallet-project-front/static/media/Exit-min.3ba889c029f87ad8c958717af7a1093f.svg",
     "static/media/Password-min.svg": "/wallet-project-front/static/media/Password-min.921004438d74937db0fe3b491e78e088.svg",
+    "static/media/EllipsePurple-min.svg": "/wallet-project-front/static/media/EllipsePurple-min.9055817f93a0a0a37afcd396f2c17145.svg",
     "static/media/Homes-min.svg": "/wallet-project-front/static/media/Homes-min.2f93643ac3b7c21411571ef4332c8bde.svg",
+    "static/media/EllipsePink-min.svg": "/wallet-project-front/static/media/EllipsePink-min.1f9d823d203bbc706526f77e80951f69.svg",
     "static/media/NameSvg-min.svg": "/wallet-project-front/static/media/NameSvg-min.c17fc32bcfc37501a4cd1fd586e358b0.svg",
     "static/media/Home-min.svg": "/wallet-project-front/static/media/Home-min.eb0028be86e5e8e8b41c3b17c650ac97.svg",
+    "static/media/star.svg": "/wallet-project-front/static/media/star.64a66cbe29c9bc6f56b6fb5c898dec27.svg",
     "static/media/Email-min.svg": "/wallet-project-front/static/media/Email-min.1a28b4acb0020926377e6cb5afe77241.svg",
     "static/media/RectangleMob.svg": "/wallet-project-front/static/media/RectangleMob.5128f0511d2c4b8b5d07.svg",
     "static/media/Vector 5.svg": "/wallet-project-front/static/media/Vector 5.464fa8a52b2ad3b82320f08a3ac437c8.svg",
     "static/media/vector-on-select.svg": "/wallet-project-front/static/media/vector-on-select.77b989b3724c69122981.svg",
-    "main.4effa51f.css.map": "/wallet-project-front/static/css/main.4effa51f.css.map",
-    "main.152fef25.js.map": "/wallet-project-front/static/js/main.152fef25.js.map"
+    "main.8104a95d.css.map": "/wallet-project-front/static/css/main.8104a95d.css.map",
+    "main.1fa6bf3a.js.map": "/wallet-project-front/static/js/main.1fa6bf3a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4effa51f.css",
-    "static/js/main.152fef25.js"
+    "static/css/main.8104a95d.css",
+    "static/js/main.1fa6bf3a.js"
   ]
 }
