@@ -1,3 +1,6 @@
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../../shared/hooks/useAuth';
+
 import Container from '../../components/Container/Container';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import style from '../RegistrationPage/registrationPage.module.scss';
@@ -8,21 +11,38 @@ import ellipsePink from '../../assets/images/EllipsePink-min.svg';
 import ellipsePurple from '../../assets/images/EllipsePurple-min.svg';
 
 const LoginPage = () => {
-  return (
-    <section className={css.sectionLogin}>
-      <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />
-      <img className={style.ellipseBottom} src={ellipsePurple} alt="Ellipse" />
-      <Container>
-        <div className={style.container}>
-          <div className={style.bgContainer}>
-            <img className={css.imgLogin} src={loginImage} alt="Finance App" />
-            <p className={style.text}>Finance App</p>
-          </div>
+  const isLoggedIn = useAuth();
+  console.log(isLoggedIn);
 
-          <LoginForm />
-        </div>
-      </Container>
-    </section>
+  return (
+    <>
+      {isLoggedIn ? (
+        <Navigate to="/" />
+      ) : (
+        <section className={css.sectionLogin}>
+          <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />
+          <img
+            className={style.ellipseBottom}
+            src={ellipsePurple}
+            alt="Ellipse"
+          />
+          <Container>
+            <div className={style.container}>
+              <div className={style.bgContainer}>
+                <img
+                  className={css.imgLogin}
+                  src={loginImage}
+                  alt="Finance App"
+                />
+                <p className={style.text}>Finance App</p>
+              </div>
+
+              <LoginForm />
+            </div>
+          </Container>
+        </section>
+      )}
+    </>
   );
 };
 

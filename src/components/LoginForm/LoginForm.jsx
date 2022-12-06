@@ -1,5 +1,8 @@
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+
+import { login } from '../../redux/auth/auth-operations';
 
 import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
@@ -21,9 +24,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
-  const handleSubmit = (value, { resetForm }) => {
-    const emailToLowerCase = value.email.toLowerCase();
-    console.log(emailToLowerCase);
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ email, password }, { resetForm }) => {
+    // const emailToLowerCase = email.toLowerCase();
+    // console.log(emailToLowerCase);
+    dispatch(login({ email, password }));
     resetForm();
   };
 
