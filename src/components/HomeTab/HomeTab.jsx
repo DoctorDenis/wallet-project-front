@@ -5,6 +5,13 @@ import EllipsisText from 'react-ellipsis-text';
 import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
+// import axios from '../../axios'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactions } from 'redux/slices/transactions';
+
+
 
 const currency = [
   {
@@ -79,7 +86,7 @@ const Table = props => {
 
   return (
     <table className={css.table}>
-      {/* <div className={css.div}> */}
+     
       <thead className={css.table_head}>
         <tr>
           <td key={nanoid()} className={css.header_table}>
@@ -102,8 +109,7 @@ const Table = props => {
           </td>
         </tr>
       </thead>
-      {/* </div> */}
-      {/* <div> */}
+     
       <tbody className={css.table_body}>
         {data.map(row => (
           <Row
@@ -118,51 +124,22 @@ const Table = props => {
           />
         ))}
       </tbody>
-      {/* </div> */}
+     
     </table>
   );
 };
 
-// const Table = () => {
-
-//   return (
-
-//     <table className="table">
-//   <thead>
-//         <tr className="table-light" >
-//       <th scope="col">#</th>
-//       <th scope="col">First</th>
-//       <th scope="col">Last</th>
-//       <th scope="col">Handle</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr classsName={css.row}>
-//       <th scope="row">1</th>
-//       <td>Mark</td>
-//       <td>Otto</td>
-//       <td>@mdo</td>
-//     </tr>
-//     <tr classsName={css.row}>
-//       <th scope="row">2</th>
-//       <td>Jacob</td>
-//       <td>Thornton</td>
-//       <td>@fat</td>
-//     </tr>
-//     <tr classsName={css.row}>
-//       <th scope="row">3</th>
-//       <td colSpan="2">Larry the Bird</td>
-//       <td>@twitter</td>
-//     </tr>
-//   </tbody>
-//       </table>
-
-//   )
-// }
-
 const HomeTab = () => {
-  // const [rows, setRows] = useState(currency)
-  //console.log(setRows)
+  const dispatch = useDispatch();
+  const {transactions} = useSelector((state)=>state.transactions)
+  
+  useEffect(() => {
+  dispatch(fetchTransactions())
+
+},[dispatch])
+
+console.log(transactions)
+
   return (
     <>
       <Media queries={{ mobile: { maxWidth: 767 } }}>

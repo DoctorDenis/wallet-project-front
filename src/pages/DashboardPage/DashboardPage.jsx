@@ -74,43 +74,12 @@ const DashboardPage = () => {
               {matches => matches.table && <CurrencyHome />}
             </Media>
           </>
-
-
-          <>
+            <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
           </>
-          {/* <>
-
- <Media queries={{ mobile: { maxWidth: 767 } }}>
-                  {matches =>
-          matches.mobile && (
-            <>
-              {location.pathname === '/home' && 
-            <HomeTab/>}
-            </>
-          
-                    )
-                  }
-                </Media>
- <Media queries={{ mobile: { maxWidth: 767 } }}>
-                  {matches =>
-          matches.mobile && (
-            <>
-              {location.pathname === '/statistics' && 
-            <StatisticsDiagram/>}
-            </>
-          
-                    )
-                  }
-                </Media>
-
-</>  */}
-
-
-          {/* <Currency/> */}
-          {/* <Outlet /> */}
-          <ButtonAddTransactions />
+        
+           {location.pathname === '/home' && <ButtonAddTransactions />} 
           {modalAddTransactionStatus && <ModalAddTransactions onClose={togleModal} />}
         </Container>
       </div>

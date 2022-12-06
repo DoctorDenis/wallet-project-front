@@ -26,7 +26,7 @@ const Row = props => {
 };
 const Table = props => {
   const { data }  = props;
-console.log(data)
+
   return (
     <table className={css.table}>
       <thead className={css.table_head}>

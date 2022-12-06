@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  combineReducers  from "./global/global-reducer";
+import {transactionsReducer} from './slices/transactions'
 
-
-export const store = configureStore({
+ const store = configureStore({
    reducer: {
         global: combineReducers,
+        transactions: transactionsReducer
     },
-});
+ });
+
+ export default store;
