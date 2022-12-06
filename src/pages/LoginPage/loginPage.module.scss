@@ -1,0 +1,35 @@
+@import '../../assets/styles/colors';
+@import '../../assets/styles/media';
+
+.sectionLogin {
+  @include media-tablet {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 196px;
+    background-color: $color-grey-bg-register;
+    margin: 0 auto;
+  }
+
+  @include media-desktop {
+    padding-top: 116px;
+    padding-bottom: 136px;
+
+    background-image: url('../../assets/images/BackgrDesckRideSide.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 55% 100%;
+  }
+}
+
+.imgLogin {
+  @include media-tablet {
+    width: 260px;
+    height: 250px;
+  }
+
+  @include media-desktop {
+    margin-bottom: 28px;
+    width: 435px;
+    height: 419px;
+  }
+}

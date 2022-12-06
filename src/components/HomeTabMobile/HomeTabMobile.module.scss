@@ -19,14 +19,18 @@
     display: flex;
    align-items: center;
     border-bottom: 1px solid #DCDCDF;
-&::before{
-    content:'';
-    width: 5px;
-    background-color: #FF6596;
-    height: 47px;
-    border-radius: 20px 0 0 0;
+  &.income{
+&::before {
+        content: '';
+        width: 5px;
+        background-color: #FF6596;
+        height: 47px;
+        border-radius: 20px 0 0 0;
+
+    }
+
+  }
    
-}
 }
 
 .name{
@@ -41,6 +45,11 @@ margin-left: auto;
 }
 
 .mobile_table{
-    
+    height: 350px;
+    margin: 0 auto;
+    width: 282px;
     margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: scroll;
+    scroll-behavior: smooth;
 }
