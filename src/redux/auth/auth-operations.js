@@ -18,7 +18,7 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/register', user);
-      token.set(data.token);
+      token.set(data.accesToken);
       Notify.success(`User ${data.user.name} is successfully registered`);
       return data;
     } catch (error) {
