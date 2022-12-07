@@ -1,10 +1,12 @@
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { login } from '../../redux/auth/auth-operations';
 
 import Button from '../Button/Button';
+import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
 
@@ -25,12 +27,18 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
     // const emailToLowerCase = email.toLowerCase();
     // console.log(emailToLowerCase);
     dispatch(login({ email, password }));
     resetForm();
+  };
+
+  const changeRoute = () => {
+    const path = '/register';
+    navigate(path);
   };
 
   return (
@@ -56,8 +64,8 @@ const LoginForm = () => {
             svg={passwordIcon}
           />
 
-          <Button text="Log in" />
-          <Button text="Register" />
+          <ButtonActive text="Log in" />
+          <Button text="Register" onClick={changeRoute} />
         </Form>
       </Formik>
     </div>
