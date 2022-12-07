@@ -43,8 +43,15 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'Password must match')
     .required('Confirm password is required'),
   name: Yup.string()
-    .min(2, 'Name must contain at least 2 character')
+    .min(1)
     .max(12, 'Name must contain 12 characters or less')
+    .matches(
+      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/,
+      {
+        message:
+          'Name must contain only latin, cyrillic (ukrainian), space or hyphen',
+      }
+    )
     .required('Name is required'),
 });
 
