@@ -15,7 +15,12 @@ const Header = ({ openModalLogout }) => {
         </Link>
         <div className={css.header_left}>
           <p className={css.text}>Name</p>
-          <img className={css.exit_svg} src={Exit} alt="exit" />
+          <img
+            className={css.exit_svg}
+            src={Exit}
+            alt="exit"
+            onClick={() => openModalLogout()}
+          />
           <button className={css.exit_button} onClick={() => openModalLogout()}>
             Exit
           </button>
