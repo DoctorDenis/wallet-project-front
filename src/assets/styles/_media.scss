@@ -4,18 +4,15 @@
   padding-right: 20px;
 }
 
-
 @mixin media-tablet {
   @media (min-width: 768px) {
     @content;
-  
   }
 }
 
 @mixin media-desktop {
   @media (min-width: 1280px) {
     @content;
-   
   }
 }
 
