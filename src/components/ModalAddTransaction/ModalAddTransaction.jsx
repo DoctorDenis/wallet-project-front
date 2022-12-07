@@ -7,9 +7,9 @@ import Switch from 'react-switch';
 
 
 
-import LogoWallet from '../../assets/images/Wallet-min.svg';
-import Wallet from '../../assets/images/Wallet.svg';
-import Exit from '../../assets/images/Exit-min.svg';
+// import LogoWallet from '../../assets/images/Wallet-min.svg';
+// import Wallet from '../../assets/images/Wallet.svg';
+// import Exit from '../../assets/images/Exit-min.svg';
 import minus from '../../assets/images/Vectors.svg';
 import vertical from '../../assets/images/Vector 5.svg';
 
@@ -71,17 +71,9 @@ const ModalAddTransactions = ({ onClose }) => {
 
     return (
         <div className={style.backdrop} onClick={handlClose}>
+            
             <div className={style.modal} onClick={(event) => event.stopPropagation()}>
-                <div className={style.modalHeader}>
-                    <div className={style.logo}>
-                        <img className={style.logoWallet} src={LogoWallet} alt="logoWallet" />
-                        <img className={style.logoTitle} src={Wallet} alt="logoTitle" />
-                    </div>
-                    <div className={style.logoExit}>
-                        <img className={style.exit} src={Exit} alt="Exit" />
-                        
-                    </div>
-                </div>
+                <div className={style.wrapper}>
                 <h2 className={style.modalTitle}>Add transaction</h2>
                 <div className={style.switchBox}>
                     <p className={expense ? style.switchTitleIncome : style.switchTitle}>Income</p>
@@ -161,7 +153,7 @@ const ModalAddTransactions = ({ onClose }) => {
                         <button type='button' className={style.btn}>CANCEL</button>
                     </Form>
                 </Formik>
-
+                </div>
             </div>
         </div>
     )
