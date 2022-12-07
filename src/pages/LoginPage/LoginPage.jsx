@@ -12,7 +12,6 @@ import ellipsePurple from '../../assets/images/EllipsePurple-min.svg';
 
 const LoginPage = () => {
   const isLoggedIn = useAuth();
-  console.log(isLoggedIn);
 
   return (
     <>
