@@ -81,10 +81,17 @@
   width: 248px;
   height: 250px;
 
+  transition-property: transform;
+  transition-duration: 400ms;
+
   @include media-desktop {
     margin-bottom: 30px;
     width: 452px;
     height: 412px;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 }
 
