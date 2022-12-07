@@ -4,8 +4,14 @@ import css from './Header.module.scss';
 import Exit from '../../assets/images/Exit-min.svg';
 import { Link } from 'react-router-dom';
 import Container from 'components/Container/Container';
+import { useSelector } from 'react-redux';
+
+
 
 const Header = ({ openModalLogout }) => {
+
+  const name = useSelector(state => state.auth.user.name);
+ 
   return (
     <Container>
       <header className={css.header}>
@@ -14,8 +20,9 @@ const Header = ({ openModalLogout }) => {
           <h1 className={css.title}>Wallet</h1>
         </Link>
         <div className={css.header_left}>
-          <p className={css.text}>Name</p>
+          <p className={css.text}>{name}</p>
           <img className={css.exit_svg} src={Exit} alt="exit" />
+          {/* <button className={css.exit_button} onClick={() => dispatch(logout())}> */}
           <button className={css.exit_button} onClick={() => openModalLogout()}>
             Exit
           </button>

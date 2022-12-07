@@ -2,22 +2,24 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../shared/hooks/useAuth';
 
 import Container from '../../components/Container/Container';
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
-import style from './registrationPage.module.scss';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import style from '../RegistrationPage/registrationPage.module.scss';
+import css from './loginPage.module.scss';
 
-import registrationImage from '../../assets/images/registerImg.svg';
+import loginImage from '../../assets/images/loginImg.svg';
 import ellipsePink from '../../assets/images/EllipsePink-min.svg';
 import ellipsePurple from '../../assets/images/EllipsePurple-min.svg';
 
-const RegistrationPage = () => {
+const LoginPage = () => {
   const isLoggedIn = useAuth();
+  console.log(isLoggedIn);
 
   return (
     <>
       {isLoggedIn ? (
         <Navigate to="/home" />
       ) : (
-        <section className={style.section}>
+        <section className={css.sectionLogin}>
           <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />
           <img
             className={style.ellipseBottom}
@@ -28,14 +30,14 @@ const RegistrationPage = () => {
             <div className={style.container}>
               <div className={style.bgContainer}>
                 <img
-                  className={style.img}
-                  src={registrationImage}
+                  className={css.imgLogin}
+                  src={loginImage}
                   alt="Finance App"
                 />
                 <p className={style.text}>Finance App</p>
               </div>
 
-              <RegistrationForm />
+              <LoginForm />
             </div>
           </Container>
         </section>
@@ -44,4 +46,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;

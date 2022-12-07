@@ -1,5 +1,8 @@
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+
+import { register } from '../../redux/auth/auth-operations';
 
 import Button from '../Button/Button';
 import TextField from '../TextField/TextField';
@@ -18,11 +21,8 @@ const initialValues = {
   name: '',
 };
 
-// const emailSymbol = /^[A-Za-z0-9.]{1}[A-Za-z0-9.-]{1,}@[A-Za-z0-9]+.\w{2,3}$/;
-
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    // .matches(emailSymbol, 'Must be at least 2 characters before the "@" symbol')
     .email('E-mail is invalid')
     .min(10, 'E-mail must contain at least 10 characters')
     .max(63)
@@ -49,10 +49,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegistrationForm = () => {
-  const handleSubmit = (value, { resetForm }) => {
-    const emailToLowerCase = value.email.toLowerCase();
-    console.log(emailToLowerCase);
-    console.log(initialValues.password);
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ email, password, name }, { resetForm }) => {
+    // const emailToLowerCase = email.toLowerCase();
+    dispatch(register({ email, password, name }));
     resetForm();
   };
 

@@ -1,86 +1,16 @@
 import React from 'react';
 import css from './HomeTab.module.scss';
-// import { useState } from 'react'
 import EllipsisText from 'react-ellipsis-text';
 import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
-// import axios from '../../axios'
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import NotTransactions from '../../assets/images/Not.png'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/slices/transactions';
 
 
 
-const currency = [
-  {
-    date: '04.01.19',
-    type: '-',
-    category: 'Other',
-    comment: 'Gift dfddd for wife',
-    sum: 3000,
-    balance: 20000,
-  },
-  {
-    date: '04.01.19',
-    type: '+',
-    category: 'Other',
-    comment: 'Gift for wife on Marry Cristmas',
-    sum: 3000,
-    balance: 20000,
-  },
-  {
-    date: '04.01.19',
-    type: '+',
-    category: 'Other',
-    comment: 'Gift for wife',
-    sum: 3000,
-    balance: 20000,
-  },
-  {
-    date: '04.01.19',
-    type: '-',
-    category: 'Other',
-    comment: 'Giftsdfd for wife',
-    sum: 3000,
-    balance: 20000,
-  },
-  {
-    date: '04.01.19',
-    type: '-',
-    category: 'Other',
-    comment: 'Gift for wife',
-    sum: 3000,
-    balance: 20000,
-  },
-];
-
-const Row = props => {
-  const { date, type, category, comment, sum, balance } = props;
-  return (
-    <tr className={css.tr}>
-      <td key={nanoid()} className={css.rows}>
-        {date}
-      </td>
-      <td key={nanoid()} className={css.rows}>
-        {type}
-      </td>
-      <td key={nanoid()} className={css.rows}>
-        {category}
-      </td>
-      <td key={nanoid()} className={css.rows}>
-        {comment}
-      </td>
-      <td key={nanoid()} className={css.rows}>
-        {sum}
-      </td>
-      <td key={nanoid()} className={css.rows}>
-        {balance}
-      </td>
-    </tr>
-  );
-};
 const Table = props => {
   const { data } = props;
 
@@ -111,17 +41,28 @@ const Table = props => {
       </thead>
      
       <tbody className={css.table_body}>
-        {data.map(row => (
-          <Row
-            className={css.tr}
-            key={nanoid()}
-            type={row.type}
-            date={row.date}
-            category={row.category}
-            comment={<EllipsisText text={row.comment} length={13} />}
-            sum={row.sum}
-            balance={row.balance}
-          />
+        {data?.map(row => (
+ <tr key={nanoid()} className={css.tr}>
+      <td key={nanoid()} className={css.rows}>
+        {row.date}
+      </td>
+      <td key={nanoid()} className={row.isIncome ?  css.rows_true : css.rows_false}>
+        {row.isIncome ? '+' : '-'}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        {<EllipsisText text={row.category} length={10} />}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        {<EllipsisText text={row.comment} length={13} />}
+      </td>
+      <td key={nanoid()} className={row.isIncome ?  css.rows_true : css.rows_false}>
+        {row.amount}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        Not yet
+      </td>
+    </tr>
+
         ))}
       </tbody>
      
@@ -131,17 +72,21 @@ const Table = props => {
 
 const HomeTab = () => {
   const dispatch = useDispatch();
-  const {transactions} = useSelector((state)=>state.transactions)
-  
+
+  const {transactions} = useSelector((state)=>state.transactions.items)
+ 
   useEffect(() => {
   dispatch(fetchTransactions())
 
 },[dispatch])
 
-console.log(transactions)
+
+
 
   return (
     <>
+      {transactions?.length===0 ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> : 
+      <>
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches => matches.mobile && <HomeTabMobile />}
       </Media>
@@ -151,21 +96,17 @@ console.log(transactions)
           matches.table && (
             <>
               <div className={css.home_tab}>
-                <Table data={currency} />
+                <Table data={transactions} />
               </div>
             </>
           )
         }
-      </Media>
+          </Media>
+      </>}
+      
     </>
 
-    //     <div className={css.backg}>
-    //   <Container>
-    //   <div className={css.home_tab}>
-    //       <Table data={rows} />
-    //         </div>
-    //         </Container>
-    //         </div>
+   
   );
 };
 

@@ -59,12 +59,13 @@ const Table = props => {
 const Currency = () => {
   const [currency, setCurrency] = useState(null);
   
+
   useEffect(() => {
   axios
       .get(`https://api.monobank.ua/bank/currency`)
    .then((res) => {
-       
-   
+      
+  
        localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
       })
       .catch(err => {
@@ -74,6 +75,9 @@ const Currency = () => {
       });
   
       setCurrency(JSON.parse( localStorage.getItem('currency')))
+    
+
+ 
   }, []);
 
 

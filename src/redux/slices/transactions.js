@@ -1,23 +1,37 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-//import axios from "../../axios";
-import axios from "axios";
+import axios from "../../axios";
 
-export const fetchTransactions = createAsyncThunk("transactions/fetchTransactions", async () => {
-    const { data } = await axios.get('https://wallet-project.cyclic.app/api-docs/transactions')
-    return data
+
+export const fetchTransactions = createAsyncThunk("transactions/fetchTransactions", async ( ) => {
+    try {
+      const { data } = await axios.get('transactions/')
+     return data  
+    } catch (error) {
+       
+     throw error
+    }
+       
+})
+
+export const fetchAddTransactions = createAsyncThunk("transactions/fetchAddTransactions", async (params) => {
+    try {
+   const data =  await axios.post('transactions/add', params)
+      return data  
+    } catch (error) {
+       
+     throw error
+    }
+       
 })
 
 
 
-
 const initialState = {
-    transactions: {
+ 
         items: [],
         status:'loading'
-    }
- 
     
-}
+ }
 
 
 const transactionsSlice = createSlice({
@@ -26,18 +40,32 @@ const transactionsSlice = createSlice({
 
     extraReducers: {
        [fetchTransactions.pending]: (state) => {
-            state.transactions.items = [];
-            state.transactions.status = 'loading'
+            state.items = [];
+            state.status = 'loading'
         },
         [fetchTransactions.fulfilled]: (state, action) => {
-            state.transactions.status = 'loaded';
-            state.transactions.items = action.payload;
+            state.status = 'loaded';
+            state.items = action.payload;
         },
           [fetchTransactions.rejected]: (state) => {
-            state.transactions.status = 'error';
-            state.transactions.items = [];
-        }  
+            state.status = 'error';
+            state.items = [];
+        },
+        
+          
+        //    [fetchAddTransactions.pending]: (state) => {
+        //     state.status = 'loading';
+        //     state.data = null
+        // },
+        [fetchAddTransactions.fulfilled]: (state, action) => {
+            state.status = 'loaded';
+            state.data = action.payload;
+        },
+        //   [fetchAddTransactions.rejected]: (state) => {
+        //     state.status = 'error';
+        //     state.data = null;
+        // }
     }
 })
 
-export const transactionsReducer = transactionsSlice.reducer; 
+export  const transactionsReducer = transactionsSlice.reducer; 
