@@ -34,23 +34,22 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgba(0, 0, 0, 0.8);
-
     transition: all .3s;
     animation: showBackdrop .3s ease-out;
     @include media-tablet{
     top: 0;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);}
+    background-color:rgba(0, 0, 0, 0.25);}
 }
 
 .modal {
-    background: $color-white;
+    position: relative;
     display: flex;
     justify-content: center;   
     width: 100%;
     height: 100%;
     padding-top: 15px;
+    background: $color-white;
     transition: all .3s;
     animation: showModal .3s ease-out;
         @include media-tablet {
@@ -63,6 +62,19 @@
                 padding-right: 73px;
             }
 };
+
+.close {
+    display: none;
+    @include media-tablet {
+        display: block;
+        right: 20px;
+        top: 20px;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        }
+}
 
 .wrapper {
     width: 280px;
@@ -135,10 +147,26 @@
 
 .select {
     margin-top: 40px;
+    @include font-circe-light-medium;
+        color: $color-main-text;
+}
+
+
+.selectOption {
+    width: 280px;
+    @include font-circe-light-medium;
+    color: $color-main-text;
+    background: rgba(236, 232, 232, 0.7);
+    cursor: pointer !important;
+    &:hover,
+    &:focus {
+        color: $color-red ;
+        background: $color-white;
+    }
 }
 
 .input {
-    @include font-circe-small;
+    @include font-circe-light-medium;
         margin-top: 40px;
         width: 100%;
         height: 32px;
@@ -149,7 +177,7 @@
 }
 
 .inputTablet {
-    @include font-circe-small;
+    @include font-circe-light-medium;
         margin-top: 40px;
         width: 100%;
         height: 32px;
