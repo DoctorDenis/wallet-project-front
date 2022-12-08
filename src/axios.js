@@ -1,4 +1,6 @@
 import axios from "axios";
+
+
 // let token;
 // if (window.localStorage.getItem('persist:token')) {
 //      token = JSON.parse(JSON.parse(window.localStorage.getItem('persist:token')).accesToken)
@@ -16,8 +18,8 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use((config) => {
-    // config.headers.Authorization = JSON.parse(JSON.parse(window.localStorage.getItem('persist:token')).accesToken)
-     config.headers.Authorization = `Bearer ${JSON.parse(JSON.parse(window.localStorage.getItem('persist:token')).accesToken)}`
+    //  config.headers.Authorization = `Bearer ${}`
+     //config.headers.Authorization = `Bearer ${JSON.parse(JSON.parse(window.localStorage.getItem('persist:token')).accesToken)}`
     return config;
 })
 

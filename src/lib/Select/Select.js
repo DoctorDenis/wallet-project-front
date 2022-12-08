@@ -91,7 +91,7 @@ class Select extends Component {
     // const {
     //   data: { currencies, loading },
     // } = this.props;
-    console.log('this.props.arrData:', this.props.arrData);
+    // console.log('this.props.arrData:', this.props.arrData);
     const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>

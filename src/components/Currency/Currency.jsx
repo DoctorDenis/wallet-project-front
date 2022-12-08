@@ -3,8 +3,8 @@ import axios from 'axios';
 import css from './Currency.module.scss';
 import Svg from '../../assets/images/Vector.png';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 
 
 
@@ -43,10 +43,10 @@ const Table = props => {
         </tr>
       </thead>
       <tbody>
-        {data?.map(row => (
+        {data?.map((row, i) => (
           <Row
             key={nanoid()}
-            currency={row.currencyCodeA===840 ? "USD" : "EUR"}
+            currency={(i === 0 && 'USD') || (i === 1 && 'EUR') ||  (i === 2 && 'EUR/USD')}
             purchase={row.rateBuy.toFixed(2)}
             sale={row.rateSell.toFixed(2)}
           />
