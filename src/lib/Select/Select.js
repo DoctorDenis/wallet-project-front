@@ -12,8 +12,14 @@ class Select extends Component {
     selectedOption: 0,
   };
 
+  componentDidMount() {
+    this.setState({
+      selectedOption: this.props.curData ? this.props.curData : 0,
+    });
+  }
   // componentDidUpdate() {
-  //   this.writeQuerySelectedCurrency(this.state.selectedOption);
+
+  //   // this.writeQuerySelectedCurrency(this.state.selectedOption);
   // }
 
   toggleOptions = () => {
@@ -91,7 +97,7 @@ class Select extends Component {
     // const {
     //   data: { currencies, loading },
     // } = this.props;
-    console.log('this.props.arrData:', this.props.arrData);
+
     const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>
