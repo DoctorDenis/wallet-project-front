@@ -84,6 +84,7 @@ textBtn:hover {
 .item:hover,
 .item[aria-selected='true'] {
   background: $color-grey-light;
+  color: $color-red;
 
   cursor: pointer;
 }
