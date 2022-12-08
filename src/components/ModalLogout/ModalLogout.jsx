@@ -1,6 +1,8 @@
 import './ModalLogout.css';
 import React from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../src/redux/auth/auth-operations';
 
 const ModalLogout = ({ isOpened, closeModal }) => {
   useEffect(() => {
@@ -12,6 +14,10 @@ const ModalLogout = ({ isOpened, closeModal }) => {
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [closeModal]);
+
+  const dispatch = useDispatch();
+  const onLogout = () => dispatch(logout()) && closeModal();
+
   return (
     <div
       className={`modal_wrapper ${isOpened ? 'open' : 'close'}`}
@@ -22,8 +28,8 @@ const ModalLogout = ({ isOpened, closeModal }) => {
           ×
         </button>
         <h2>Do you want to exit?</h2>
-        <div className='modal_button'>
-          <button className="button" type="button">
+        <div className="modal_button">
+          <button className="button" type="button" onClick={onLogout}>
             Yes
           </button>
           <button className="button" type="button" onClick={() => closeModal()}>

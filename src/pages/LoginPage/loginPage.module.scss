@@ -22,9 +22,16 @@
 }
 
 .imgLogin {
+  transition-property: transform;
+  transition-duration: 400ms;
+
   @include media-tablet {
     width: 260px;
     height: 250px;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   @include media-desktop {

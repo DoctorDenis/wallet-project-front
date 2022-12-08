@@ -7,8 +7,6 @@ import star from '../../assets/images/star.svg';
 const TextField = ({ svg, ...props }) => {
   const location = useLocation();
   const [field, meta] = useField(props);
-  // field це значення полів форми
-  // meta обєкт який зберігає додаткові методи
 
   return (
     <div className={style.container}>
@@ -32,7 +30,7 @@ const TextField = ({ svg, ...props }) => {
           }`}
         />
       </div>
-      {field.name === 'password' && location === '/register' && (
+      {field.name === 'password' && location.pathname === '/register' && (
         <PasswordStrengthIndicator password={field.value} />
       )}
       <ErrorMessage component="div" name={field.name} className={style.error} />

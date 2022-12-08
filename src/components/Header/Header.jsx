@@ -20,8 +20,10 @@ const Header = ({ openModalLogout }) => {
           <h1 className={css.title}>Wallet</h1>
         </Link>
         <div className={css.header_left}>
-          <p className={css.text}>{name}</p>
-          <img className={css.exit_svg} src={Exit} alt="exit" />
+
+          <p className={css.text}>Name</p>
+          <img className={css.exit_svg} src={Exit} alt="exit" onClick={() => openModalLogout()} />
+
           {/* <button className={css.exit_button} onClick={() => dispatch(logout())}> */}
           <button className={css.exit_button} onClick={() => openModalLogout()}>
             Exit
