@@ -18,7 +18,11 @@
 
   background-color: transparent;
   color: $color-accent;
+
   cursor: pointer;
+
+  transition-property: transform;
+  transition-duration: 400ms;
 
   &:not(:last-child) {
     margin-bottom: 20px;
@@ -26,5 +30,11 @@
 
   @include media-tablet {
     width: 300px;
+  }
+
+  @include media-desktop {
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 }

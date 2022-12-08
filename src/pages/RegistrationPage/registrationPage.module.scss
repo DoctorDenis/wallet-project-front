@@ -3,34 +3,100 @@
 @import '../../assets/styles/font';
 
 .section {
-  @media (min-width: 768px) {
-    padding: 60px 118px 48px 118px;
+  @include media-tablet {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 48px;
     background-color: $color-grey-bg-register;
+    margin: 0 auto;
+  }
+
+  @include media-desktop {
+    padding-top: 52px;
+    padding-bottom: 52px;
+
+    background-image: url('../../assets/images/BackgrDesckRideSide.png');
+    background-repeat: no-repeat;
+    background-size: 55% 100%;
+    background-position: top right;
+  }
+}
+
+.ellipseTop {
+  display: none;
+
+  @include media-tablet {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @include media-desktop {
+    display: none;
+  }
+}
+
+.ellipseBottom {
+  display: none;
+
+  @include media-tablet {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  @include media-desktop {
+    width: 532px;
+  }
+}
+
+.container {
+  @include media-desktop {
+    display: flex;
+    align-items: center;
   }
 }
 
 .bgContainer {
   display: none;
 
-  @media (min-width: 768px) {
+  @include media-tablet {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
-    width: 532px;
     margin: 0 auto;
-
     margin-bottom: 50px;
+  }
+
+  @include media-desktop {
+    flex-direction: column;
+    margin-bottom: 0;
   }
 }
 
 .img {
   width: 248px;
   height: 250px;
+
+  transition-property: transform;
+  transition-duration: 400ms;
+
+  @include media-desktop {
+    margin-bottom: 30px;
+    width: 452px;
+    height: 412px;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
 }
 
 .text {
-  @media (min-width: 768px) {
+  @include media-tablet {
     @include font-poppins-small-big;
   }
 }

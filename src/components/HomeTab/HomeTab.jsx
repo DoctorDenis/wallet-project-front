@@ -1,183 +1,113 @@
 import React from 'react';
-import css from './HomeTab.module.scss'
-// import { useState } from 'react'
-import EllipsisText from "react-ellipsis-text";
+import css from './HomeTab.module.scss';
+import EllipsisText from 'react-ellipsis-text';
 import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
-
-const currency = [
-    {
-        date: '04.01.19',
-        type: "-",
-        category: "Other",
-        comment: "Gift dfddd for wife",
-        sum: 3000,
-        balance:20000
-    },
-     {
-        date: '04.01.19',
-        type: "+",
-        category: "Other",
-        comment: "Gift for wife on Marry Cristmas",
-        sum: 3000,
-        balance:20000
-    },
-       {
-        date: '04.01.19',
-        type: "+",
-        category: "Other",
-        comment: "Gift for wife",
-        sum: 3000,
-        balance:20000
-    },
-         {
-        date: '04.01.19',
-        type: "-",
-        category: "Other",
-        comment: "Giftsdfd for wife",
-        sum: 3000,
-        balance:20000
-    },
-           {
-        date: '04.01.19',
-        type: "-",
-        category: "Other",
-        comment: "Gift for wife",
-        sum: 3000,
-        balance:20000
-    },
-]
+import NotTransactions from '../../assets/images/Not.png'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactions } from 'redux/slices/transactions';
 
 
-const Row = (props) => {
-    const { date,
-type,
-category,
-comment,
-sum,
-balance } = props;   
-    return (
-        <tr className={css.tr}>
-            <td key={nanoid()} className={css.rows}>{date}</td>
-            <td key={nanoid()} className={css.rows}>{type}</td>
-            <td key={nanoid()} className={css.rows}>{category}</td>
-            <td key={nanoid()} className={css.rows}>{comment}</td>
-            <td key={nanoid()} className={css.rows}>{sum}</td>
-            <td key={nanoid()} className={css.rows}>{balance }</td>
+
+const Table = props => {
+  const { data } = props;
+
+  return (
+    <table className={css.table}>
+     
+      <thead className={css.table_head}>
+        <tr>
+          <td key={nanoid()} className={css.header_table}>
+            Date
+          </td>
+          <td key={nanoid()} className={css.header_table}>
+            Type
+          </td>
+          <td key={nanoid()} className={css.header_table}>
+            Category
+          </td>
+          <td key={nanoid()} className={css.header_table}>
+            Comment
+          </td>
+          <td key={nanoid()} className={css.header_table}>
+            Sum
+          </td>
+          <td key={nanoid()} className={css.header_table}>
+            Balance
+          </td>
+        </tr>
+      </thead>
+     
+      <tbody className={css.table_body}>
+        {data?.map(row => (
+ <tr key={nanoid()} className={css.tr}>
+      <td key={nanoid()} className={css.rows}>
+        {row.date}
+      </td>
+      <td key={nanoid()} className={row.isIncome ?  css.rows_true : css.rows_false}>
+        {row.isIncome ? '+' : '-'}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        {<EllipsisText text={row.category} length={10} />}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        {<EllipsisText text={row.comment} length={13} />}
+      </td>
+      <td key={nanoid()} className={row.isIncome ?  css.rows_true : css.rows_false}>
+        {row.amount}
+      </td>
+      <td key={nanoid()} className={css.rows}>
+        Not yet
+      </td>
     </tr>
 
-)
-}
-const Table = (props) => {
-    const { data } = props
-    
-    return (
-        <table className={css.table} >
-            {/* <div className={css.div}> */}
-            <thead className={css.table_head}>
-                <tr >
-                    <td key={nanoid()} className={css.header_table}>Date</td>
-                    <td key={nanoid()} className={css.header_table}>Type</td>
-                    <td key={nanoid()} className={css.header_table}>Category</td>
-                    <td key={nanoid()} className={css.header_table}>Comment</td>
-                    <td key={nanoid()} className={css.header_table}>Sum</td>
-                    <td key={nanoid()} className={css.header_table}>Balance</td>
-                </tr>
-            </thead>
-            {/* </div> */}
-            {/* <div> */}
-            <tbody className={css.table_body}>
-            {data.map(row => (
-              <Row className={css.tr} key={nanoid()} type={row.type} date={row.date}
-                category={row.category}  comment={<EllipsisText  text={row.comment}  length={13} />} sum={row.sum} balance={row.balance}/>
-            ))}
-                </tbody>
-                {/* </div> */}
-   </table>
-)
-}
-
-// const Table = () => {
-  
-
-
-
-//   return (
-
-
-//     <table className="table">
-//   <thead>
-//         <tr className="table-light" >
-//       <th scope="col">#</th>
-//       <th scope="col">First</th>
-//       <th scope="col">Last</th>
-//       <th scope="col">Handle</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr classsName={css.row}>
-//       <th scope="row">1</th>
-//       <td>Mark</td>
-//       <td>Otto</td>
-//       <td>@mdo</td>
-//     </tr>
-//     <tr classsName={css.row}>
-//       <th scope="row">2</th>
-//       <td>Jacob</td>
-//       <td>Thornton</td>
-//       <td>@fat</td>
-//     </tr>
-//     <tr classsName={css.row}>
-//       <th scope="row">3</th>
-//       <td colSpan="2">Larry the Bird</td>
-//       <td>@twitter</td>
-//     </tr>
-//   </tbody>
-//       </table>
-   
-//   )
-// }
+        ))}
+      </tbody>
+     
+    </table>
+  );
+};
 
 const HomeTab = () => {
-    // const [rows, setRows] = useState(currency)  
-    //console.log(setRows)
-    return (
+  const dispatch = useDispatch();
+
+  const {transactions} = useSelector((state)=>state.transactions.items)
+ 
+  useEffect(() => {
+  dispatch(fetchTransactions())
+
+},[dispatch])
+
+
+
+
+  return (
     <>
-         <Media queries={{ mobile: { maxWidth: 767 } }}>
-                  {matches =>
-                    matches.mobile && (
-                      <HomeTabMobile/>)
-                  }
-                </Media>
-             
-              <Media queries={{ table: { minWidth: 768 } }}>
-                {matches =>
-                  matches.table && (
+      {transactions?.length === 0 || !transactions ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> : 
+      <>
+      <Media queries={{ mobile: { maxWidth: 767 } }}>
+        {matches => matches.mobile && <HomeTabMobile />}
+      </Media>
 
-    <>
-      <div className={css.home_tab}>
-          <Table data={currency} />
-             </div> 
-             </> 
-         
-                  )
-                }
-              </Media>
-</>
+      <Media queries={{ table: { minWidth: 768 } }}>
+        {matches =>
+          matches.table && (
+            <>
+              <div className={css.home_tab}>
+                <Table data={transactions} />
+              </div>
+            </>
+          )
+        }
+          </Media>
+      </>}
+      
+    </>
 
+   
+  );
+};
 
-
-
-
-    //     <div className={css.backg}>
-    //   <Container>
-    //   <div className={css.home_tab}>
-    //       <Table data={rows} />
-    //         </div>
-    //         </Container>
-    //         </div>
-  )
-}
-
-export default HomeTab
+export default HomeTab;

@@ -1,7 +1,12 @@
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import { register } from '../../redux/auth/auth-operations';
+
 import Button from '../Button/Button';
+import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
 
@@ -18,11 +23,8 @@ const initialValues = {
   name: '',
 };
 
-// const emailSymbol = /^[A-Za-z0-9.]{1}[A-Za-z0-9.-]{1,}@[A-Za-z0-9]+.\w{2,3}$/;
-
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    // .matches(emailSymbol, 'Must be at least 2 characters before the "@" symbol')
     .email('E-mail is invalid')
     .min(10, 'E-mail must contain at least 10 characters')
     .max(63)
@@ -43,17 +45,31 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'Password must match')
     .required('Confirm password is required'),
   name: Yup.string()
-    .min(2, 'Name must contain at least 2 character')
+    .min(1)
     .max(12, 'Name must contain 12 characters or less')
+    .matches(
+      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/,
+      {
+        message:
+          'Name must contain only latin, cyrillic (ukrainian), space or hyphen',
+      }
+    )
     .required('Name is required'),
 });
 
 const RegistrationForm = () => {
-  const handleSubmit = (value, { resetForm }) => {
-    const emailToLowerCase = value.email.toLowerCase();
-    console.log(emailToLowerCase);
-    console.log(initialValues.password);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = ({ email, password, name }, { resetForm }) => {
+    // const emailToLowerCase = email.toLowerCase();
+    dispatch(register({ email, password, name }));
     resetForm();
+  };
+
+  const changeRoute = () => {
+    const path = '/login';
+    navigate(path);
   };
 
   return (
@@ -91,8 +107,8 @@ const RegistrationForm = () => {
             svg={nameIcon}
           />
 
-          <Button text="Register" />
-          <Button text="Log in" />
+          <ButtonActive text="Register" />
+          <Button text="Log in" onClick={changeRoute} />
         </Form>
       </Formik>
     </div>

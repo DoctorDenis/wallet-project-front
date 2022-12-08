@@ -1,28 +1,12 @@
 import React from 'react';
-
+import axios from 'axios';
 import css from './Currency.module.scss';
 import Svg from '../../assets/images/Vector.png';
 import { nanoid } from 'nanoid';
+import { useState, useEffect } from 'react';
 
 
 
-const currency = [
-  {
-    currency: 'USD',
-    purchase: 28.55,
-    sale: 27.65,
-  },
-  {
-    currency: 'EUR',
-    purchase: 30.05,
-    sale: 30.15,
-  },
-  {
-    currency: 'CHF',
-    purchase: 86.15,
-    sale: 86.23,
-  },
-];
 
 const Row = props => {
   const { currency, purchase, sale } = props;
@@ -41,7 +25,7 @@ const Row = props => {
   );
 };
 const Table = props => {
-  const { data } = props;
+  const { data }  = props;
 
   return (
     <table className={css.table}>
@@ -59,12 +43,12 @@ const Table = props => {
         </tr>
       </thead>
       <tbody>
-        {data.map(row => (
+        {data?.map((row, i) => (
           <Row
             key={nanoid()}
-            currency={row.currency}
-            purchase={row.purchase}
-            sale={row.sale}
+            currency={(i === 0 && 'USD') || (i === 1 && 'EUR') ||  (i === 2 && 'EUR/USD')}
+            purchase={row.rateBuy.toFixed(2)}
+            sale={row.rateSell.toFixed(2)}
           />
         ))}
       </tbody>
@@ -73,13 +57,38 @@ const Table = props => {
 };
 
 const Currency = () => {
-return (
-                <div className={css.currency_mobil}>
-                  <Table data={currency} />
-                    <img className={css.svg} src={Svg} alt="svg" /> 
-                 </div>
+  const [currency, setCurrency] = useState(null);
+  
 
+  useEffect(() => {
+  axios
+      .get(`https://api.monobank.ua/bank/currency`)
+   .then((res) => {
+      
+  
+       localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
+      })
+      .catch(err => {
+       
+        throw err
+        
+      });
+  
+      setCurrency(JSON.parse( localStorage.getItem('currency')))
     
+
+ 
+  }, []);
+
+
+
+
+
+  return (
+    <div className={css.currency_mobil}>
+      <Table data={currency} />
+      <img className={css.svg} src={Svg} alt="svg" />
+    </div>
   );
 };
 

@@ -1,0 +1,16 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/colors';
+
+.container {
+  padding: 107px 0px 107px;
+
+  @include media-tablet {
+    padding: 40px 0px 62px;
+    margin: 0 auto;
+    width: 532px;
+    height: 468px;
+
+    background-color: $color-white;
+    border-radius: 20px;
+  }
+}
