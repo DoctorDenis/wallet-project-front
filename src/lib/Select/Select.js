@@ -70,14 +70,14 @@ class Select extends Component {
           selectedOption:
             this.state.selectedOption - 1 >= 0
               ? this.state.selectedOption - 1
-              : this.props.data.currencies.length - 1,
+              : this.props.arrData.length - 1,
         });
         break;
       case 'ArrowDown':
         e.preventDefault();
         this.setState({
           selectedOption:
-            this.state.selectedOption === this.props.data.currencies.length - 1
+            this.state.selectedOption === this.props.arrData.length - 1
               ? 0
               : this.state.selectedOption + 1,
         });
