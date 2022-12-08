@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.59b21971.css",
-    "main.js": "/wallet-project-front/static/js/main.6f0e459b.js",
+    "main.css": "/wallet-project-front/static/css/main.0794c08b.css",
+    "main.js": "/wallet-project-front/static/js/main.704f0c79.js",
     "static/media/loginImg.svg": "/wallet-project-front/static/media/loginImg.8f727c9a88d2012b1c04baf40beae307.svg",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
+    "static/media/Not.png": "/wallet-project-front/static/media/Not.e274b164c357823dd4c5.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
     "static/media/Vector.png": "/wallet-project-front/static/media/Vector.cdb4a1d0c530ac6dbaaf.png",
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
@@ -27,11 +28,11 @@
     "static/media/Vector 5.svg": "/wallet-project-front/static/media/Vector 5.464fa8a52b2ad3b82320f08a3ac437c8.svg",
     "static/media/vector-on-select.svg": "/wallet-project-front/static/media/vector-on-select.77b989b3724c69122981.svg",
     "static/media/Close-min.svg": "/wallet-project-front/static/media/Close-min.597283e18f87a7847d7084da5408293b.svg",
-    "main.59b21971.css.map": "/wallet-project-front/static/css/main.59b21971.css.map",
-    "main.6f0e459b.js.map": "/wallet-project-front/static/js/main.6f0e459b.js.map"
+    "main.0794c08b.css.map": "/wallet-project-front/static/css/main.0794c08b.css.map",
+    "main.704f0c79.js.map": "/wallet-project-front/static/js/main.704f0c79.js.map"
   },
   "entrypoints": [
-    "static/css/main.59b21971.css",
-    "static/js/main.6f0e459b.js"
+    "static/css/main.0794c08b.css",
+    "static/js/main.704f0c79.js"
   ]
 }
