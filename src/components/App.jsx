@@ -24,10 +24,10 @@ export const App = () => {
         <Route path="statistics" element={<StatisticsDiagram />} />
         {/* <Route path="currency" element={<Currency/> } /> */}
         <Route
-          path="currency"
+          path='currency'
           element={
-            <Media query={{ maxWidth: 767 }}>
-              {matches => (matches ? <Currency /> : <Navigate to="/home" />)}
+            <Media queries={{ small: '(max-width: 767px)' }}>
+              {matches => matches.small ? <Currency /> : <Navigate to='/home'/>}
             </Media>
           }
         />

@@ -70,7 +70,8 @@ useEffect(() => {
    .then((res) => {
        
        localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
-      })
+      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+   })
       .catch(err => {
       
         throw err

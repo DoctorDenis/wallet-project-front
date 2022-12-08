@@ -95,7 +95,7 @@ margin-right: 15px;
 }
 
 .exit_button {
-    // display: none;
+    display: none;
     width: 31px;
     padding: 0;
     height: 24px;
@@ -103,4 +103,7 @@ margin-right: 15px;
     color: #BDBDBD;
     background-color: white;
     border: none;
+    @media screen and (min-width: 768px) {
+            display: block;
+        }
 }

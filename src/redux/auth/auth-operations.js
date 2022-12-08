@@ -2,6 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
+
+
+
 axios.defaults.baseURL = 'https://wallet-project.cyclic.app/';
 
 const token = {
@@ -18,7 +21,7 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/register', user);
-      token.set(data.accesToken);
+       token.set(data.accesToken);
       Notify.success(`User ${data.user.name} is successfully registered`);
       return data;
     } catch (error) {
@@ -33,7 +36,7 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', user);
-      token.set(data.token);
+       token.set(data.token);
       Notify.success('Success login');
       return data;
     } catch (error) {
@@ -47,7 +50,7 @@ export const logout = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/logout', user);
-      token.unset();
+       token.unset();
       Notify.success('Success log out');
       return data;
     } catch (error) {

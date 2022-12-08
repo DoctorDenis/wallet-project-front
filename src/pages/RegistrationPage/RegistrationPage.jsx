@@ -15,7 +15,7 @@ const RegistrationPage = () => {
   return (
     <>
       {isLoggedIn ? (
-        <Navigate to="/" />
+        <Navigate to="/home" />
       ) : (
         <section className={style.section}>
           <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />
