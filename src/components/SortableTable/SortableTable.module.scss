@@ -1,0 +1,74 @@
+@import '../../assets/styles/media';
+@import '../../assets/styles/_font.scss';
+@import '../../assets/styles/colors';
+
+.theadSortTable {
+  display: block;
+  @include font-circe-medium;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 704px;
+  background-color: white;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-right: none;
+
+  color: $color-main-text;
+}
+
+.thSortTable {
+  min-width: 115px;
+  height: 58px;
+  text-align: center;
+}
+
+.bodySortTable {
+  min-width: 115px;
+  display: block;
+}
+
+.trSortTable {
+  height: 58px;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.tdSortTable {
+  @include font-circe-small;
+  text-align: center;
+  min-width: 115px;
+  height: 52px;
+  padding-left: 8px;
+  color: $color-main-text;
+}
+
+thead button {
+  width: 100%;
+  background-color: transparent;
+  border-radius: none;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.47;
+  color: #000000;
+}
+
+.ascendingSort::after {
+  content: url(sortUp.png);
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.descendingSort::after {
+  content: url(sortDown.png);
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.noneSort::after {
+  content: url(sort.png);
+  display: inline-block;
+  margin-left: 3px;
+}
