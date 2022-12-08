@@ -21,6 +21,7 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/register', user);
+     
        token.set(data.accesToken);
       Notify.success(`User ${data.user.name} is successfully registered`);
       return data;
@@ -36,7 +37,7 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', user);
-       token.set(data.token);
+       token.set(data.accesToken);
       Notify.success('Success login');
       return data;
     } catch (error) {

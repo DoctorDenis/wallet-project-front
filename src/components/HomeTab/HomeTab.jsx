@@ -85,7 +85,7 @@ const HomeTab = () => {
 
   return (
     <>
-      {transactions?.length===0 ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> : 
+      {transactions?.length === 0 || !transactions ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> : 
       <>
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches => matches.mobile && <HomeTabMobile />}

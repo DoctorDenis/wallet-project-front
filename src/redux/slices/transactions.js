@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../../axios";
+//import axios from "../../axios";
+import axios from "axios";
+
+// axios.defaults.baseURL = 'https://wallet-project.cyclic.app/';
 
 
 export const fetchTransactions = createAsyncThunk("transactions/fetchTransactions", async ( ) => {
