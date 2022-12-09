@@ -3,235 +3,204 @@
 @import '../../assets/styles/media';
 
 @keyframes showBackdrop {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes showModal {
-    0% {
-        opacity: 0;
-        transform: translateY(-500px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
-
 .backdrop {
-    position: fixed;
-    top: 69px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    transition: all .3s;
-    animation: showBackdrop .3s ease-out;
-    @include media-tablet{
+  position: fixed;
+  top: 69px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.3s;
+  animation: showBackdrop 0.3s ease-out;
+  @include media-tablet {
     top: 0;
     align-items: center;
-    background-color:rgba(0, 0, 0, 0.25);}
+    background-color: rgba(0, 0, 0, 0.25);
+  }
 }
 
 .modal {
-    position: relative;
-    display: flex;
-    justify-content: center;   
-    width: 100%;
-    height: 100%;
-    padding-top: 15px;
-    background: $color-white;
-    transition: all .3s;
-    animation: showModal .3s ease-out;
-        @include media-tablet {
-                width: 540px;
-                height: 600px;
-                border-radius: 20px;
-                padding-top: 40px;
-                padding-bottom: 60px;
-                padding-left: 73px;
-                padding-right: 73px;
-            }
-};
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 15px;
+  background: $color-white;
+  transition: all 0.3s;
+  animation: showModal 0.3s ease-out;
+  @include media-tablet {
+    width: 540px;
+    height: 600px;
+    border-radius: 20px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    padding-left: 73px;
+    padding-right: 73px;
+  }
+}
 
 .close {
-    display: none;
-    @include media-tablet {
-        display: block;
-        right: 20px;
-        top: 20px;
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        cursor: pointer;
-        }
+  display: none;
+  @include media-tablet {
+    display: block;
+    right: 20px;
+    top: 20px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
 }
 
 .wrapper {
-    width: 280px;
-    @include media-tablet {
-            width: 100%;
-        }
+  width: 280px;
+  @include media-tablet {
+    width: 100%;
+  }
 }
-
-
 
 .modalTitle {
-    @include font-poppins-small;
-    text-align: center;
-    height: 31px;
+  margin-bottom: 40px;
+  @include font-poppins-small;
+  text-align: center;
 }
 
-.vert{
-    width: 2px;
-    height: 20px;
-    background-color: $color-white;
-    position: absolute;
-    top: 12px;
-    left: 21px;
+.vert {
+  width: 2px;
+  height: 20px;
+  background-color: $color-white;
+  position: absolute;
+  top: 12px;
+  left: 21px;
 }
 
 .svg {
-    width: 20px;
-    height: 2px;
-    background-color: $color-white;
-    position: absolute;
-    left: 12px;
-    top: 21px;
+  width: 20px;
+  height: 2px;
+  background-color: $color-white;
+  position: absolute;
+  left: 12px;
+  top: 21px;
 }
 
 .switchWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border: 1px solid $color-grey-light-more;
-    border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid $color-grey-light-more;
+  border-radius: 30px;
 }
 
 .switchBox {
-    display: flex;
-    padding-top: 40px;
-    justify-content: center;
-    align-items: center;
-    height: 84px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 42px;
+  cursor: pointer;
 }
 
 .switchTitle {
-    @include font-circe-medium-light;
-    color: $color-grey-light-more;
+  @include font-circe-medium-light;
+  color: $color-grey-light-more;
 }
 
 .switchTitleIncome {
-    @include font-circe-medium-light;
-    color: $color-green;
+  @include font-circe-medium-light;
+  color: $color-green;
 }
 
 .switchTitleExpense {
-    @include font-circe-medium-light;
-    color: $color-red;
+  @include font-circe-medium-light;
+  color: $color-red;
 }
 
-.select {
-    margin-top: 40px;
-    @include font-circe-light-medium;
-        color: $color-main-text;
-}
-
-
-.selectOption {
-    width: 280px;
-    @include font-circe-light-medium;
-    color: $color-main-text;
-    background: rgba(236, 232, 232, 0.7);
-    cursor: pointer !important;
-    &:hover,
-    &:focus {
-        color: $color-red ;
-        background: $color-white;
-    }
+.inputWrapper {
+  @include media-tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 .input {
-    @include font-circe-light-medium;
-        margin-top: 40px;
-        width: 100%;
-        height: 32px;
-        padding-left: 20px;
-        outline: none;
-        border: none;
-        border-bottom: 1px solid $color-grey-light-more;
-}
+  padding-left: 16px;
+  width: 100%;
+  height: 32px;
 
-.inputTablet {
-    @include font-circe-light-medium;
-        margin-top: 40px;
-        width: 100%;
-        height: 32px;
-        padding-left: 20px;
-        outline: none;
-        border: none;
-        border-bottom: 1px solid $color-grey-light-more;
-    @include media-tablet {
-            width: 190px;
-            padding-left: 0px;
-            text-align: center;
-        }    
-}
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $color-grey-light-more;
 
-.inputText {
+  @include font-circe-light-medium;
+
+  &:not(:last-child) {
     margin-bottom: 40px;
-    height: 84px;
-    @include media-tablet {
-            height: 32px;
-        }
-};
+    font-weight: 700;
+  }
 
-.inputWrapper {
-    @include media-tablet {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;           
-        }
+  @include media-tablet {
+    padding-left: 0px;
+    width: 190px;
+
+    text-align: center;
+  }
 }
 
+.input::placeholder {
+  color: $color-grey-light;
+}
 
-.btn {
-    display: block;
-    width: 280px;
-    height: 50px;
-    margin: 0 auto;
-    padding: 13px 0px;
+.textarea {
+  @include font-circe-light-medium;
+  margin-bottom: 40px;
+  padding-left: 16px;
+  padding-bottom: 8px;
 
-    border: 1px solid $color-accent;
-    border-radius: 20px;
+  height: 84px;
+  width: 100%;
 
-    @include font-circe-light-medium;
-    text-align: center;
-    text-transform: uppercase;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $color-grey-light-more;
 
-    background-color: transparent;
-    color: $color-accent;
-    cursor: pointer;
+  @include media-tablet {
+    padding-left: 15px;
+    height: 32px;
+  }
+}
 
-    &:not(:last-child) {
-        margin-bottom: 20px;
-    }
-
-    @include media-tablet {
-        width: 300px;
-    }
+.error {
+  position: absolute;
+  bottom: 100%;
+  font-size: 10px;
+  color: $color-red;
 }
