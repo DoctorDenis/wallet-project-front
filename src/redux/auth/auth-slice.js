@@ -50,6 +50,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [logout.fulfilled]: state => {
+      state.user = { email: '', name: '' };
       state.isLoading = false;
       state.accesToken = '';
     },
