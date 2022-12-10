@@ -59,7 +59,7 @@ const Table = props => {
         {row.amount}
       </td>
       <td key={nanoid()} className={css.rows}>
-        Not yet
+       {row.balance}
       </td>
     </tr>
 
@@ -73,19 +73,31 @@ const Table = props => {
 const HomeTab = () => {
   const dispatch = useDispatch();
 
-  const {transactions} = useSelector((state)=>state.transactions.items)
+
  
   useEffect(() => {
   dispatch(fetchTransactions())
 
 },[dispatch])
+  const {transactions} = useSelector((state)=>state.transactions.items)
+  const {status} = useSelector(state =>state.transactions)
 
-
+   
+  
+  let reverseTransactions = []
+   const  reverseArr=()=> {
+    transactions?.map((post) => {
+      reverseTransactions.unshift(post);
+      return reverseTransactions;
+    })}
+  reverseArr()
 
 
   return (
     <>
-      {transactions?.length === 0 || !transactions ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> : 
+      {status==='loading' ? <div className="spinner-border text-primary" role="status">
+  <span className="sr-only"></span>
+</div> :  reverseTransactions?.length === 0 ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> :
       <>
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches => matches.mobile && <HomeTabMobile />}
@@ -96,13 +108,35 @@ const HomeTab = () => {
           matches.table && (
             <>
               <div className={css.home_tab}>
-                <Table data={transactions} />
+                <Table data={reverseTransactions} />
               </div>
             </>
           )
         }
           </Media>
       </>}
+
+
+
+
+      {/* {reverseTransactions?.length === 0 ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> :
+      <>
+      <Media queries={{ mobile: { maxWidth: 767 } }}>
+        {matches => matches.mobile && <HomeTabMobile />}
+      </Media>
+
+      <Media queries={{ table: { minWidth: 768 } }}>
+        {matches =>
+          matches.table && (
+            <>
+              <div className={css.home_tab}>
+                <Table data={reverseTransactions} />
+              </div>
+            </>
+          )
+        }
+          </Media>
+      </>} */}
       
     </>
 
@@ -111,3 +145,6 @@ const HomeTab = () => {
 };
 
 export default HomeTab;
+
+
+

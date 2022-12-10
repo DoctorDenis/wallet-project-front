@@ -2,13 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //import axios from "../../axios";
 import axios from "axios";
 
-// axios.defaults.baseURL = 'https://wallet-project.cyclic.app/';
-
 
 export const fetchTransactions = createAsyncThunk("transactions/fetchTransactions", async ( ) => {
+  //console.log(axios.defaults.headers.Authorization)
+ const token = JSON.parse(JSON.parse(localStorage.getItem('persist:token')).accesToken)
     try {
-      const { data } = await axios.get('transactions/')
-     return data  
+        
+        const { data } = await axios.get('transactions/',
+        { headers: {Authorization: `Bearer ${token}`}}
+        )
+    
+        return data  
     } catch (error) {
        
      throw error
@@ -26,6 +30,8 @@ export const fetchAddTransactions = createAsyncThunk("transactions/fetchAddTrans
     }
        
 })
+
+
 
 
 

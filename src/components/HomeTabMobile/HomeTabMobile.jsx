@@ -7,12 +7,27 @@ import {nanoid} from 'nanoid';
 
 
 const HomeTabMobile = () => {
-  const {transactions} = useSelector((state)=>state.transactions.items)
+  const { transactions } = useSelector((state) => state.transactions.items)
+  const {status} = useSelector(state =>state.transactions)
 
+
+  let reverseTransactions =[]
+   const  reverseArr=()=> {
+    transactions?.map((post) => {
+      reverseTransactions.unshift(post);
+      return reverseTransactions;
+    })}
+  reverseArr()
   
   return (
+  status==='loading' ?  <div className="spinner-border text-primary" role="status">
+  <span className="sr-only"></span>
+</div> :
+
+
+
     <div className={css.mobile_table}>
-      {transactions?.map((item) => (
+      {reverseTransactions?.map((item) => (
          <div key={nanoid()} className={css.table}>
 <ul key={nanoid()} className={css.transaction}>
         <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>

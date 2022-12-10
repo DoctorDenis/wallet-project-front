@@ -9,7 +9,8 @@ import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
-
+import axios from 'axios';
+import { useState } from 'react';
 import style from './loginForm.module.scss';
 
 import emailIcon from '../../assets/images/Email-min.svg';
@@ -28,6 +29,27 @@ const validationSchema = Yup.object().shape({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [currency, setCurrency] = useState([]);
+
+  axios
+      .get(`https://wallet-project.cyclic.app/currency`)
+    .then((res) => {
+      
+       localStorage.setItem('currency', JSON.stringify(res.data));
+       
+      setCurrency(res.data)
+     console.log(currency)
+      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+   })
+      .catch(err => {
+      
+        throw err
+        
+      });
+
+
+
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
     // const emailToLowerCase = email.toLowerCase();

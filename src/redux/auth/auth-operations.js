@@ -5,7 +5,11 @@ import { Notify } from 'notiflix';
 
 
 
+
 axios.defaults.baseURL = 'https://wallet-project.cyclic.app/';
+
+
+
 
 const token = {
   set(token) {
@@ -21,7 +25,6 @@ export const register = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/register', user);
-     
        token.set(data.accesToken);
       Notify.success(`User ${data.user.name} is successfully registered`);
       return data;
@@ -37,7 +40,7 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('users/login', user);
-       token.set(data.accesToken);
+       token.set(data.token);
       Notify.success('Success login');
       return data;
     } catch (error) {
