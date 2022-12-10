@@ -32,7 +32,7 @@ const DashboardPage = () => {
 
   const dispatch = useDispatch()
   
-  const togleModal = () => {
+ const togleModal = () => {
     dispatch(changeModalStatus(!modalAddTransactionStatus))
   };
 

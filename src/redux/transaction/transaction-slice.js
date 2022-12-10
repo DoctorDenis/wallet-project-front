@@ -33,6 +33,7 @@ const transactionsSlice = createSlice({
     [addTransaction.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.transactions = [...state.transactions, payload];
+      state.isModalAddTransactionOpen = false;
     },
     [addTransaction.rejected]: (state, { payload }) => {
       state.isLoading = false;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import Switch from 'react-switch';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -19,6 +19,8 @@ import { addTransaction } from '../../redux/transaction/transaction-operations';
 import minus from '../../assets/images/Vectors.svg';
 import vertical from '../../assets/images/Vector 5.svg';
 import close from '../../assets/images/Close-min.svg';
+
+import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
 
@@ -41,7 +43,7 @@ const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
   const dispatch = useDispatch();
-//   const token = useToken();
+  //   const token = useToken();
 
   const handlClose = event => {
     if (event.currentTarget === event.target) {
@@ -65,28 +67,22 @@ const ModalAddTransactions = ({ onClose }) => {
     setIncome(!income);
   };
 
+  const modalAddTransactionStatus = useSelector(
+    state => state.global.isModalAddTransactionOpen
+  );
+
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
     dispatch(
-      //   addTransaction({
-      //     payload: {
-      //       isIncome: income,
-      //       category: select,
-      //       amount,
-      //       date,
-      //       comment,
-      //     },
-      //     token: token,
-      //   })
-
       addTransaction({
         isIncome: income,
-        category: select,
+        category: select || 'Main expenses',
         amount,
         date,
         comment,
       })
     );
     resetForm();
+    dispatch(changeModalStatus(!modalAddTransactionStatus));
   };
 
   const handleChange = event => {
