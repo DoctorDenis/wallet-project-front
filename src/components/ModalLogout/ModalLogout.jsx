@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../src/redux/auth/auth-operations';
+import Close from '../../assets/images/Close.svg';
 
 const ModalLogout = ({ isOpened, closeModal }) => {
   useEffect(() => {
@@ -25,14 +26,19 @@ const ModalLogout = ({ isOpened, closeModal }) => {
     >
       <div className="modal_body" onClick={e => e.stopPropagation()}>
         <button className="modal_close" onClick={() => closeModal()}>
-          ×
+          {/* × */}
+          <img className="close_svg" src={Close} alt="Close" />
         </button>
         <h2>Do you want to exit?</h2>
         <div className="modal_button">
-          <button className="button" type="button" onClick={onLogout}>
+          <button className="button button_y" type="button" onClick={onLogout}>
             Yes
           </button>
-          <button className="button" type="button" onClick={() => closeModal()}>
+          <button
+            className="button button_n"
+            type="button"
+            onClick={() => closeModal()}
+          >
             No
           </button>
         </div>
