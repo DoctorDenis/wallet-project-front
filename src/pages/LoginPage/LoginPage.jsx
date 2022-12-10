@@ -16,7 +16,7 @@ const LoginPage = () => {
   return (
     <>
       {isLoggedIn ? (
-        <Navigate to="/" />
+        <Navigate to="/home" />
       ) : (
         <section className={css.sectionLogin}>
           <img className={style.ellipseTop} src={ellipsePink} alt="Ellipse" />

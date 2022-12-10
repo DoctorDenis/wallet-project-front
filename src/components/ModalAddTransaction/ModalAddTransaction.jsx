@@ -1,37 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Formik, Field, Form } from 'formik';
-// import Select, { StylesConfig } from 'react-select';
+import { useDispatch } from 'react-redux';
 import Select from 'react-select';
-
 import Switch from 'react-switch';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+// import { useToken } from '../../shared/hooks/useToken';
+
+import Button from '../Button/Button';
+import ButtonActive from '../ButtonActive/ButtonActive';
+
+import { expenseOptions } from '../../utils/expenseOptions';
+import { incomeOptions } from '../../utils/incomeOptions';
+
+import { selectStyles } from '../../helpers/styles/selectStyles';
+import { selectDefaultColor } from '../../helpers/styles/selectDefaultColor';
+import { addTransaction } from '../../redux/transaction/transaction-operations';
 
 import minus from '../../assets/images/Vectors.svg';
 import vertical from '../../assets/images/Vector 5.svg';
 import close from '../../assets/images/Close-min.svg';
 
-import Button from '../Button/Button';
-import ButtonActive from '../ButtonActive/ButtonActive';
-
 import style from './modalAddTransaction.module.scss';
-
-const expenseOptions = [
-  { value: 'main expenses', label: 'Main expenses' },
-  { value: 'products', label: 'Products' },
-  { value: 'car', label: 'Car' },
-  { value: 'self care', label: 'Self care' },
-  { value: 'child care', label: 'Child care' },
-  { value: 'household products', label: 'Household products' },
-  { value: 'education', label: 'Education' },
-  { value: 'leisure', label: 'Leisure' },
-  { value: 'other expenses', label: 'Other expenses' },
-  { value: 'entertainment', label: 'Entertainment' },
-];
-
-const incomeOptions = [
-  { value: 'regular income', label: 'Regular income' },
-  { value: 'irregular income', label: 'Irregular income' },
-];
 
 const initialValues = {
   category: '',
@@ -41,71 +30,18 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  category: Yup.string().required('Category is required'),
-  amount: Yup.string().required('Amount is required'),
-  date: Yup.string().required('Date is required'),
-  comment: Yup.string().required('Comment is required'),
+  //   category: Yup.mixed().oneOf(incomeOptions, expenseOptions).required(),
+  //   options: Yup.mixed().required(),
+  amount: Yup.number().required('Amount is required'),
+  date: Yup.date().required('Date is required'),
+  comment: Yup.string(),
 });
-
-const selectStyles = {
-  control: styles => ({
-    ...styles,
-
-    marginBottom: '40px',
-    paddingLeft: '6px',
-    border: 'none',
-    borderBottom: '1px solid #e0e0e0',
-    borderRadius: 'none',
-    fontFamily: 'Circe',
-    fontSize: '18px',
-    lineHeight: '1.5',
-  }),
-
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
-    ...styles,
-
-    cursor: 'pointer',
-    paddingLeft: '20px',
-    height: '44px',
-    fontFamily: 'Circe',
-    fontSize: '18px',
-    lineHeight: '1.5',
-    borderRadius: '18px',
-    ':hover': {
-      color: '#ff6596',
-      backgroundColor: '#fff',
-      fontWeight: '700',
-    },
-  }),
-
-  menu: styles => ({
-    ...styles,
-
-    backgroundColor: 'rgba(242, 242, 242, 0.6)',
-    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    borderRadius: '20px',
-    backdropFilter: 'blur(25px)',
-  }),
-
-  indicatorSeparator: styles => ({
-    ...styles,
-    display: 'none',
-  }),
-};
-
-const setDefaultColor = theme => {
-  return {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      primary25: '#fff',
-      primary: '#fff',
-    },
-  };
-};
 
 const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
+  const [select, setSelect] = useState('');
+  const dispatch = useDispatch();
+//   const token = useToken();
 
   const handlClose = event => {
     if (event.currentTarget === event.target) {
@@ -129,9 +65,32 @@ const ModalAddTransactions = ({ onClose }) => {
     setIncome(!income);
   };
 
-  const handleSubmit = ({ category, amount, date, comment }, { resetForm }) => {
-    console.log(category, amount, date, comment);
+  const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
+    dispatch(
+      //   addTransaction({
+      //     payload: {
+      //       isIncome: income,
+      //       category: select,
+      //       amount,
+      //       date,
+      //       comment,
+      //     },
+      //     token: token,
+      //   })
+
+      addTransaction({
+        isIncome: income,
+        category: select,
+        amount,
+        date,
+        comment,
+      })
+    );
     resetForm();
+  };
+
+  const handleChange = event => {
+    setSelect(event.label);
   };
 
   return (
@@ -190,35 +149,44 @@ const ModalAddTransactions = ({ onClose }) => {
             <Form className={style.form}>
               {!income ? (
                 <Select
+                  name="category"
                   options={expenseOptions}
                   placeholder="Select a category"
                   noOptionsMessage={() => 'No other transaction categories :('}
                   hideSelectedOptions
                   tabSelectsValue
                   blurInputOnSelect={false}
-                  theme={setDefaultColor}
+                  theme={selectDefaultColor}
                   isSearchable
                   styles={selectStyles}
+                  onChange={handleChange}
                 />
               ) : (
                 <>
                   <Select
+                    name="category"
                     options={incomeOptions}
                     blurInputOnSelect={false}
                     placeholder="Select a category"
                     hideSelectedOptions
                     tabSelectsValue
-                    theme={setDefaultColor}
+                    theme={selectDefaultColor}
                     styles={selectStyles}
+                    onChange={handleChange}
                   />
                 </>
               )}
               <div className={style.inputWrapper}>
                 <Field
-                  type="text"
+                  type="number"
                   name="amount"
                   placeholder="0.00"
                   className={style.input}
+                />
+                <ErrorMessage
+                  name="amount"
+                  component="div"
+                  className={style.error}
                 />
 
                 <Field
@@ -227,6 +195,11 @@ const ModalAddTransactions = ({ onClose }) => {
                   placeholder="Select date"
                   className={style.input}
                 />
+                <ErrorMessage
+                  name="date"
+                  component="div"
+                  className={style.errorDate}
+                />
               </div>
               <Field
                 type="textarea"
@@ -234,6 +207,7 @@ const ModalAddTransactions = ({ onClose }) => {
                 placeholder="Comment"
                 className={style.textarea}
               />
+
               <ButtonActive text="Add" />
               <Button text="Cancel" onClick={onClose} />
             </Form>

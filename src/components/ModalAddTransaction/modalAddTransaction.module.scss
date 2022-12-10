@@ -144,6 +144,7 @@
 }
 
 .inputWrapper {
+  position: relative;
   @include media-tablet {
     display: flex;
     flex-wrap: wrap;
@@ -200,7 +201,26 @@
 
 .error {
   position: absolute;
-  bottom: 100%;
+  top: 25%;
+  right: 0;
   font-size: 10px;
   color: $color-red;
+
+  @include media-tablet {
+    bottom: 30%;
+    top: 49%;
+    left: 0;
+  }
+}
+
+.errorDate {
+  position: absolute;
+  bottom: 14%;
+  right: 0;
+  font-size: 10px;
+  color: $color-red;
+
+  @include media-tablet {
+    bottom: 30%;
+  }
 }
