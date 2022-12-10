@@ -45,10 +45,10 @@ const Table = props => {
         </tr>
       </thead>
       <tbody className={css.body}>
-        {data?.map(row => (
+        {data?.map((row, i) => (
           <Row 
             key={nanoid()}
-            currency={row.currencyCodeA===840 ? "USD" : "EUR"}
+            currency={ (i === 0 && 'USD') || (i === 1 && 'EUR') ||  (i === 2 && 'EUR/USD')}
             purchase={row.rateBuy.toFixed(2)}
             sale={row.rateSell.toFixed(2)}
           />
@@ -58,19 +58,26 @@ const Table = props => {
   );
 };
 
+
+
 const Currency = () => {
  const [currency, setCurrency] = useState([]);
   
 
 
+  
+ 
 useEffect(() => {
   
-   axios
-      .get(`https://api.monobank.ua/bank/currency`)
-   .then((res) => {
+  axios
+      .get(`https://wallet-project.cyclic.app/currency`)
+     .then((res) => {
+       localStorage.setItem('currency', JSON.stringify(res.data));
        
-       localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
-      })
+      (res?.data ? setCurrency(res.data) :  setCurrency(JSON.parse(localStorage.getItem('currency'))))
+     
+      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+   })
       .catch(err => {
       
         throw err
@@ -79,8 +86,10 @@ useEffect(() => {
   
   
   
-  setCurrency(JSON.parse(localStorage.getItem('currency')))
-},[])
+   setCurrency(JSON.parse(localStorage.getItem('currency')))
+ 
+
+}, [])
 
 
 

@@ -38,6 +38,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       state.accesToken = payload.accesToken;
+      // state.refreshToken = payload.refreshToken;
     },
     [login.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -50,6 +51,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [logout.fulfilled]: state => {
+      state.user = { email: '', name: '' };
       state.isLoading = false;
       state.accesToken = '';
     },

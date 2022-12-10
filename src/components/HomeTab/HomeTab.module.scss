@@ -7,6 +7,8 @@
 .table_body{
 min-width: 115px;
 display: block;
+height: 350px;
+overflow: scroll;
 
 }
 .tr{
@@ -48,16 +50,41 @@ display: block;
 }
 
 .home_tab{
-    @media screen and (min-width: 768px) {
-          
-     
-        }
     
         @media screen and (min-width: 1280px) {
-          
-            position: absolute;
+          min-height: 600px;
+          position: absolute;
            
             left: 560px;
         top: 40px;
         }
+}
+.rows_true {
+ 
+@include font-circe-small;
+  text-align: center;
+  min-width: 115px;
+  height: 52px;
+  padding-left: 8px;
+
+    color: $color-green;
+    
+  }
+
+.rows_false {
+@include font-circe-small;
+  text-align: center;
+  min-width: 115px;
+  height: 52px;
+  padding-left: 8px;
+color: $color-red;
+  
+}
+
+.not_trans{
+  width: 280px;
+  margin: 0 auto;
+    @media screen and (min-width: 1280px) {
+      margin-right: 300px;
+    }
 }

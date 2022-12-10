@@ -11,6 +11,9 @@ import Diagram from 'components/Diagram';
 // import Container from 'components/Container/Container';
 
 const StatisticsDiagram = () => {
+  let dataUtc = new Date();
+  let curMonth = dataUtc.getMonth();
+
   return (
     // <Container>
     <div className={styles.blockdiagram}>
@@ -22,7 +25,7 @@ const StatisticsDiagram = () => {
       {/* <div className={styles.diagram}></div> */}
       <div className={styles.listStatistics}>
         <div className={styles.blockSelect}>
-          <Select arrData={monthsList} />
+          <Select arrData={monthsList} curData={curMonth} />
           <Select arrData={yearsList} />
         </div>
         <ProductСategories />

@@ -12,14 +12,14 @@
     margin-bottom: 8px;
 }
 
-.transactions{
+.transactions_false{
   margin-bottom: 1px;
-    padding-right: 15px;
+    padding-right: 25px;
     height: 47px;
     display: flex;
    align-items: center;
     border-bottom: 1px solid #DCDCDF;
-  &.income{
+ 
 &::before {
         content: '';
         width: 5px;
@@ -29,9 +29,30 @@
 
     }
 
-  }
+  
    
 }
+.transactions_true {
+    margin-bottom: 1px;
+    padding-right: 25px;
+    height: 47px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #DCDCDF;
+
+    &::before {
+        content: '';
+        width: 5px;
+        background-color:$color-green;
+        height: 47px;
+        border-radius: 20px 0 0 0;
+
+    }
+
+
+
+}
+
 
 .name{
     margin-left: 10px;
@@ -40,8 +61,22 @@
 
 .value{
 margin-right: 5px;
+    margin-left: auto;
+    @include font-circe-small;
+}
+
+.value_income_true{
+margin-right: 5px;
 margin-left: auto;
+color: $color-green;
 @include font-circe-small;
+}
+
+.value_income_false {
+    margin-right: 5px;
+    margin-left: auto;
+    color: $color-red;
+    @include font-circe-small;
 }
 
 .mobile_table{

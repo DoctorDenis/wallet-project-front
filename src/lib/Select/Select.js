@@ -12,8 +12,14 @@ class Select extends Component {
     selectedOption: 0,
   };
 
+  componentDidMount() {
+    this.setState({
+      selectedOption: this.props.curData ? this.props.curData : 0,
+    });
+  }
   // componentDidUpdate() {
-  //   this.writeQuerySelectedCurrency(this.state.selectedOption);
+
+  //   // this.writeQuerySelectedCurrency(this.state.selectedOption);
   // }
 
   toggleOptions = () => {
@@ -70,14 +76,14 @@ class Select extends Component {
           selectedOption:
             this.state.selectedOption - 1 >= 0
               ? this.state.selectedOption - 1
-              : this.props.data.currencies.length - 1,
+              : this.props.arrData.length - 1,
         });
         break;
       case 'ArrowDown':
         e.preventDefault();
         this.setState({
           selectedOption:
-            this.state.selectedOption === this.props.data.currencies.length - 1
+            this.state.selectedOption === this.props.arrData.length - 1
               ? 0
               : this.state.selectedOption + 1,
         });
@@ -91,8 +97,8 @@ class Select extends Component {
     // const {
     //   data: { currencies, loading },
     // } = this.props;
-    console.log('this.props.arrData:', this.props.arrData);
-    const arrData = this.props.arrData;
+
+const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>
         {/* {!loading && ( */}

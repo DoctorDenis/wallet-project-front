@@ -1,71 +1,64 @@
-// import Container from 'components/Container/Container'
+import EllipsisText from 'react-ellipsis-text';
 import React from 'react'
 import css from './HomeTabMobile.module.scss'
+import { useSelector } from 'react-redux'
+import {nanoid} from 'nanoid';
+
 
 
 const HomeTabMobile = () => {
+  const { transactions } = useSelector((state) => state.transactions.items)
+  const {status} = useSelector(state =>state.transactions)
+
+
+  let reverseTransactions =[]
+   const  reverseArr=()=> {
+    transactions?.map((post) => {
+      reverseTransactions.unshift(post);
+      return reverseTransactions;
+    })}
+  reverseArr()
   
   return (
-<div className={css.mobile_table}>
-    <div className={css.table}>
-<ul className={css.transaction}>
-        <li className={css.transactions}>
+  status==='loading' ?  <div className="spinner-border text-primary" role="status">
+  <span className="sr-only"></span>
+</div> :
+
+
+
+    <div className={css.mobile_table}>
+      {reverseTransactions?.map((item) => (
+         <div key={nanoid()} className={css.table}>
+<ul key={nanoid()} className={css.transaction}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Date</p>
-          <p className={css.value}>04.01.19</p>
+          <p className={css.value}>{item.date}</p>
         </li>
-        <li className={css.transactions}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Type</p>
-          <p className={css.value}>-</p>
+              <p className={item.isIncome ? css.value_income_true : css.value_income_false}>{item.isIncome ? '+' : '-' }</p>
         </li>
-        <li className={css.transactions}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Category</p>
-          <p className={css.value}>Other</p>
+              <p className={css.value}>{<EllipsisText text={item.category} length={8} />}</p>
         </li>
-        <li className={css.transactions}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Comment</p>
-          <p className={css.value}>Gift for wife</p>
+              <p className={css.value}>{<EllipsisText text={item.comment} length={8} />}</p>
         </li>
-        <li className={css.transactions}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Sum</p>
-          <p className={css.value}>300</p>
+              <p className={item.isIncome ? css.value_income_true : css.value_income_false}>{item.amount}</p>
         </li>
-        <li className={css.transactions}>
+        <li key={nanoid()} className={item.isIncome ? css.transactions_true : css.transactions_false}>
           <p className={css.name}>Balance</p>
           <p className={css.value}>6 900.00</p>
       </li>
       </ul>
 
     </div>
-
-    <div className={css.table}>
-<ul className={css.transaction}>
-        <li className={css.transactions}>
-          <p className={css.name}>Date</p>
-          <p className={css.value}>04.01.19</p>
-        </li>
-        <li className={css.transactions}>
-          <p className={css.name}>Type</p>
-          <p className={css.value}>-</p>
-        </li>
-        <li className={css.transactions}>
-          <p className={css.name}>Category</p>
-          <p className={css.value}>Other</p>
-        </li>
-        <li className={css.transactions}>
-          <p className={css.name}>Comment</p>
-          <p className={css.value}>Gift for wife</p>
-        </li>
-        <li className={css.transactions}>
-          <p className={css.name}>Sum</p>
-          <p className={css.value}>300</p>
-        </li>
-        <li className={css.transactions}>
-          <p className={css.name}>Balance</p>
-          <p className={css.value}>6 900.00</p>
-      </li>
-      </ul>
-
-    </div>
+      ))}
+   
     </div>
       
     
