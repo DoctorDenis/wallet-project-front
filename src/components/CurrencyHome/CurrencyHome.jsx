@@ -58,20 +58,24 @@ const Table = props => {
   );
 };
 
+
+
 const Currency = () => {
  const [currency, setCurrency] = useState([]);
   
 
 
   
-
+ 
 useEffect(() => {
   
-   axios
+  axios
       .get(`https://wallet-project.cyclic.app/currency`)
-   .then((res) => {
-      
+     .then((res) => {
        localStorage.setItem('currency', JSON.stringify(res.data));
+       
+      (res?.data ? setCurrency(res.data) :  setCurrency(JSON.parse(localStorage.getItem('currency'))))
+     
       // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
    })
       .catch(err => {
@@ -82,7 +86,7 @@ useEffect(() => {
   
   
   
-  setCurrency(JSON.parse(localStorage.getItem('currency')))
+   setCurrency(JSON.parse(localStorage.getItem('currency')))
  
 
 }, [])

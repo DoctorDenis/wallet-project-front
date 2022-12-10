@@ -14,6 +14,9 @@ import storage from 'redux-persist/lib/storage';
 import combineReducers from './global/global-reducer';
 import authReducer from './auth/auth-slice';
 import {transactionsReducer} from './slices/transactions'
+import { setupListeners } from '@reduxjs/toolkit/query';
+
+
 const persistConfig = {
   key: 'token',
   storage,
@@ -38,3 +41,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+setupListeners(store.dispatch);

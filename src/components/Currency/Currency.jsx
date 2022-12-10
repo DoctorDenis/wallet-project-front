@@ -57,29 +57,33 @@ const Table = props => {
 };
 
 const Currency = () => {
-  const [currency, setCurrency] = useState(null);
+  const [currency, setCurrency] = useState([]);
   
 
-  useEffect(() => {
-  axios
-      .get(`https://api.monobank.ua/bank/currency`)
-   .then((res) => {
-      
+ 
+useEffect(() => {
   
-       localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2)));
-      })
-      .catch(err => {
+  axios
+      .get(`https://wallet-project.cyclic.app/currency`)
+     .then((res) => {
+       localStorage.setItem('currency', JSON.stringify(res.data));
        
+      (res?.data ? setCurrency(res.data) :  setCurrency(JSON.parse(localStorage.getItem('currency'))))
+     
+      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+   })
+      .catch(err => {
+      
         throw err
         
       });
   
-      setCurrency(JSON.parse( localStorage.getItem('currency')))
-    
-
+  
+  
+   setCurrency(JSON.parse(localStorage.getItem('currency')))
  
-  }, []);
 
+}, [])
 
 
 

@@ -2,9 +2,9 @@ import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-
+import { useState } from 'react';
 import { register } from '../../redux/auth/auth-operations';
-
+import axios from 'axios';
 import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
@@ -60,6 +60,23 @@ const validationSchema = Yup.object().shape({
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+ const [currency, setCurrency] = useState([]);
+
+  axios
+      .get(`https://wallet-project.cyclic.app/currency`)
+    .then((res) => {
+      
+       localStorage.setItem('currency', JSON.stringify(res.data));
+       
+      setCurrency(res.data)
+     console.log(currency)
+      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+   })
+      .catch(err => {
+      
+        throw err
+        
+      });
 
   const handleSubmit = ({ email, password, name }, { resetForm }) => {
     // const emailToLowerCase = email.toLowerCase();
