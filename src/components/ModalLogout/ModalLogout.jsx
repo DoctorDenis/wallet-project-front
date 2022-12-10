@@ -17,14 +17,15 @@ const ModalLogout = ({ isOpened, closeModal }) => {
   }, [closeModal]);
 
   const dispatch = useDispatch();
-  const onLogout = () => dispatch(logout()) && closeModal();
+  const onLogout = () =>
+    dispatch(logout()) && localStorage.clear() && closeModal();
 
   return (
     <div
       className={`modal_wrapper ${isOpened ? 'open' : 'close'}`}
       onClick={() => closeModal()}
     >
-      <div className="modal_body" onClick={e => e.stopPropagation()}>
+      <div className="modal_body">
         <button className="modal_close" onClick={() => closeModal()}>
           {/* × */}
           <img className="close_svg" src={Close} alt="Close" />
