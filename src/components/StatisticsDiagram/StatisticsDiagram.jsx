@@ -30,17 +30,32 @@ const StatisticsDiagram = () => {
   const [numberYear, setNumberYear] = useState(curYear);
 
   console.log('numberMonth', numberMonth);
+  console.log('numberYear', numberYear);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getStatiscticsData(numberMonth, curYear);
+      const data = await getStatiscticsData(numberMonth, numberYear);
       setStatisctics(data);
     }
     fetchData();
-  }, [numberMonth, curYear]);
+  }, [numberMonth, numberYear]);
 
-  const passNumberMonth = selectedMonth => {
-    setNumberMonth(selectedMonth);
+  const passNumberMonth = selectedEl => {
+    setNumberMonth(selectedEl);
+  };
+
+  const passNumberYear = selectedEl => {
+    setNumberYear(yearsList[selectedEl]);
+  };
+
+  const chooseIndexCurYear = (a, b) => {
+    return a.indexOf(b.toString());
+  };
+
+  const arrForRenderDonat = () => {
+    return statisctics.expensesByCategories?.map(
+      oneCategoryExpenses => oneCategoryExpenses.total
+    );
   };
 
   console.log('statisctics', statisctics);
@@ -48,7 +63,7 @@ const StatisticsDiagram = () => {
     <div className={styles.blockdiagram}>
       <div className={styles.diagram}>
         <h2 className={styles.title}>Statistics </h2>
-        <Diagram />
+        <Diagram arrForRenderDonat={arrForRenderDonat()} />
       </div>
 
       <div className={styles.listStatistics}>
@@ -56,9 +71,13 @@ const StatisticsDiagram = () => {
           <Select
             arrData={monthsList}
             curData={numberMonth}
-            passNumberMonth={passNumberMonth}
+            passNumberMonthOrYear={passNumberMonth}
           />
-          <Select arrData={yearsList} />
+          <Select
+            arrData={yearsList}
+            curData={chooseIndexCurYear(yearsList, numberYear)}
+            passNumberMonthOrYear={passNumberYear}
+          />
         </div>
         <ProductСategories statisctics={statisctics.expensesByCategories} />
         <TotalSum totalSums={statisctics} />

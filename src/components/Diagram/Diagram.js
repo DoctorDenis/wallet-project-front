@@ -44,7 +44,12 @@ export const data = {
   ],
 };
 
-export default function Diagram() {
+export default function Diagram({ arrForRenderDonat }) {
+  if (arrForRenderDonat) {
+    data.datasets[0].data = arrForRenderDonat;
+  }
+
+  // console.log('data.datasets[0].data:', data.datasets[0].data);
   return (
     <div className={styles.diagram}>
       <Doughnut data={data} />

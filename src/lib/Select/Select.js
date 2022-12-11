@@ -26,7 +26,7 @@ class Select extends Component {
   };
 
   writeNewDataAfterClick = () => {
-    this.props.passNumberMonth(this.state.selectedOption);
+    this.props.passNumberMonthOrYear(this.state.selectedOption);
   };
 
   setSelectedThenCloseDropdown = index => {

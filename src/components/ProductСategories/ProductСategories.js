@@ -1,6 +1,7 @@
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
 import { getCategories } from '../../services/getCategories';
+import { colorsExpenses } from '../../utils/colorsExpenses';
 
 import styles from './ProductСategories.module.scss';
 
@@ -22,6 +23,7 @@ export default class ProductСategories extends Component {
   render() {
     console.log('this.props.statisctics:', this.props.statisctics);
     let statisctics = this.props.statisctics;
+    console.log('colorsExpenses:', colorsExpenses);
     // let data = getCategories();
     // console.log('data:', data);
     return (
@@ -31,9 +33,13 @@ export default class ProductСategories extends Component {
           <p>Sum</p>
         </div>
         <ul>
-          {statisctics?.map(statisctic => (
+          {statisctics?.map((statisctic, index) => (
             <li className={styles.item} key={statisctic._id}>
-              <div className={styles.square}></div>
+              <div
+                className={styles.square}
+                // style={{ color: colorsExpenses(index) }}
+                style={{ backgroundColor: `${colorsExpenses[index]}` }}
+              ></div>
               <div className={styles.itemExpenses}>
                 <p>{statisctic._id}</p>
                 <p>{statisctic.total}</p>
