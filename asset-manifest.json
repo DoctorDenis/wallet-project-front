@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.ac148fad.css",
-    "main.js": "/wallet-project-front/static/js/main.1c36f0ef.js",
+    "main.css": "/wallet-project-front/static/css/main.41dd825d.css",
+    "main.js": "/wallet-project-front/static/js/main.034c70ab.js",
     "static/media/loginImg.svg": "/wallet-project-front/static/media/loginImg.8f727c9a88d2012b1c04baf40beae307.svg",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
@@ -12,8 +12,8 @@
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
     "static/media/Vectors.svg": "/wallet-project-front/static/media/Vectors.5433e683ecf5277df81396cd768c649c.svg",
     "static/media/Statistic-active-min.svg": "/wallet-project-front/static/media/Statistic-active-min.38ee1c95943608401099466ab7a262a0.svg",
-    "static/media/Statistic-min.svg": "/wallet-project-front/static/media/Statistic-min.a6b0de5e917d48b4ad1851a848d72db3.svg",
     "index.html": "/wallet-project-front/index.html",
+    "static/media/Statistic-min.svg": "/wallet-project-front/static/media/Statistic-min.a6b0de5e917d48b4ad1851a848d72db3.svg",
     "static/media/Dolar-active-min.svg": "/wallet-project-front/static/media/Dolar-active-min.17316a3601d49721b7a2cfa40e4378d1.svg",
     "static/media/Dollar-min.svg": "/wallet-project-front/static/media/Dollar-min.4fa883125be758555c393c8603ebd96d.svg",
     "static/media/Exit-min.svg": "/wallet-project-front/static/media/Exit-min.3ba889c029f87ad8c958717af7a1093f.svg",
@@ -29,11 +29,11 @@
     "static/media/Vector 5.svg": "/wallet-project-front/static/media/Vector 5.464fa8a52b2ad3b82320f08a3ac437c8.svg",
     "static/media/vector-on-select.svg": "/wallet-project-front/static/media/vector-on-select.77b989b3724c69122981.svg",
     "static/media/Close-min.svg": "/wallet-project-front/static/media/Close-min.597283e18f87a7847d7084da5408293b.svg",
-    "main.ac148fad.css.map": "/wallet-project-front/static/css/main.ac148fad.css.map",
-    "main.1c36f0ef.js.map": "/wallet-project-front/static/js/main.1c36f0ef.js.map"
+    "main.41dd825d.css.map": "/wallet-project-front/static/css/main.41dd825d.css.map",
+    "main.034c70ab.js.map": "/wallet-project-front/static/js/main.034c70ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac148fad.css",
-    "static/js/main.1c36f0ef.js"
+    "static/css/main.41dd825d.css",
+    "static/js/main.034c70ab.js"
   ]
 }
