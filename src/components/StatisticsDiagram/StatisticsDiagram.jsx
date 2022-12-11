@@ -20,18 +20,28 @@ const StatisticsDiagram = () => {
   let dataUtc = new Date();
   let curMonth = dataUtc.getMonth();
   let curYear = dataUtc.getFullYear();
+
   console.log('curMonth:', curMonth);
   console.log('curYear:', curYear);
+
   const [categories, setCategories] = useState([]);
   const [statisctics, setStatisctics] = useState([]);
+  const [numberMonth, setNumberMonth] = useState(curMonth);
+  const [numberYear, setNumberYear] = useState(curYear);
+
+  console.log('numberMonth', numberMonth);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getStatiscticsData(curMonth, curYear);
+      const data = await getStatiscticsData(numberMonth, curYear);
       setStatisctics(data);
     }
     fetchData();
-  }, [curMonth, curYear]);
+  }, [numberMonth, curYear]);
+
+  const passNumberMonth = selectedMonth => {
+    setNumberMonth(selectedMonth);
+  };
 
   console.log('statisctics', statisctics);
   return (
@@ -43,7 +53,11 @@ const StatisticsDiagram = () => {
 
       <div className={styles.listStatistics}>
         <div className={styles.blockSelect}>
-          <Select arrData={monthsList} curData={curMonth} />
+          <Select
+            arrData={monthsList}
+            curData={numberMonth}
+            passNumberMonth={passNumberMonth}
+          />
           <Select arrData={yearsList} />
         </div>
         <ProductСategories statisctics={statisctics.expensesByCategories} />

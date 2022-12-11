@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import { getStatiscticsData } from '../../services/getStatisticsData';
-// import { getCategories } from '../../services/getCategories';
 
 import cn from 'classnames';
 
@@ -15,13 +13,11 @@ class Select extends Component {
   };
 
   componentDidMount() {
-    // getCategories();
     this.setState({
       selectedOption: this.props.curData ? this.props.curData : 0,
     });
   }
   // componentDidUpdate() {
-
   //   // this.writeQuerySelectedCurrency(this.state.selectedOption);
   // }
 
@@ -29,23 +25,9 @@ class Select extends Component {
     this.setState({ isOptionsOpen: !this.state.isOptionsOpen });
   };
 
-  newQueryAfterChooseMonth = () => {
-    getStatiscticsData(this.state.selectedOption);
+  writeNewDataAfterClick = () => {
+    this.props.passNumberMonth(this.state.selectedOption);
   };
-  // writeQuerySelectedCurrency = index => {
-  //   if (!this.props.data.loading) {
-  //     client.writeQuery({
-  //       query: SELECTED_CURRENCY,
-  //       data: {
-  //         selectedCurrency: {
-  //           __typename: 'SelectedCurrency',
-  //           symbol: this.props.data.currencies[index].symbol,
-  //           label: this.props.data.currencies[index].label,
-  //         },
-  //       },
-  //     });
-  //   }
-  // };
 
   setSelectedThenCloseDropdown = index => {
     this.setState(
@@ -53,8 +35,7 @@ class Select extends Component {
         selectedOption: index,
         isOptionsOpen: false,
       },
-      () => this.newQueryAfterChooseMonth()
-      // () => this.writeQuerySelectedCurrency(index)
+      () => this.writeNewDataAfterClick()
     );
   };
 

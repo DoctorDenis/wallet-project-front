@@ -5,7 +5,7 @@ import styles from './TotalSum.module.scss';
 export default class TotalSum extends Component {
   render() {
     let totalSums = this.props.totalSums.sums;
-    console.log('totalSums:', totalSums);
+    // console.log('totalSums:', totalSums);
     return (
       <div className={styles.block}>
         {totalSums && (
