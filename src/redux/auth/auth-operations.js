@@ -50,7 +50,6 @@ export const logout = createAsyncThunk(
       JSON.parse(localStorage.getItem('persist:token')).accesToken
     );
 
-    console.log(accesToken);
     try {
       await axios.post('users/logout', user, {
         headers: { Authorization: `Bearer ${accesToken}` },
