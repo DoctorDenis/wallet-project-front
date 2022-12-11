@@ -60,7 +60,7 @@
 }
 
 .button_y {
-  left: 125px;
+  left: 18%;
   position: absolute;
 }
 
@@ -71,7 +71,7 @@
 
 .button_n {
   position: absolute;
-  right: 125px;
+  right: 18%;
 }
 
 .button_n:hover {

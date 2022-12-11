@@ -18,7 +18,6 @@ class Select extends Component {
     });
   }
   // componentDidUpdate() {
-
   //   // this.writeQuerySelectedCurrency(this.state.selectedOption);
   // }
 
@@ -26,28 +25,17 @@ class Select extends Component {
     this.setState({ isOptionsOpen: !this.state.isOptionsOpen });
   };
 
-  // writeQuerySelectedCurrency = index => {
-  //   if (!this.props.data.loading) {
-  //     client.writeQuery({
-  //       query: SELECTED_CURRENCY,
-  //       data: {
-  //         selectedCurrency: {
-  //           __typename: 'SelectedCurrency',
-  //           symbol: this.props.data.currencies[index].symbol,
-  //           label: this.props.data.currencies[index].label,
-  //         },
-  //       },
-  //     });
-  //   }
-  // };
+  writeNewDataAfterClick = () => {
+    this.props.passNumberMonthOrYear(this.state.selectedOption);
+  };
 
   setSelectedThenCloseDropdown = index => {
     this.setState(
       {
         selectedOption: index,
         isOptionsOpen: false,
-      }
-      // () => this.writeQuerySelectedCurrency(index)
+      },
+      () => this.writeNewDataAfterClick()
     );
   };
 
@@ -98,7 +86,7 @@ class Select extends Component {
     //   data: { currencies, loading },
     // } = this.props;
 
-const arrData = this.props.arrData;
+    const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>
         {/* {!loading && ( */}
