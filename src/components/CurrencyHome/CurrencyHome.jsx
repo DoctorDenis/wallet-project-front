@@ -3,10 +3,7 @@ import css from './CurrencyHome.module.scss';
 import Svg from '../../assets/images/Vector.png';
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
-import axios from 'axios'
-
-
-
+import axios from 'axios';
 
 const Row = props => {
   const { currency, purchase, sale } = props;
@@ -26,8 +23,6 @@ const Row = props => {
 };
 const Table = props => {
   const { data } = props;
-  
-
 
   return (
     <table className={css.table}>
@@ -46,9 +41,11 @@ const Table = props => {
       </thead>
       <tbody className={css.body}>
         {data?.map((row, i) => (
-          <Row 
+          <Row
             key={nanoid()}
-            currency={ (i === 0 && 'USD') || (i === 1 && 'EUR') ||  (i === 2 && 'EUR/USD')}
+            currency={
+              (i === 0 && 'USD') || (i === 1 && 'EUR') || (i === 2 && 'EUR/USD')
+            }
             purchase={row.rateBuy.toFixed(2)}
             sale={row.rateSell.toFixed(2)}
           />
@@ -58,47 +55,36 @@ const Table = props => {
   );
 };
 
-
-
 const Currency = () => {
- const [currency, setCurrency] = useState([]);
-  
+  const [currency, setCurrency] = useState([]);
 
-
-  
- 
-useEffect(() => {
-  
-  axios
+  useEffect(() => {
+    axios
       .get(`https://wallet-project.cyclic.app/currency`)
-     .then((res) => {
-       localStorage.setItem('currency', JSON.stringify(res.data));
-       
-      (res?.data ? setCurrency(res.data) :  setCurrency(JSON.parse(localStorage.getItem('currency'))))
-     
-      // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
-   })
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem('currency', JSON.stringify(res.data));
+
+          res?.data
+            ? setCurrency(res.data)
+            : setCurrency(JSON.parse(localStorage.getItem('currency')));
+        }
+
+        // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
+      })
       .catch(err => {
-      
-        throw err
-        
+        throw err;
       });
-  
-  
-  
-   setCurrency(JSON.parse(localStorage.getItem('currency')))
- 
 
-}, [])
-
-
+    setCurrency(JSON.parse(localStorage.getItem('currency')));
+  }, []);
 
   return (
-                <div className={css.currency_tab}>
-                  <Table data={currency} />
-                    <img className={css.svg} src={Svg} alt="svg" /> 
-        </div>
-        );
+    <div className={css.currency_tab}>
+      <Table data={currency} />
+      <img className={css.svg} src={Svg} alt="svg" />
+    </div>
+  );
 };
 
 export default Currency;

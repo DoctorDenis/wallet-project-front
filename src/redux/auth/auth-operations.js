@@ -46,12 +46,20 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk(
   'users/logout',
   async (user, { rejectWithValue }) => {
+    const accesToken = JSON.parse(
+      JSON.parse(localStorage.getItem('persist:token')).accesToken
+    );
+
+    console.log(accesToken);
     try {
-      const { data } = await axios.post('users/logout', user);
+      await axios.post('users/logout', user, {
+        headers: { Authorization: `Bearer ${accesToken}` },
+      });
       token.unset();
       Notify.success('Success log out');
-      return data;
+      return;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(
         Notify.failure("Can't log out user. Please reload the page")
       );
