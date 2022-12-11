@@ -2,12 +2,12 @@ import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import {
-  // useState,
-  useEffect,
-} from 'react';
+// import {
+//   // useState,
+//   useEffect,
+// } from 'react';
 import { register } from '../../redux/auth/auth-operations';
-import axios from 'axios';
+// import axios from 'axios';
 import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
@@ -65,24 +65,24 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   // const [currency, setCurrency] = useState([]);
 
-  useEffect(() => {
-    const currencyObj = JSON.parse(localStorage.getItem('currency'));
-    if (!currencyObj) {
-      axios
-        .get(`https://wallet-project.cyclic.app/currency`)
-        .then(res => {
-          localStorage.setItem('currency', JSON.stringify(res.data));
-          // setCurrency(res.data);
-        })
-        .catch(err => {
-          throw err;
-        });
-    }
-    // else {
-    //   setCurrency(currencyObj);
-    // }
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   const currencyObj = JSON.parse(localStorage.getItem('currency'));
+  //   if (!currencyObj) {
+  //     axios
+  //       .get(`https://wallet-project.cyclic.app/currency`)
+  //       .then(res => {
+  //         localStorage.setItem('currency', JSON.stringify(res.data));
+  //         // setCurrency(res.data);
+  //       })
+  //       .catch(err => {
+  //         throw err;
+  //       });
+  //   }
+  //   // else {
+  //   //   setCurrency(currencyObj);
+  //   // }
+  //   // eslint-disable-next-line
+  // }, []);
 
   const handleSubmit = ({ email, password, name }, { resetForm }) => {
     // const emailToLowerCase = email.toLowerCase();

@@ -32,9 +32,11 @@ const transactionsSlice = createSlice({
       state.isLoading = true;
     },
     [addTransaction.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
-      state.transactions = [...state.transactions.transactions, payload];
+      state.transactions.transactions = [
+        ...state.transactions.transactions,
+        payload,
+      ];
       state.isModalAddTransactionOpen = false;
     },
     [addTransaction.rejected]: (state, { payload }) => {
@@ -56,7 +58,7 @@ const transactionsSlice = createSlice({
       state.error = payload;
     },
     [login.fulfilled]: (state, action) => {
-      state.transactions = action.payload.user.transactions;
+      // state.transactions.transactions = action.payload.user.transactions;
     },
   },
 });

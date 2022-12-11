@@ -3,6 +3,7 @@ import { register, login, logout } from './auth-operations';
 import {
   // getTransaction,
   addTransaction,
+  getTransaction,
   // deleteTransaction,
 } from '../transaction/transaction-operations';
 const initialState = {
@@ -66,10 +67,13 @@ const authSlice = createSlice({
       state.error = payload;
     },
     [addTransaction.fulfilled]: (state, action) => {
-      console.log(action);
       state.user.balance = action.payload.balance;
-
-      // state.user.balance = action.payload.
+    },
+    [addTransaction.rejected]: (state, action) => {
+      state.isLoggedIn = false;
+    },
+    [getTransaction.rejected]: (state, action) => {
+      state.isLoggedIn = false;
     },
   },
 });

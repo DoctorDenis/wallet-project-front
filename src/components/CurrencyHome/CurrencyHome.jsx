@@ -59,23 +59,25 @@ const Currency = () => {
   const [currency, setCurrency] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://wallet-project.cyclic.app/currency`)
-      .then(res => {
-        if (res.data) {
-          localStorage.setItem('currency', JSON.stringify(res.data));
+    const curr = JSON.parse(localStorage.getItem('currency'));
+    if (!curr) {
+      axios
+        .get(`https://wallet-project.cyclic.app/currency`)
+        .then(res => {
+          if (res.data.length) {
+            localStorage.setItem('currency', JSON.stringify(res.data));
 
-          res?.data
-            ? setCurrency(res.data)
-            : setCurrency(JSON.parse(localStorage.getItem('currency')));
-        }
+            res?.data
+              ? setCurrency(res.data)
+              : setCurrency(JSON.parse(localStorage.getItem('currency')));
+          }
+        })
+        .catch(err => {
+          throw err;
+        });
 
-        // console.log( localStorage.setItem('currency', JSON.stringify(res.data.slice(0, 2))))
-      })
-      .catch(err => {
-        throw err;
-      });
-
+      setCurrency(JSON.parse(localStorage.getItem('currency')));
+    }
     setCurrency(JSON.parse(localStorage.getItem('currency')));
   }, []);
 

@@ -8,10 +8,10 @@ import NotTransactions from '../../assets/images/Not.png';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../../redux/transaction/transaction-operations';
+import convertStringToDate from 'utils/convertStringToDate';
 
 const Table = props => {
   const { data } = props;
-
   return (
     <table className={css.table}>
       <thead className={css.table_head}>
@@ -41,7 +41,7 @@ const Table = props => {
         {data?.map(row => (
           <tr key={nanoid()} className={css.tr}>
             <td key={nanoid()} className={css.rows}>
-              {new Date(row.date).getDate()}
+              {convertStringToDate(row.date)}
             </td>
             <td
               key={nanoid()}
@@ -73,27 +73,38 @@ const Table = props => {
 
 const HomeTab = () => {
   const dispatch = useDispatch();
+
   const transactions = useSelector(
     state => state.transactions.transactions.transactions
   );
   const status = useSelector(state => state.transactions.isLoading);
-
   useEffect(() => {
-    if (!transactions) {
-      (async function () {
-        dispatch(getTransaction());
-      })();
-    }
-  }, [transactions, dispatch]);
+    (async function () {
+      dispatch(getTransaction());
+    })();
+    // eslint-disable-next-line
+  }, []);
 
+  // let reverseTransactions = [];
+  // const reverseArr = () => {
+  //   transactions?.map(post => {
+  //     reverseTransactions.unshift(post);
+  //     return reverseTransactions;
+  //   });
+  // };
+  // reverseArr();
   let reverseTransactions = [];
-  const reverseArr = () => {
-    transactions?.map(post => {
-      reverseTransactions.unshift(post);
-      return reverseTransactions;
+
+  if (transactions) {
+    reverseTransactions = [...transactions];
+  }
+
+  const sortArr = () => {
+    reverseTransactions?.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
     });
   };
-  reverseArr();
+  sortArr();
 
   return (
     <>

@@ -1,25 +1,50 @@
 import EllipsisText from 'react-ellipsis-text';
 import React from 'react';
+import { useEffect } from 'react';
 import css from './HomeTabMobile.module.scss';
-import { useSelector } from 'react-redux';
+import convertStringToDate from 'utils/convertStringToDate';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+// import { getTransaction } from '../../redux/transaction/transaction-operations';
 import { nanoid } from 'nanoid';
 
 const HomeTabMobile = () => {
+  // const dispatch = useDispatch();
+
   const transactions = useSelector(
     state => state.transactions.transactions.transactions
   );
+
+  useEffect(() => {
+    // eslint-disable-next-line
+  }, [transactions]);
+
   const status = useSelector(state => state.transactions.isLoading);
 
+  // let reverseTransactions = [];
+  // const reverseArr = () => {
+  //   transactions?.map(post => {
+  //     reverseTransactions.unshift(post);
+  //     return reverseTransactions;
+  //   });
+  // };
+  // reverseArr();
   let reverseTransactions = [];
-  const reverseArr = () => {
-    transactions?.map(post => {
-      reverseTransactions.unshift(post);
-      return reverseTransactions;
+
+  if (transactions) {
+    reverseTransactions = [...transactions];
+  }
+
+  const sortArr = () => {
+    reverseTransactions?.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
     });
   };
-  reverseArr();
+  sortArr();
 
-  return status === 'loading' ? (
+  return status ? (
     <div className="spinner-border text-primary" role="status">
       <span className="sr-only"></span>
     </div>
@@ -35,7 +60,7 @@ const HomeTabMobile = () => {
               }
             >
               <p className={css.name}>Date</p>
-              <p className={css.value}>{item.date}</p>
+              <p className={css.value}>{convertStringToDate(item.date)}</p>
             </li>
             <li
               key={nanoid()}

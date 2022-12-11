@@ -9,11 +9,11 @@ import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
-import axios from 'axios';
-import {
-  // useState,
-  useEffect,
-} from 'react';
+// import axios from 'axios';
+// import {
+//   // useState,
+//   useEffect,
+// } from 'react';
 import style from './loginForm.module.scss';
 
 import emailIcon from '../../assets/images/Email-min.svg';
@@ -35,23 +35,23 @@ const LoginForm = () => {
 
   // const [currency, setCurrency] = useState([]);
 
-  useEffect(() => {
-    const currencyObj = JSON.parse(localStorage.getItem('currency'));
-    if (!currencyObj) {
-      axios
-        .get(`https://wallet-project.cyclic.app/currency`)
-        .then(res => {
-          localStorage.setItem('currency', JSON.stringify(res.data));
-          // setCurrency(res.data);
-        })
-        .catch(err => {
-          throw err;
-        });
-    } else {
-      // setCurrency(currencyObj);
-    }
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   const currencyObj = JSON.parse(localStorage.getItem('currency'));
+  //   if (!currencyObj) {
+  //     axios
+  //       .get(`https://wallet-project.cyclic.app/currency`)
+  //       .then(res => {
+  //         localStorage.setItem('currency', JSON.stringify(res.data));
+  //         // setCurrency(res.data);
+  //       })
+  //       .catch(err => {
+  //         throw err;
+  //       });
+  //   } else {
+  //     // setCurrency(currencyObj);
+  //   }
+  //   // eslint-disable-next-line
+  // }, []);
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
     // const emailToLowerCase = email.toLowerCase();

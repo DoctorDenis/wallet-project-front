@@ -7,6 +7,8 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Currency from './Currency/Currency.jsx';
 import Media from 'react-media';
+// import { useEffect } from 'react';
+// import axios from 'axios';
 import PrivateRoute from 'Routes/PrivateRoute.js';
 import PublicRoute from 'Routes/PublicRoute.js';
 // import { useSelector }  from 'react-redux';
@@ -14,6 +16,23 @@ import PublicRoute from 'Routes/PublicRoute.js';
 
 export const App = () => {
   // const token = useSelector(getToken);
+  // useEffect(() => {
+  //   const currencyObj = JSON.parse(localStorage.getItem('currency'));
+  //   if (!currencyObj) {
+  //     axios
+  //       .get(`https://wallet-project.cyclic.app/currency`)
+  //       .then(res => {
+  //         localStorage.setItem('currency', JSON.stringify(res.data));
+  //         // setCurrency(res.data);
+  //       })
+  //       .catch(err => {
+  //         throw err;
+  //       });
+  //   } else {
+  //     // setCurrency(currencyObj);
+  //   }
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <Routes>

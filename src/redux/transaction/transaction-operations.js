@@ -35,7 +35,6 @@ export const addTransaction = createAsyncThunk(
       });
 
       Notify.success('Transaction added successfully');
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(Notify.failure('Failed to add the transaction'));
