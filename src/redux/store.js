@@ -13,8 +13,9 @@ import storage from 'redux-persist/lib/storage';
 
 import combineReducers from './global/global-reducer';
 import authReducer from './auth/auth-slice';
-import {transactionsReducer} from './slices/transactions'
-import { setupListeners } from '@reduxjs/toolkit/query';
+import transactionReducer from './transaction/transaction-slice';
+// import {transactionsReducer} from './slices/transactions'
+// import { setupListeners } from '@reduxjs/toolkit/query';
 
 
 const persistConfig = {
@@ -29,7 +30,8 @@ export const store = configureStore({
   reducer: {
     global: combineReducers,
     auth: persistedReducer,
-    transactions: transactionsReducer
+    transactions: transactionReducer,
+    // transactions: transactionsReducer
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
@@ -41,4 +43,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-setupListeners(store.dispatch);
+// setupListeners(store.dispatch);
