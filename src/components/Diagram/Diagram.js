@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useEffect } from 'react';
 
 import styles from './Diagram.module.scss';
 import colors from '../../assets/styles/_colors.scss';
@@ -44,10 +45,24 @@ export const data = {
   ],
 };
 
-export default function Diagram() {
+export default function Diagram({ arrForRenderDonat }) {
+  if (arrForRenderDonat) {
+    data.datasets[0].data = arrForRenderDonat;
+  }
+
+  useEffect(() => {
+    if (arrForRenderDonat) {
+      data.datasets[0].data = arrForRenderDonat;
+    }
+  }, [arrForRenderDonat]);
+
   return (
     <div className={styles.diagram}>
-      <Doughnut data={data} />
+      {arrForRenderDonat && (
+        <>
+          <Doughnut data={data} />
+        </>
+      )}
       <p className={styles.sumExpensesIntoDiagram}>24000.00</p>
     </div>
   );
