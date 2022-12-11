@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { getStatiscticsData } from '../../services/getStatisticsData';
+// import { getCategories } from '../../services/getCategories';
 
 import cn from 'classnames';
 
@@ -13,6 +15,7 @@ class Select extends Component {
   };
 
   componentDidMount() {
+    // getCategories();
     this.setState({
       selectedOption: this.props.curData ? this.props.curData : 0,
     });
@@ -26,6 +29,9 @@ class Select extends Component {
     this.setState({ isOptionsOpen: !this.state.isOptionsOpen });
   };
 
+  newQueryAfterChooseMonth = () => {
+    getStatiscticsData(this.state.selectedOption);
+  };
   // writeQuerySelectedCurrency = index => {
   //   if (!this.props.data.loading) {
   //     client.writeQuery({
@@ -46,7 +52,8 @@ class Select extends Component {
       {
         selectedOption: index,
         isOptionsOpen: false,
-      }
+      },
+      () => this.newQueryAfterChooseMonth()
       // () => this.writeQuerySelectedCurrency(index)
     );
   };
@@ -98,7 +105,7 @@ class Select extends Component {
     //   data: { currencies, loading },
     // } = this.props;
 
-const arrData = this.props.arrData;
+    const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>
         {/* {!loading && ( */}

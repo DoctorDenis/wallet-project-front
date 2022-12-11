@@ -1,10 +1,29 @@
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
+import { getCategories } from '../../services/getCategories';
 
 import styles from './ProductСategories.module.scss';
 
 export default class ProductСategories extends Component {
+  state = {
+    categories: null,
+  };
+
+  // componentDidMount() {
+  //   this.writeCategory();
+  // }
+
+  // writeCategory() {
+  //   this.setState({
+  //     categories: getCategories(),
+  //   });
+  // }
+
   render() {
+    console.log('this.props.statisctics:', this.props.statisctics);
+    let statisctics = this.props.statisctics;
+    // let data = getCategories();
+    // console.log('data:', data);
     return (
       <div>
         <div className={styles.titleTable}>
@@ -12,69 +31,15 @@ export default class ProductСategories extends Component {
           <p>Sum</p>
         </div>
         <ul>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Self care</p>
-              <p>15500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
-          <li className={styles.item}>
-            <div className={styles.square}></div>
-            <div className={styles.itemExpenses}>
-              <p>Basic expenses</p>
-              <p>500</p>
-            </div>
-          </li>
+          {statisctics?.map(statisctic => (
+            <li className={styles.item} key={statisctic._id}>
+              <div className={styles.square}></div>
+              <div className={styles.itemExpenses}>
+                <p>{statisctic._id}</p>
+                <p>{statisctic.total}</p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     );
