@@ -1,6 +1,6 @@
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
-import { getCategories } from '../../services/getCategories';
+// import { getCategories } from '../../services/getCategories';
 import { colorsExpenses } from '../../utils/colorsExpenses';
 
 import styles from './ProductСategories.module.scss';

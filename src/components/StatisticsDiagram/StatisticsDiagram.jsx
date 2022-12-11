@@ -11,7 +11,7 @@ import ProductСategories from 'components/ProductСategories';
 import TotalSum from 'components/TotalSum';
 import Diagram from 'components/Diagram';
 
-import { getCategories } from '../../services/getCategories';
+// import { getCategories } from '../../services/getCategories';
 import { getStatiscticsData } from 'services/getStatisticsData';
 
 // import Container from 'components/Container/Container';
@@ -21,7 +21,7 @@ const StatisticsDiagram = () => {
   let curMonth = dataUtc.getMonth();
   let curYear = dataUtc.getFullYear();
 
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [statisctics, setStatisctics] = useState([]);
   const [numberMonth, setNumberMonth] = useState(curMonth);
   const [numberYear, setNumberYear] = useState(curYear);
