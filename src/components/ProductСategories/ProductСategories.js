@@ -21,11 +21,8 @@ export default class ProductСategories extends Component {
   // }
 
   render() {
-    console.log('this.props.statisctics:', this.props.statisctics);
     let statisctics = this.props.statisctics;
-    console.log('colorsExpenses:', colorsExpenses);
-    // let data = getCategories();
-    // console.log('data:', data);
+
     return (
       <div>
         <div className={styles.titleTable}>

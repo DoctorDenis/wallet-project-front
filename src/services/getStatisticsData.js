@@ -11,6 +11,6 @@ export async function getStatiscticsData(month = 11, year = 2022) {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 
-  console.log("'data-getStatistics:':", data);
+  // console.log("'data-getStatistics:':", data);
   return data;
 }

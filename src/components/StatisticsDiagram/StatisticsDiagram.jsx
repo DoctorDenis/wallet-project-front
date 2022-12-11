@@ -21,16 +21,10 @@ const StatisticsDiagram = () => {
   let curMonth = dataUtc.getMonth();
   let curYear = dataUtc.getFullYear();
 
-  console.log('curMonth:', curMonth);
-  console.log('curYear:', curYear);
-
   const [categories, setCategories] = useState([]);
   const [statisctics, setStatisctics] = useState([]);
   const [numberMonth, setNumberMonth] = useState(curMonth);
   const [numberYear, setNumberYear] = useState(curYear);
-
-  console.log('numberMonth', numberMonth);
-  console.log('numberYear', numberYear);
 
   useEffect(() => {
     async function fetchData() {
@@ -58,7 +52,6 @@ const StatisticsDiagram = () => {
     );
   };
 
-  console.log('statisctics', statisctics);
   return (
     <div className={styles.blockdiagram}>
       <div className={styles.diagram}>
