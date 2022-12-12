@@ -48,8 +48,6 @@ const StatisticsDiagram = () => {
     return a.indexOf(b.toString());
   };
 
-  console.log('statisctics', statisctics?.sums);
-
   return (
     <div className={styles.blockdiagram}>
       <div className={styles.diagram}>
