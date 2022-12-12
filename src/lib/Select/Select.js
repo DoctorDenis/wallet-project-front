@@ -14,12 +14,9 @@ class Select extends Component {
 
   componentDidMount() {
     this.setState({
-      selectedOption: this.props.curData ? this.props.curData : 0,
+      selectedOption: this.props.curData,
     });
   }
-  // componentDidUpdate() {
-  //   // this.writeQuerySelectedCurrency(this.state.selectedOption);
-  // }
 
   toggleOptions = () => {
     this.setState({ isOptionsOpen: !this.state.isOptionsOpen });
@@ -82,14 +79,9 @@ class Select extends Component {
   };
 
   render() {
-    // const {
-    //   data: { currencies, loading },
-    // } = this.props;
-
     const arrData = this.props.arrData;
     return (
       <div className={styles.wrapper}>
-        {/* {!loading && ( */}
         <div className={styles.container}>
           <button
             type="button"
@@ -138,11 +130,9 @@ class Select extends Component {
             </ul>
           </OutsideClickHandler>
         </div>
-        {/* )} */}
       </div>
     );
   }
 }
 
 export default Select;
-// export default graphql(GET_KIND_OF_CURRENCIES)(withRouter(Select));

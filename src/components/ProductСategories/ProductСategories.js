@@ -1,25 +1,10 @@
 import { Component } from 'react';
-// import { nanoid } from 'nanoid';
-// import { getCategories } from '../../services/getCategories';
+
 import { colorsExpenses } from '../../utils/colorsExpenses';
 
 import styles from './ProductСategories.module.scss';
 
 export default class ProductСategories extends Component {
-  state = {
-    categories: null,
-  };
-
-  // componentDidMount() {
-  //   this.writeCategory();
-  // }
-
-  // writeCategory() {
-  //   this.setState({
-  //     categories: getCategories(),
-  //   });
-  // }
-
   render() {
     let statisctics = this.props.statisctics;
 
@@ -34,7 +19,6 @@ export default class ProductСategories extends Component {
             <li className={styles.item} key={statisctic._id}>
               <div
                 className={styles.square}
-                // style={{ color: colorsExpenses(index) }}
                 style={{ backgroundColor: `${colorsExpenses[index]}` }}
               ></div>
               <div className={styles.itemExpenses}>
