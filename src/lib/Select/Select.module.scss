@@ -7,11 +7,12 @@
   height: 50px;
   padding-left: 20px;
   text-align: start;
-  // background-color: $color-white;
   border-color: $color-main-text;
   border-radius: 30px;
   cursor: pointer;
+
   @include font-circe-small;
+
   @include media-tablet {
     width: 160px;
   }
@@ -23,7 +24,6 @@
 
 .wrapper {
   margin-bottom: 20px;
-  // @include font-navigation-text-money;
 }
 .container {
   position: relative;
@@ -55,27 +55,40 @@ textBtn:hover {
   display: none;
   z-index: 2;
   position: absolute;
-
   border-radius: 24px;
   background-color: $color-white;
-
-  // width: 114px;
   left: 0px;
-  // top: 20px;
 }
 
 .show {
   display: flex;
   flex-direction: column;
   border: $color-main-text;
+  overflow-y: auto;
+  height: 200px;
+  width: 280px;
+
+  @include media-tablet {
+    height: auto;
+    width: 160px;
+  }
+
+  @include media-desktop {
+    width: 182px;
+  }
+}
+
+.show::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .item {
   border-radius: 30px;
-  width: 280px;
-  height: 50px;
+  width: 100%;
   padding-left: 20px;
   padding-top: 13px;
+  padding-bottom: 13px;
   text-align: start;
 }
 
@@ -85,6 +98,5 @@ textBtn:hover {
 .item[aria-selected='true'] {
   background: $color-grey-light;
   color: $color-red;
-
   cursor: pointer;
 }
