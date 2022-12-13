@@ -8,9 +8,10 @@ import {
 useDispatch
 } from 'react-redux';
 import Delete from '../../assets/images/delete-button-min.svg'
-// import { getTransaction } from '../../redux/transaction/transaction-operations';
 import { nanoid } from 'nanoid';
 import { deleteTransaction } from 'redux/transaction/transaction-operations';
+
+
 const HomeTabMobile = () => {
    const dispatch = useDispatch();
 

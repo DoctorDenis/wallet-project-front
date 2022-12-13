@@ -54,10 +54,10 @@ overflow: scroll;
         @media screen and (min-width: 1280px) {
           min-height: 600px;
           position: absolute;
-          border-left: 1px solid #E7E5F2;
-            box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+          // border-left: 1px solid #E7E5F2;
+          //   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
             left: 560px;
-        top: 40px;
+        top: 130px;
         }
 }
 .rows_true {
@@ -88,4 +88,45 @@ color: $color-red;
     @media screen and (min-width: 1280px) {
       margin-right: 300px;
     }
+}
+.input_search{
+      border-radius: 15px;
+        padding: 10px;
+        border: 0;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        @media screen and (min-width: 768px) {
+           margin: 0;
+          margin-bottom: 5px;
+
+          }
+       @media screen and (min-width: 1280px) {
+          position: absolute;
+              right: 20px;
+                top: 50px;
+                padding: 15px;
+                width: 25%;
+              
+             }
+      
+}
+
+.delete_icon{
+  width: 24px;
+  height: 24px;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  cursor: pointer;
+}
+.spiner{
+display: flex;
+justify-content: center;
+    @media screen and (min-width: 1280px) {
+      position: absolute;
+        right: 400px;
+    
+      }
+  
 }

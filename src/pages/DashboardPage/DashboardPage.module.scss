@@ -30,8 +30,19 @@ background-image: url(../../assets/images/BackgrDesctop.png)
    
 }
 
-.div{
-  height: 100%; 
-border: 1px solid #E7E5F2;
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+.vertical{
+    display: none;
+    @media screen and (min-width: 1280px) {
+                width: 0px;
+                display: block;
+                position: absolute;
+                top: -15px;
+                left: 450px;
+                background-color: #c6c4d2;
+                height: 900px;
+                border: 1px solid #c6c4d2;
+                box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+                1px 0px 0px rgba(255, 255, 255, 0.6);
+
+}
 }

@@ -9,9 +9,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../../redux/transaction/transaction-operations';
 import convertStringToDate from 'utils/convertStringToDate';
+import Delete from '../../assets/images/delete-button-min.svg'
+import { deleteTransaction } from 'redux/transaction/transaction-operations';
+
 
 const Table = props => {
-  const { data } = props;
+  const { data, deleteTrans } = props;
   return (
     <table className={css.table}>
       <thead className={css.table_head}>
@@ -63,6 +66,9 @@ const Table = props => {
             </td>
             <td key={nanoid()} className={css.rows}>
               {row.balance}
+            </td>
+            <td key={nanoid()}  onClick={()=>deleteTrans(row._id)} className={css.rows} >
+              <img className={css.delete_icon} src={Delete} alt="delete" />
             </td>
           </tr>
         ))}
@@ -119,9 +125,17 @@ const HomeTab = () => {
   };
   sortArr();
 
+    const deleteTrans = (id) => {
+dispatch(deleteTransaction(id))
+ }
+
+
+
   return (
     <>
       <input
+        placeholder='Search'
+        className={css.input_search}
         value={query}
         type={'text'}
         onChange={e => {
@@ -129,11 +143,12 @@ const HomeTab = () => {
         }}
       />
       {status ? (
-        <div className="d-flex justify-content-center">
+        <div className={css.spiner}>
           <div className="spinner-border" role="status">
             <span className="sr-only"></span>
           </div>
         </div>
+
       ) : reverseTransactions?.length === 0 ? (
         <div className={css.not_trans}>
           <img src={NotTransactions} alt="" />
@@ -149,7 +164,7 @@ const HomeTab = () => {
               matches.table && (
                 <>
                   <div className={css.home_tab}>
-                    <Table data={reverseTransactions} />
+                    <Table  deleteTrans={deleteTrans} data={reverseTransactions} />
                   </div>
                 </>
               )
