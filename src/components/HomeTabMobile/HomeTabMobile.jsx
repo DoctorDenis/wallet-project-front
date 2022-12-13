@@ -3,35 +3,59 @@ import React from 'react';
 import { useEffect } from 'react';
 import css from './HomeTabMobile.module.scss';
 import convertStringToDate from 'utils/convertStringToDate';
-import {
-  useSelector,
-useDispatch
-} from 'react-redux';
-import Delete from '../../assets/images/delete-button-min.svg'
+import { useSelector, useDispatch } from 'react-redux';
+import Delete from '../../assets/images/delete-button-min.svg';
 import { nanoid } from 'nanoid';
 import { deleteTransaction } from 'redux/transaction/transaction-operations';
 
-
-const HomeTabMobile = () => {
-   const dispatch = useDispatch();
+const HomeTabMobile = ({ query }) => {
+  const dispatch = useDispatch();
 
   const transactions = useSelector(
     state => state.transactions.transactions.transactions
   );
- 
-  useEffect(() => {
-   
-    
 
-  }, [transactions]);
+  useEffect(() => {}, [transactions]);
 
   const status = useSelector(state => state.transactions.isLoading);
 
- 
   let reverseTransactions = [];
 
   if (transactions) {
-    reverseTransactions = [...transactions];
+    if (query === '') {
+      reverseTransactions = [...transactions];
+    } else {
+      if (query === '+' || query === '-') {
+        reverseTransactions = transactions.filter(el => {
+          if (el.isIncome && query === '+') {
+            return true;
+          } else if (!el.isIncome && query === '-') {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      } else if (!isNaN(Number(query))) {
+        reverseTransactions = transactions.filter(el => {
+          if (el.amount.toString().includes(query)) {
+            return el;
+          } else {
+            return false;
+          }
+        });
+      } else if (isNaN(Number(query))) {
+        reverseTransactions = transactions.filter((el, ind, arr) => {
+          if (
+            el.category.toLowerCase().includes(query.toLowerCase()) ||
+            el.comment.toLowerCase().includes(query.toLowerCase())
+          ) {
+            return el;
+          } else {
+            return false;
+          }
+        });
+      }
+    }
   }
 
   const sortArr = () => {
@@ -40,12 +64,10 @@ const HomeTabMobile = () => {
     });
   };
   sortArr();
-  
-  
-  const deleteTrans = (id) => {
-dispatch(deleteTransaction(id))
- }
 
+  const deleteTrans = id => {
+    dispatch(deleteTransaction(id));
+  };
 
   return status ? (
     <div className="spinner-border text-center " role="status">
@@ -55,9 +77,8 @@ dispatch(deleteTransaction(id))
     <div className={css.mobile_table}>
       {reverseTransactions?.map(item => (
         <div key={nanoid()} className={css.table}>
-          <ul  key={nanoid()} className={css.transaction}>
+          <ul key={nanoid()} className={css.transaction}>
             <li
-            
               key={nanoid()}
               className={
                 item.isIncome ? css.transactions_true : css.transactions_false
@@ -125,16 +146,16 @@ dispatch(deleteTransaction(id))
               }
             >
               <p className={css.name}>Balance</p>
-              <p className={css.value}>{item.balance }</p>
+              <p className={css.value}>{item.balance}</p>
             </li>
             <li
-              onClick={()=>deleteTrans(item._id)}
+              onClick={() => deleteTrans(item._id)}
               key={nanoid()}
               className={
                 item.isIncome ? css.transactions_true : css.transactions_false
               }
             >
-             <img  className={css.delete} src={Delete} alt="delete" />
+              <img className={css.delete} src={Delete} alt="delete" />
             </li>
           </ul>
         </div>

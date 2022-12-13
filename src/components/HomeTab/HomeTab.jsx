@@ -9,9 +9,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../../redux/transaction/transaction-operations';
 import convertStringToDate from 'utils/convertStringToDate';
-import Delete from '../../assets/images/delete-button-min.svg'
+import Delete from '../../assets/images/delete-button-min.svg';
 import { deleteTransaction } from 'redux/transaction/transaction-operations';
-
 
 const Table = props => {
   const { data, deleteTrans } = props;
@@ -67,7 +66,11 @@ const Table = props => {
             <td key={nanoid()} className={css.rows}>
               {row.balance}
             </td>
-            <td key={nanoid()}  onClick={()=>deleteTrans(row._id)} className={css.rows} >
+            <td
+              key={nanoid()}
+              onClick={() => deleteTrans(row._id)}
+              className={css.rows}
+            >
               <img className={css.delete_icon} src={Delete} alt="delete" />
             </td>
           </tr>
@@ -97,24 +100,36 @@ const HomeTab = () => {
     if (query === '') {
       reverseTransactions = [...transactions];
     } else {
-      reverseTransactions = isNaN(Number(query))
-        ? transactions.filter((el, ind, arr) => {
-            if (
-              el.category.toLowerCase().includes(query.toLowerCase()) ||
-              el.comment.toLowerCase().includes(query.toLowerCase())
-            ) {
-              return el;
-            } else {
-              return false;
-            }
-          })
-        : transactions.filter(el => {
-            if (el.amount.toString().includes(query)) {
-              return el;
-            } else {
-              return false;
-            }
-          });
+      if (query === '+' || query === '-') {
+        reverseTransactions = transactions.filter(el => {
+          if (el.isIncome && query === '+') {
+            return true;
+          } else if (!el.isIncome && query === '-') {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      } else if (!isNaN(Number(query))) {
+        reverseTransactions = transactions.filter(el => {
+          if (el.amount.toString().includes(query)) {
+            return el;
+          } else {
+            return false;
+          }
+        });
+      } else if (isNaN(Number(query))) {
+        reverseTransactions = transactions.filter((el, ind, arr) => {
+          if (
+            el.category.toLowerCase().includes(query.toLowerCase()) ||
+            el.comment.toLowerCase().includes(query.toLowerCase())
+          ) {
+            return el;
+          } else {
+            return false;
+          }
+        });
+      }
     }
   }
 
@@ -125,16 +140,14 @@ const HomeTab = () => {
   };
   sortArr();
 
-    const deleteTrans = (id) => {
-dispatch(deleteTransaction(id))
- }
-
-
+  const deleteTrans = id => {
+    dispatch(deleteTransaction(id));
+  };
 
   return (
     <>
       <input
-        placeholder='Search'
+        placeholder="Search"
         className={css.input_search}
         value={query}
         type={'text'}
@@ -148,7 +161,6 @@ dispatch(deleteTransaction(id))
             <span className="sr-only"></span>
           </div>
         </div>
-
       ) : reverseTransactions?.length === 0 ? (
         <div className={css.not_trans}>
           <img src={NotTransactions} alt="" />
@@ -156,7 +168,7 @@ dispatch(deleteTransaction(id))
       ) : (
         <>
           <Media queries={{ mobile: { maxWidth: 767 } }}>
-            {matches => matches.mobile && <HomeTabMobile />}
+            {matches => matches.mobile && <HomeTabMobile query={query} />}
           </Media>
 
           <Media queries={{ table: { minWidth: 768 } }}>
@@ -164,7 +176,10 @@ dispatch(deleteTransaction(id))
               matches.table && (
                 <>
                   <div className={css.home_tab}>
-                    <Table  deleteTrans={deleteTrans} data={reverseTransactions} />
+                    <Table
+                      deleteTrans={deleteTrans}
+                      data={reverseTransactions}
+                    />
                   </div>
                 </>
               )
