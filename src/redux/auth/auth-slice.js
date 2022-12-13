@@ -4,7 +4,7 @@ import {
   // getTransaction,
   addTransaction,
   getTransaction,
-  // deleteTransaction,
+  deleteTransaction,
 } from '../transaction/transaction-operations';
 const initialState = {
   user: { email: '', name: '' },
@@ -74,6 +74,9 @@ const authSlice = createSlice({
     },
     [getTransaction.rejected]: (state, action) => {
       state.isLoggedIn = false;
+    },
+    [deleteTransaction.fulfilled]: (state, action) => {
+      state.user.balance = action.payload.balance;
     },
   },
 });
