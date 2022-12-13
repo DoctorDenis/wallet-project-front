@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import Switch from 'react-switch';
@@ -23,6 +24,7 @@ import close from '../../assets/images/Close-min.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
+const modalRoot = document.querySelector('#modal-root');
 
 const initialValues = {
   category: '',
@@ -93,7 +95,7 @@ const ModalAddTransactions = ({ onClose }) => {
     setSelect(event.label);
   };
 
-  return (
+  return createPortal(
     <div className={style.backdrop} onClick={handlClose}>
       <div className={style.modal} onClick={event => event.stopPropagation()}>
         <div className={style.close} onClick={onClose}>
@@ -185,6 +187,7 @@ const ModalAddTransactions = ({ onClose }) => {
                   name="amount"
                   placeholder="0.00"
                   className={style.input}
+                  // onKeyDown={evt => evt.key !== 69 && evt.preventDefault()}
                 />
                 <ErrorMessage
                   name="amount"
@@ -224,7 +227,8 @@ const ModalAddTransactions = ({ onClose }) => {
           </Formik>
         </div>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
 
