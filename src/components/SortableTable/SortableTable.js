@@ -2,13 +2,14 @@
 // Використання
 // import SortableTable from 'components/SortableTable/SortableTable';
 // ...
-// <SortableTable data={transactions} />
+// <SortableTable data={reverseTransactions} />
 
 
 import React from 'react';
 import css from './SortableTable.module.scss';
 import { nanoid } from 'nanoid';
 import EllipsisText from 'react-ellipsis-text';
+import convertStringToDate from 'utils/convertStringToDate';
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -27,12 +28,17 @@ const useSortableData = (items, config = null) => {
             return sortConfig.direction === css.ascendingSort ? 1 : -1;
           }
         } else {
+          if (sortConfig.key === 'amount' || sortConfig.key === 'balance'){
+              return sortConfig.direction === css.ascendingSort ? b[sortConfig.key]-a[sortConfig.key] : a[sortConfig.key]-b[sortConfig.key];          
+          } else {
           if (a[sortConfig.key] < b[sortConfig.key]) {
             return sortConfig.direction === css.ascendingSort ? -1 : 1;
           }
           if (a[sortConfig.key] > b[sortConfig.key]) {
             return sortConfig.direction === css.ascendingSort ? 1 : -1;
           }
+        }
+
         }
 
         return 0;
@@ -57,23 +63,23 @@ const useSortableData = (items, config = null) => {
 };
 
 const Row = props => {
-  const { date, type, category, comment, sum, balance } = props;
+  const { date, isIncome, category, comment, amount, balance } = props;
   return (
     <tr className={css.trSortTable}>
       <td key={nanoid()} className={css.tdSortTable}>
-        {date}
+      {convertStringToDate(date)}
+      </td>
+      <td key={nanoid()} className={isIncome ?  css.rows_true : css.rows_false}>
+      {isIncome ? '+' : '-'}
       </td>
       <td key={nanoid()} className={css.tdSortTable}>
-        {type}
-      </td>
-      <td key={nanoid()} className={css.tdSortTable}>
-        {category}
+        {<EllipsisText text={category} length={10} />}
       </td>
       <td key={nanoid()} className={css.tdSortTable}>
         {<EllipsisText text={comment} length={13} />}
       </td>
-      <td key={nanoid()} className={css.tdSortTable}>
-        {sum}
+      <td key={nanoid()} className={isIncome ?  css.rows_true : css.rows_false}>
+        {amount}
       </td>
       <td key={nanoid()} className={css.tdSortTable}>
         {balance}
@@ -106,8 +112,8 @@ const SortableTable = props => {
           <th className={css.thSortTable}>
             <button
               type="button"
-              onClick={() => requestSort('type')}
-              className={getClassNamesFor('type')}
+              onClick={() => requestSort('isIncome')}
+              className={getClassNamesFor('isIncome')}
             >
               Type
             </button>
@@ -133,8 +139,8 @@ const SortableTable = props => {
           <th className={css.thSortTable}>
             <button
               type="button"
-              onClick={() => requestSort('sum')}
-              className={getClassNamesFor('sum')}
+              onClick={() => requestSort('amount')}
+              className={getClassNamesFor('amount')}
             >
               Sum
             </button>
@@ -154,11 +160,11 @@ const SortableTable = props => {
         {items.map(item => (
           <Row
             key={nanoid()}
-            type={item.type}
+            isIncome={item.isIncome}
             date={item.date}
             category={item.category}
             comment={item.comment}
-            sum={item.sum}
+            amount={item.amount}
             balance={item.balance}
           />
         ))}

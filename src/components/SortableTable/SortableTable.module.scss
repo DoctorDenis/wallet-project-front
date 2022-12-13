@@ -25,6 +25,8 @@
 .bodySortTable {
   min-width: 115px;
   display: block;
+  height: 350px;
+overflow: scroll;
 }
 
 .trSortTable {
@@ -72,3 +74,26 @@ thead button {
   display: inline-block;
   margin-left: 3px;
 }
+
+
+.rows_true {
+ 
+  @include font-circe-small;
+    text-align: center;
+    min-width: 115px;
+    height: 52px;
+    padding-left: 8px;
+  
+      color: $color-green;
+      
+    }
+  
+  .rows_false {
+  @include font-circe-small;
+    text-align: center;
+    min-width: 115px;
+    height: 52px;
+    padding-left: 8px;
+  color: $color-red;
+    
+  }
