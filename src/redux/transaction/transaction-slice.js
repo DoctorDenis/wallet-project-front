@@ -47,10 +47,11 @@ const transactionsSlice = createSlice({
       state.isLoading = true;
     },
     [deleteTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions.transaction = state.transactions.transaction.filter(
-        transaction => transaction.id !== payload.meta.arg
-     
-      );
+      state.transactions.transactions = [
+        ...state.transactions.transactions.filter(
+          transaction => transaction._id !== payload._id
+        ),
+      ];
       state.isLoading = false;
     },
     [deleteTransaction.rejected]: (state, { payload }) => {

@@ -46,13 +46,16 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/delete',
   async (transactionId, { rejectWithValue, getState }) => {
     try {
-      await axios.delete(`transactions/${transactionId}`, {
-        headers: {
-          Authorization: `Bearer ${getState().auth.accesToken}`,
-        },
-      } );
+      const deletedTransaction = await axios.delete(
+        `transactions/${transactionId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getState().auth.accesToken}`,
+          },
+        }
+      );
       Notify.success('Transaction delete successfully');
-      return transactionId;
+      return deletedTransaction.data;
     } catch (error) {
       return rejectWithValue(
         Notify.failure(`Failed to delete the transaction`)
