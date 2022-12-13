@@ -61,7 +61,7 @@ export default function Diagram({ arrForRenderDonat }) {
   });
 
   useEffect(() => {
-    if (arrForRenderDonat) {
+    if (arrForRenderDonat.length) {
       const newData = {
         datasets: [
           {
@@ -106,6 +106,25 @@ export default function Diagram({ arrForRenderDonat }) {
             hoverBorderWidth: 5,
           },
         ],
+      };
+      setData(newData);
+    } else {
+      const newData = {
+        // options: {
+        //   tooltips: false,
+        // },
+        datasets: [
+          {
+            label: 'You are have not expenses in current period',
+            data: [0.01],
+            backgroundColor: [colors.colorGreyLight],
+            borderColor: [colors.colorGreyLight],
+            cutout: 90,
+            hoverBorderWidth: 5,
+            labelTextColors: colors.colorGreenDeep,
+          },
+        ],
+        labelTextColors: colors.colorGreenDeep,
       };
       setData(newData);
     }
