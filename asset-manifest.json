@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/wallet-project-front/static/css/main.17acd117.css",
-    "main.js": "/wallet-project-front/static/js/main.6f980b74.js",
+    "main.css": "/wallet-project-front/static/css/main.419d9dfe.css",
+    "main.js": "/wallet-project-front/static/js/main.abe8d2ae.js",
     "static/media/loginImg.svg": "/wallet-project-front/static/media/loginImg.8f727c9a88d2012b1c04baf40beae307.svg",
     "static/media/registerImg.svg": "/wallet-project-front/static/media/registerImg.4135b3228767d3dca9ba6f59d0b990b8.svg",
     "static/media/BackgrTablet.png": "/wallet-project-front/static/media/BackgrTablet.acc1d450cea23f786981.png",
     "static/media/Not.png": "/wallet-project-front/static/media/Not.e274b164c357823dd4c5.png",
     "static/media/BackgrDesctop.png": "/wallet-project-front/static/media/BackgrDesctop.147b8e07612aa537b52d.png",
     "static/media/Vector.png": "/wallet-project-front/static/media/Vector.cdb4a1d0c530ac6dbaaf.png",
+    "static/media/delete-button-min.svg": "/wallet-project-front/static/media/delete-button-min.fff19ad7fc8d1e4cc9e73c0fddbf6179.svg",
     "static/media/Close.svg": "/wallet-project-front/static/media/Close.02adb6f50e70a54d914827348916298b.svg",
     "static/media/Wallet-min.svg": "/wallet-project-front/static/media/Wallet-min.d393325974f7d96fe1e48e29fabd85ed.svg",
     "static/media/Vectors.svg": "/wallet-project-front/static/media/Vectors.5433e683ecf5277df81396cd768c649c.svg",
@@ -29,11 +30,11 @@
     "static/media/Vector 5.svg": "/wallet-project-front/static/media/Vector 5.464fa8a52b2ad3b82320f08a3ac437c8.svg",
     "static/media/vector-on-select.svg": "/wallet-project-front/static/media/vector-on-select.77b989b3724c69122981.svg",
     "static/media/Close-min.svg": "/wallet-project-front/static/media/Close-min.597283e18f87a7847d7084da5408293b.svg",
-    "main.17acd117.css.map": "/wallet-project-front/static/css/main.17acd117.css.map",
-    "main.6f980b74.js.map": "/wallet-project-front/static/js/main.6f980b74.js.map"
+    "main.419d9dfe.css.map": "/wallet-project-front/static/css/main.419d9dfe.css.map",
+    "main.abe8d2ae.js.map": "/wallet-project-front/static/js/main.abe8d2ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.17acd117.css",
-    "static/js/main.6f980b74.js"
+    "static/css/main.419d9dfe.css",
+    "static/js/main.abe8d2ae.js"
   ]
 }
