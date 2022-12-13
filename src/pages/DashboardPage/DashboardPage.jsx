@@ -41,6 +41,7 @@ const DashboardPage = () => {
       />
       <div className={css.backg}>
         <Container>
+        
           <Navigation />
           <Media
             queries={{
@@ -57,7 +58,7 @@ const DashboardPage = () => {
               );
             }}
           </Media>
-          {/* <> */}
+        
           <Media queries={{ mobile: { maxWidth: 767 } }}>
             {matches =>
               matches.mobile && (
@@ -65,15 +66,18 @@ const DashboardPage = () => {
               )
             }
           </Media>
+         
           <Media queries={{ table: { minWidth: 768 } }}>
             {matches => matches.table && <CurrencyHome />}
           </Media>
-          {/* </> */}
+   
+          <hr className={css.vertical} />
           <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
           </>
 
+
           {location.pathname === '/home' && <ButtonAddTransactions />}
           {modalAddTransactionStatus && (
             <ModalAddTransactions onClose={togleModal} />
@@ -83,7 +87,7 @@ const DashboardPage = () => {
           {modalAddTransactionStatus && (
             <ModalAddTransactions onClose={togleModal} />
           )}
-          {/* <div className={css.div}></div> */}
+        
         </Container>
       </div>
     </>
