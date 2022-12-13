@@ -43,13 +43,6 @@ overflow: scroll;
   padding-left: 8px;
   color: $color-main-text;
 }
-.tdSortTable2 {
-  @include font-circe-small;
-  text-align: center;
-  height: 52px;
-  padding-left: 8px;
-  color: $color-main-text;
-}
 
 thead button {
   width: 100%;

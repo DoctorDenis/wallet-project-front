@@ -85,7 +85,7 @@ const Row = props => {
       <td key={nanoid()} className={css.tdSortTable}>
         {balance}
       </td>
-      <td key={nanoid()}  onClick={()=>deleteTrans(id)} className={css.tdSortTable2} >
+      <td key={nanoid()}  onClick={()=>deleteTrans(id)} className={css.tdSortTable} >
               <img className={css.delete_icon} src={Delete} alt="delete" />
             </td>      
     </tr>
@@ -159,7 +159,6 @@ const SortableTable = props => {
               Balance
             </button>
           </th>
-
         </tr>
       </thead>
       <tbody className={css.bodySortTable}>
