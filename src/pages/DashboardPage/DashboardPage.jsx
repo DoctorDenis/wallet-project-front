@@ -18,13 +18,9 @@ import ModalAddTransactions from 'components/ModalAddTransaction/ModalAddTransac
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 const DashboardPage = () => {
-  // const [display, setDisplay] = useState();
   const location = useLocation();
   const path = location.pathname;
   const [modalLogout, setModalLogout] = useState(false);
-  //  useEffect(() => {
-  //   setDisplay(path === "/home" ? true : false);
-  // }, [path]);
 
   const modalAddTransactionStatus = useSelector(
     state => state.global.isModalAddTransactionOpen
@@ -61,18 +57,18 @@ const DashboardPage = () => {
               );
             }}
           </Media>
-          <>
-            <Media queries={{ mobile: { maxWidth: 767 } }}>
-              {matches =>
-                matches.mobile && (
-                  <>{location.pathname === '/currency' && <Currency />}</>
-                )
-              }
-            </Media>
-            <Media queries={{ table: { minWidth: 768 } }}>
-              {matches => matches.table && <CurrencyHome />}
-            </Media>
-          </>
+          {/* <> */}
+          <Media queries={{ mobile: { maxWidth: 767 } }}>
+            {matches =>
+              matches.mobile && (
+                <>{location.pathname === '/currency' && <Currency />}</>
+              )
+            }
+          </Media>
+          <Media queries={{ table: { minWidth: 768 } }}>
+            {matches => matches.table && <CurrencyHome />}
+          </Media>
+          {/* </> */}
           <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
@@ -82,6 +78,12 @@ const DashboardPage = () => {
           {modalAddTransactionStatus && (
             <ModalAddTransactions onClose={togleModal} />
           )}
+
+          {location.pathname === '/home' && <ButtonAddTransactions />}
+          {modalAddTransactionStatus && (
+            <ModalAddTransactions onClose={togleModal} />
+          )}
+          {/* <div className={css.div}></div> */}
         </Container>
       </div>
     </>

@@ -8,7 +8,8 @@ import Currency from '../../assets/images/Dollar-min.svg';
 import CurrencyActive from '../../assets/images/Dolar-active-min.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import Media from 'react-media';
-//import { ReactComponent as Home } from '../../assets/images/Home-min.svg'
+
+
 const Navigation = () => {
   const location = useLocation()
    
@@ -21,9 +22,9 @@ const Navigation = () => {
               <ul className={css.list}>
                 <li className={css.item_link}>
                 <NavLink className={css.item_nav} to="/home">
-                  {/* <Home className={css.svg}/> */}
+                 
                     <img className={location.pathname==='/home' ? css.svg_active : css.svg} src={location.pathname==='/home' ?  HomeActive : Home} alt="home" />
-                    {/* <p className={css.text}>Home</p> */}
+                   
                   </NavLink>
                 </li>
                 <li className={css.item_link}>
@@ -36,7 +37,7 @@ const Navigation = () => {
                       alt="statistics"
                     />
                  </div>
-                    {/* <p className={css.text}>Statistics</p> */}
+                   
                   </NavLink>
                 </li>
                 <li className={css.item_link}>

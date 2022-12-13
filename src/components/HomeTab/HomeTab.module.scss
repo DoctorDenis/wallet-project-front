@@ -7,7 +7,7 @@
 .table_body{
 min-width: 115px;
 display: block;
-height: 350px;
+max-height: 350px;
 overflow: scroll;
 
 }
@@ -54,7 +54,8 @@ overflow: scroll;
         @media screen and (min-width: 1280px) {
           min-height: 600px;
           position: absolute;
-           
+          border-left: 1px solid #E7E5F2;
+            box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
             left: 560px;
         top: 40px;
         }

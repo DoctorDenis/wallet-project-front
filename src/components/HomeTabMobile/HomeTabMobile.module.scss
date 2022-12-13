@@ -5,7 +5,7 @@
 
 .table{
     width: 280px;
-    height: 282px;
+    // height: 282px;
     border-radius: 10px;
     margin: 0 auto;
     background-color: #fff;
@@ -80,11 +80,18 @@ color: $color-green;
 }
 
 .mobile_table{
-    height: 350px;
+    max-height: 350px;
     margin: 0 auto;
     width: 282px;
     margin-bottom: 20px;
     border-radius: 20px;
     overflow: scroll;
     scroll-behavior: smooth;
+}
+
+.delete{
+    display: block;
+    width: 24px;
+    margin: 0 auto;
+    height: 24px;
 }
