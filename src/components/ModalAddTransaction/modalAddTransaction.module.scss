@@ -153,6 +153,7 @@
 }
 
 .input {
+  margin-bottom: 40px;
   padding-left: 16px;
   width: 100%;
   height: 32px;
@@ -162,11 +163,6 @@
   border-bottom: 1px solid $color-grey-light-more;
 
   @include font-circe-light-medium;
-
-  &:not(:last-child) {
-    margin-bottom: 40px;
-    font-weight: 700;
-  }
 
   @include media-tablet {
     padding-left: 0px;
@@ -180,13 +176,16 @@
   color: $color-grey-light;
 }
 
+.textareaContainer {
+  position: relative;
+}
+
 .textarea {
   @include font-circe-light-medium;
   margin-bottom: 40px;
   padding-left: 16px;
   padding-bottom: 8px;
 
-  height: 84px;
   width: 100%;
 
   outline: none;
@@ -199,26 +198,36 @@
   }
 }
 
-.error {
+.errorMessage {
   position: absolute;
-  top: 25%;
   right: 0;
   font-size: 10px;
   color: $color-red;
 
   @include media-tablet {
     bottom: 30%;
+  }
+}
+
+.errorMessageAmount {
+  top: 24%;
+
+  @include media-tablet {
     top: 49%;
     left: 0;
   }
 }
 
-.errorDate {
-  position: absolute;
-  bottom: 14%;
-  right: 0;
-  font-size: 10px;
-  color: $color-red;
+.errorMessageDate {
+  bottom: 16%;
+
+  @include media-tablet {
+    bottom: 30%;
+  }
+}
+
+.errorMessageComment {
+  bottom: 28%;
 
   @include media-tablet {
     bottom: 30%;

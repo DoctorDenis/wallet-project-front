@@ -4,7 +4,6 @@ import {
   addTransaction,
   deleteTransaction,
 } from './transaction-operations';
-import { login } from 'redux/auth/auth-operations';
 
 const initialState = {
   transactions: [],
@@ -56,9 +55,6 @@ const transactionsSlice = createSlice({
     [deleteTransaction.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
-    },
-    [login.fulfilled]: (state, action) => {
-      // state.transactions.transactions = action.payload.user.transactions;
     },
   },
 });

@@ -32,11 +32,12 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  //   category: Yup.mixed().oneOf(incomeOptions, expenseOptions).required(),
-  //   options: Yup.mixed().required(),
+  options: Yup.string(),
   amount: Yup.number().required('Amount is required'),
   date: Yup.date().required('Date is required'),
-  comment: Yup.string(),
+  comment: Yup.string()
+    .matches(/^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/, 'Only alphabets are allowed for this field ')
+    .max(100, 'A maximum of 100 characters can be added'),
 });
 
 const ModalAddTransactions = ({ onClose }) => {
@@ -182,7 +183,7 @@ const ModalAddTransactions = ({ onClose }) => {
                 <ErrorMessage
                   name="amount"
                   component="div"
-                  className={style.error}
+                  className={`${style.errorMessage} ${style.errorMessageAmount}`}
                 />
 
                 <Field
@@ -194,15 +195,22 @@ const ModalAddTransactions = ({ onClose }) => {
                 <ErrorMessage
                   name="date"
                   component="div"
-                  className={style.errorDate}
+                  className={`${style.errorMessage} ${style.errorMessageDate}`}
                 />
               </div>
-              <Field
-                type="textarea"
-                name="comment"
-                placeholder="Comment"
-                className={style.textarea}
-              />
+              <div className={style.textareaContainer}>
+                <Field
+                  type="textarea"
+                  name="comment"
+                  placeholder="Comment"
+                  className={style.textarea}
+                />
+                <ErrorMessage
+                  name="comment"
+                  component="div"
+                  className={`${style.errorMessage} ${style.errorMessageComment}`}
+                />
+              </div>
 
               <ButtonActive text="Add" />
               <Button text="Cancel" onClick={onClose} />
