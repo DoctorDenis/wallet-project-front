@@ -18,13 +18,10 @@ import ModalAddTransactions from 'components/ModalAddTransaction/ModalAddTransac
 import { changeModalStatus } from '../../redux/global/global-actions'
 
 const DashboardPage = () => {
-  // const [display, setDisplay] = useState();
   const location = useLocation();
   const path = location.pathname;
   const [modalLogout, setModalLogout] = useState(false);
-  //  useEffect(() => {
-  //   setDisplay(path === "/home" ? true : false);
-  // }, [path]);
+  
 
   const modalAddTransactionStatus = useSelector(
     state => state.global.isModalAddTransactionOpen
@@ -46,6 +43,7 @@ const DashboardPage = () => {
       />
       <div className={css.backg}>
         <Container>
+         
           <Navigation />
           <Media
             queries={{
@@ -62,7 +60,7 @@ const DashboardPage = () => {
               );
             }}
           </Media>
-          <>
+          {/* <> */}
             <Media queries={{ mobile: { maxWidth: 767 } }}>
               {matches =>
                 matches.mobile && (
@@ -73,7 +71,7 @@ const DashboardPage = () => {
             <Media queries={{ table: { minWidth: 768 } }}>
               {matches => matches.table && <CurrencyHome />}
             </Media>
-          </>
+          {/* </> */}
             <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
@@ -81,6 +79,7 @@ const DashboardPage = () => {
         
            {location.pathname === '/home' && <ButtonAddTransactions />} 
           {modalAddTransactionStatus && <ModalAddTransactions onClose={togleModal} />}
+          {/* <div className={css.div}></div> */}
         </Container>
       </div>
 
