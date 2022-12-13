@@ -7,6 +7,6 @@ export const expenseOptions = [
   { value: 'household products', label: 'Household products' },
   { value: 'education', label: 'Education' },
   { value: 'leisure', label: 'Leisure' },
-  { value: 'other expenses', label: 'Other expenses' },
   { value: 'entertainment', label: 'Entertainment' },
+  { value: 'other expenses', label: 'Other expenses' },
 ];

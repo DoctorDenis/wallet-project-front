@@ -25,36 +25,62 @@
 }
 
 .backdrop {
+  // position: fixed;
+  // top: 69px;
+  // right: 0;
+  // left: 0;
+  // bottom: 0;
   position: fixed;
-  top: 69px;
+  top: 0;
   right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+
+  width: 100vw;
+  height: 100%;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: flex-start;
   transition: all 0.3s;
   animation: showBackdrop 0.3s ease-out;
   @include media-tablet {
-    top: 0;
-    align-items: center;
+    // top: 0;
+    // align-items: center;
     background-color: rgba(0, 0, 0, 0.25);
   }
 }
 
 .modal {
-  position: relative;
+  padding-top: 20px;
+  // padding-bottom: 37;
+  // padding-right: 20px;
+  // padding-left: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  // top: 0;
+  transform: translate(-50%, -50%) scaleX(1);
+
+  width: 100%;
+  // min-height: 609px;
+  height: 100%;
+  overflow-y: scroll;
+
+  // position: relative;
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding-top: 15px;
+  align-items: flex-start; // width: 100%;
+  // height: 100%;
+  // padding-top: 15px;
   background: $color-white;
   transition: all 0.3s;
   animation: showModal 0.3s ease-out;
   @include media-tablet {
-    width: 540px;
+    align-items: center;
+    overflow-y: hidden;
+
+    width: 568px;
     height: 600px;
+
     border-radius: 20px;
     padding-top: 40px;
     padding-bottom: 60px;
@@ -77,6 +103,10 @@
 }
 
 .wrapper {
+  padding-top: 20px;
+  padding-bottom: 37;
+  // padding-right: 20px;
+  // padding-left: 20px;
   width: 280px;
   @include media-tablet {
     width: 100%;
@@ -153,6 +183,7 @@
 }
 
 .input {
+  margin-bottom: 40px;
   padding-left: 16px;
   width: 100%;
   height: 32px;
@@ -162,11 +193,6 @@
   border-bottom: 1px solid $color-grey-light-more;
 
   @include font-circe-light-medium;
-
-  &:not(:last-child) {
-    margin-bottom: 40px;
-    font-weight: 700;
-  }
 
   @include media-tablet {
     padding-left: 0px;
@@ -180,13 +206,16 @@
   color: $color-grey-light;
 }
 
+.textareaContainer {
+  position: relative;
+}
+
 .textarea {
   @include font-circe-light-medium;
   margin-bottom: 40px;
   padding-left: 16px;
   padding-bottom: 8px;
 
-  height: 84px;
   width: 100%;
 
   outline: none;
@@ -199,26 +228,36 @@
   }
 }
 
-.error {
+.errorMessage {
   position: absolute;
-  top: 25%;
   right: 0;
   font-size: 10px;
   color: $color-red;
 
   @include media-tablet {
     bottom: 30%;
+  }
+}
+
+.errorMessageAmount {
+  top: 24%;
+
+  @include media-tablet {
     top: 49%;
     left: 0;
   }
 }
 
-.errorDate {
-  position: absolute;
-  bottom: 14%;
-  right: 0;
-  font-size: 10px;
-  color: $color-red;
+.errorMessageDate {
+  bottom: 16%;
+
+  @include media-tablet {
+    bottom: 30%;
+  }
+}
+
+.errorMessageComment {
+  bottom: 28%;
 
   @include media-tablet {
     bottom: 30%;

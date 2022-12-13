@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import Switch from 'react-switch';
@@ -23,6 +24,7 @@ import close from '../../assets/images/Close-min.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
+const modalRoot = document.querySelector('#modal-root');
 
 const initialValues = {
   category: '',
@@ -32,11 +34,15 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  //   category: Yup.mixed().oneOf(incomeOptions, expenseOptions).required(),
-  //   options: Yup.mixed().required(),
+  category: Yup.string(),
   amount: Yup.number().required('Amount is required'),
   date: Yup.date().required('Date is required'),
-  comment: Yup.string(),
+  comment: Yup.string()
+    .matches(
+      /^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/,
+      'Only alphabets are allowed for this field '
+    )
+    .max(100, 'A maximum of 100 characters can be added'),
 });
 
 const ModalAddTransactions = ({ onClose }) => {
@@ -89,7 +95,7 @@ const ModalAddTransactions = ({ onClose }) => {
     setSelect(event.label);
   };
 
-  return (
+  return createPortal(
     <div className={style.backdrop} onClick={handlClose}>
       <div className={style.modal} onClick={event => event.stopPropagation()}>
         <div className={style.close} onClick={onClose}>
@@ -148,12 +154,12 @@ const ModalAddTransactions = ({ onClose }) => {
                   name="category"
                   options={expenseOptions}
                   placeholder="Select a category"
-                  noOptionsMessage={() => 'No other transaction categories :('}
+                  isSearchable={false}
                   hideSelectedOptions
                   tabSelectsValue
+                  menuShouldScrollIntoView={false}
                   blurInputOnSelect={false}
                   theme={selectDefaultColor}
-                  isSearchable
                   styles={selectStyles}
                   onChange={handleChange}
                 />
@@ -163,7 +169,9 @@ const ModalAddTransactions = ({ onClose }) => {
                     name="category"
                     options={incomeOptions}
                     blurInputOnSelect={false}
+                    menuShouldScrollIntoView={false}
                     placeholder="Select a category"
+                    isSearchable={false}
                     hideSelectedOptions
                     tabSelectsValue
                     theme={selectDefaultColor}
@@ -172,17 +180,19 @@ const ModalAddTransactions = ({ onClose }) => {
                   />
                 </>
               )}
+
               <div className={style.inputWrapper}>
                 <Field
                   type="number"
                   name="amount"
                   placeholder="0.00"
                   className={style.input}
+                  // onKeyDown={evt => evt.key !== 69 && evt.preventDefault()}
                 />
                 <ErrorMessage
                   name="amount"
                   component="div"
-                  className={style.error}
+                  className={`${style.errorMessage} ${style.errorMessageAmount}`}
                 />
 
                 <Field
@@ -194,15 +204,22 @@ const ModalAddTransactions = ({ onClose }) => {
                 <ErrorMessage
                   name="date"
                   component="div"
-                  className={style.errorDate}
+                  className={`${style.errorMessage} ${style.errorMessageDate}`}
                 />
               </div>
-              <Field
-                type="textarea"
-                name="comment"
-                placeholder="Comment"
-                className={style.textarea}
-              />
+              <div className={style.textareaContainer}>
+                <Field
+                  type="textarea"
+                  name="comment"
+                  placeholder="Comment"
+                  className={style.textarea}
+                />
+                <ErrorMessage
+                  name="comment"
+                  component="div"
+                  className={`${style.errorMessage} ${style.errorMessageComment}`}
+                />
+              </div>
 
               <ButtonActive text="Add" />
               <Button text="Cancel" onClick={onClose} />
@@ -210,7 +227,8 @@ const ModalAddTransactions = ({ onClose }) => {
           </Formik>
         </div>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
 
