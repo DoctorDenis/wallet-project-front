@@ -91,9 +91,9 @@
 @include font-poppins-small-light;
   margin: 0;
   color: $color-main-text;
-//   &:active{
-//     font-weight: 700;
-//   }
+  &:hover{
+    font-weight: 700
+  }
 }
 
 .active{

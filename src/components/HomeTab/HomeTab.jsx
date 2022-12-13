@@ -82,17 +82,10 @@ const HomeTab = () => {
     (async function () {
       dispatch(getTransaction());
     })();
-    // eslint-disable-next-line
-  }, []);
 
-  // let reverseTransactions = [];
-  // const reverseArr = () => {
-  //   transactions?.map(post => {
-  //     reverseTransactions.unshift(post);
-  //     return reverseTransactions;
-  //   });
-  // };
-  // reverseArr();
+  }, [dispatch]);
+
+
   let reverseTransactions = [];
 
   if (transactions) {
@@ -109,9 +102,11 @@ const HomeTab = () => {
   return (
     <>
       {status ? (
-        <div className="spinner-border text-primary" role="status">
-          <span className="sr-only"></span>
-        </div>
+       <div className="d-flex justify-content-center">
+  <div className="spinner-border" role="status">
+    <span className="sr-only"></span>
+  </div>
+</div>
       ) : reverseTransactions?.length === 0 ? (
         <div className={css.not_trans}>
           <img src={NotTransactions} alt="" />
@@ -136,24 +131,7 @@ const HomeTab = () => {
         </>
       )}
 
-      {/* {reverseTransactions?.length === 0 ? <div className={css.not_trans}><img src={ NotTransactions} alt="" /></div> :
-      <>
-      <Media queries={{ mobile: { maxWidth: 767 } }}>
-        {matches => matches.mobile && <HomeTabMobile />}
-      </Media>
-
-      <Media queries={{ table: { minWidth: 768 } }}>
-        {matches =>
-          matches.table && (
-            <>
-              <div className={css.home_tab}>
-                <Table data={reverseTransactions} />
-              </div>
-            </>
-          )
-        }
-          </Media>
-      </>} */}
+    
     </>
   );
 };

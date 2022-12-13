@@ -5,32 +5,28 @@ import css from './HomeTabMobile.module.scss';
 import convertStringToDate from 'utils/convertStringToDate';
 import {
   useSelector,
-  // useDispatch
+useDispatch
 } from 'react-redux';
+import Delete from '../../assets/images/delete-button-min.svg'
 // import { getTransaction } from '../../redux/transaction/transaction-operations';
 import { nanoid } from 'nanoid';
-
+import { deleteTransaction } from 'redux/transaction/transaction-operations';
 const HomeTabMobile = () => {
-  // const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
   const transactions = useSelector(
     state => state.transactions.transactions.transactions
   );
-
+ 
   useEffect(() => {
-    // eslint-disable-next-line
+   
+    
+
   }, [transactions]);
 
   const status = useSelector(state => state.transactions.isLoading);
 
-  // let reverseTransactions = [];
-  // const reverseArr = () => {
-  //   transactions?.map(post => {
-  //     reverseTransactions.unshift(post);
-  //     return reverseTransactions;
-  //   });
-  // };
-  // reverseArr();
+ 
   let reverseTransactions = [];
 
   if (transactions) {
@@ -43,17 +39,24 @@ const HomeTabMobile = () => {
     });
   };
   sortArr();
+  
+  
+  const deleteTrans = (id) => {
+dispatch(deleteTransaction(id))
+ }
+
 
   return status ? (
-    <div className="spinner-border text-primary" role="status">
+    <div className="spinner-border text-center " role="status">
       <span className="sr-only"></span>
     </div>
   ) : (
     <div className={css.mobile_table}>
       {reverseTransactions?.map(item => (
         <div key={nanoid()} className={css.table}>
-          <ul key={nanoid()} className={css.transaction}>
+          <ul  key={nanoid()} className={css.transaction}>
             <li
+            
               key={nanoid()}
               className={
                 item.isIncome ? css.transactions_true : css.transactions_false
@@ -121,7 +124,16 @@ const HomeTabMobile = () => {
               }
             >
               <p className={css.name}>Balance</p>
-              <p className={css.value}>6 900.00</p>
+              <p className={css.value}>{item.balance }</p>
+            </li>
+            <li
+              onClick={()=>deleteTrans(item._id)}
+              key={nanoid()}
+              className={
+                item.isIncome ? css.transactions_true : css.transactions_false
+              }
+            >
+             <img  className={css.delete} src={Delete} alt="delete" />
             </li>
           </ul>
         </div>
