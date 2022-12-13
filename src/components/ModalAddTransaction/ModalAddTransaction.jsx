@@ -32,11 +32,14 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  options: Yup.string(),
+  category: Yup.string(),
   amount: Yup.number().required('Amount is required'),
   date: Yup.date().required('Date is required'),
   comment: Yup.string()
-    .matches(/^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/, 'Only alphabets are allowed for this field ')
+    .matches(
+      /^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/,
+      'Only alphabets are allowed for this field '
+    )
     .max(100, 'A maximum of 100 characters can be added'),
 });
 
@@ -149,12 +152,12 @@ const ModalAddTransactions = ({ onClose }) => {
                   name="category"
                   options={expenseOptions}
                   placeholder="Select a category"
-                  noOptionsMessage={() => 'No other transaction categories :('}
+                  isSearchable={false}
                   hideSelectedOptions
                   tabSelectsValue
+                  menuShouldScrollIntoView={false}
                   blurInputOnSelect={false}
                   theme={selectDefaultColor}
-                  isSearchable
                   styles={selectStyles}
                   onChange={handleChange}
                 />
@@ -164,7 +167,9 @@ const ModalAddTransactions = ({ onClose }) => {
                     name="category"
                     options={incomeOptions}
                     blurInputOnSelect={false}
+                    menuShouldScrollIntoView={false}
                     placeholder="Select a category"
+                    isSearchable={false}
                     hideSelectedOptions
                     tabSelectsValue
                     theme={selectDefaultColor}
@@ -173,6 +178,7 @@ const ModalAddTransactions = ({ onClose }) => {
                   />
                 </>
               )}
+
               <div className={style.inputWrapper}>
                 <Field
                   type="number"
