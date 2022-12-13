@@ -24,6 +24,7 @@ import close from '../../assets/images/Close-min.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
+
 const modalRoot = document.querySelector('#modal-root');
 
 const initialValues = {
@@ -48,8 +49,9 @@ const validationSchema = Yup.object().shape({
 const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
+
   const dispatch = useDispatch();
-  //   const token = useToken();
+  
 
   const handlClose = event => {
     if (event.currentTarget === event.target) {
@@ -78,17 +80,24 @@ const ModalAddTransactions = ({ onClose }) => {
   );
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
-    dispatch(
-      addTransaction({
-        isIncome: income,
-        category: select || 'Main expenses',
-        amount,
-        date,
-        comment,
-      })
-    );
-    resetForm();
-    dispatch(changeModalStatus(!modalAddTransactionStatus));
+  
+  
+      
+
+      dispatch(
+        addTransaction({
+          isIncome: income,
+          category: select || 'Main expenses',
+          amount,
+          date,
+          comment,
+        })
+      );
+      resetForm();
+      dispatch(changeModalStatus(!modalAddTransactionStatus));
+    
+  
+
   };
 
   const handleChange = event => {
