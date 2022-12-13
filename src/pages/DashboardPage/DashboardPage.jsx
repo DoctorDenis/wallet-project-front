@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Container from 'components/Container/Container';
 import Header from '../../components/Header/Header';
@@ -15,24 +15,22 @@ import HomeTab from 'components/HomeTab/HomeTab';
 import StatisticsDiagram from 'components/StatisticsDiagram/StatisticsDiagram';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import ModalAddTransactions from 'components/ModalAddTransaction/ModalAddTransaction';
-import { changeModalStatus } from '../../redux/global/global-actions'
+import { changeModalStatus } from '../../redux/global/global-actions';
 
 const DashboardPage = () => {
   const location = useLocation();
   const path = location.pathname;
   const [modalLogout, setModalLogout] = useState(false);
-  
 
   const modalAddTransactionStatus = useSelector(
     state => state.global.isModalAddTransactionOpen
   );
 
-  const dispatch = useDispatch()
-  
- const togleModal = () => {
-    dispatch(changeModalStatus(!modalAddTransactionStatus))
-  };
+  const dispatch = useDispatch();
 
+  const togleModal = () => {
+    dispatch(changeModalStatus(!modalAddTransactionStatus));
+  };
 
   return (
     <>
@@ -43,7 +41,6 @@ const DashboardPage = () => {
       />
       <div className={css.backg}>
         <Container>
-         
           <Navigation />
           <Media
             queries={{
@@ -61,28 +58,34 @@ const DashboardPage = () => {
             }}
           </Media>
           {/* <> */}
-            <Media queries={{ mobile: { maxWidth: 767 } }}>
-              {matches =>
-                matches.mobile && (
-                  <>{location.pathname === '/currency' && <Currency />}</>
-                )
-              }
-            </Media>
-            <Media queries={{ table: { minWidth: 768 } }}>
-              {matches => matches.table && <CurrencyHome />}
-            </Media>
+          <Media queries={{ mobile: { maxWidth: 767 } }}>
+            {matches =>
+              matches.mobile && (
+                <>{location.pathname === '/currency' && <Currency />}</>
+              )
+            }
+          </Media>
+          <Media queries={{ table: { minWidth: 768 } }}>
+            {matches => matches.table && <CurrencyHome />}
+          </Media>
           {/* </> */}
-            <>
+          <>
             {location.pathname === '/home' && <HomeTab />}
             {location.pathname === '/statistics' && <StatisticsDiagram />}
           </>
-        
-           {location.pathname === '/home' && <ButtonAddTransactions />} 
-          {modalAddTransactionStatus && <ModalAddTransactions onClose={togleModal} />}
+
+          {location.pathname === '/home' && <ButtonAddTransactions />}
+          {modalAddTransactionStatus && (
+            <ModalAddTransactions onClose={togleModal} />
+          )}
+
+          {location.pathname === '/home' && <ButtonAddTransactions />}
+          {modalAddTransactionStatus && (
+            <ModalAddTransactions onClose={togleModal} />
+          )}
           {/* <div className={css.div}></div> */}
         </Container>
       </div>
-
     </>
   );
 };

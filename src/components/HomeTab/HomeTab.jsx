@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
 import NotTransactions from '../../assets/images/Not.png';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransaction } from '../../redux/transaction/transaction-operations';
 import convertStringToDate from 'utils/convertStringToDate';
@@ -73,6 +73,7 @@ const Table = props => {
 
 const HomeTab = () => {
   const dispatch = useDispatch();
+  const [query, setQuery] = useState('');
 
   const transactions = useSelector(
     state => state.transactions.transactions.transactions
@@ -82,14 +83,33 @@ const HomeTab = () => {
     (async function () {
       dispatch(getTransaction());
     })();
-
   }, [dispatch]);
-
 
   let reverseTransactions = [];
 
   if (transactions) {
-    reverseTransactions = [...transactions];
+    if (query === '') {
+      reverseTransactions = [...transactions];
+    } else {
+      reverseTransactions = isNaN(Number(query))
+        ? transactions.filter((el, ind, arr) => {
+            if (
+              el.category.toLowerCase().includes(query.toLowerCase()) ||
+              el.comment.toLowerCase().includes(query.toLowerCase())
+            ) {
+              return el;
+            } else {
+              return false;
+            }
+          })
+        : transactions.filter(el => {
+            if (el.amount.toString().includes(query)) {
+              return el;
+            } else {
+              return false;
+            }
+          });
+    }
   }
 
   const sortArr = () => {
@@ -101,12 +121,19 @@ const HomeTab = () => {
 
   return (
     <>
+      <input
+        value={query}
+        type={'text'}
+        onChange={e => {
+          setQuery(e.currentTarget.value);
+        }}
+      />
       {status ? (
-       <div className="d-flex justify-content-center">
-  <div className="spinner-border" role="status">
-    <span className="sr-only"></span>
-  </div>
-</div>
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
+            <span className="sr-only"></span>
+          </div>
+        </div>
       ) : reverseTransactions?.length === 0 ? (
         <div className={css.not_trans}>
           <img src={NotTransactions} alt="" />
@@ -130,8 +157,6 @@ const HomeTab = () => {
           </Media>
         </>
       )}
-
-    
     </>
   );
 };
