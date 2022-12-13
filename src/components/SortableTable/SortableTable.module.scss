@@ -97,3 +97,12 @@ thead button {
   color: $color-red;
     
   }
+
+  .delete_icon{
+    width: 24px;
+    height: 24px;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    cursor: pointer;
+  }
