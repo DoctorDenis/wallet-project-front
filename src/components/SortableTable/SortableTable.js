@@ -10,6 +10,7 @@ import css from './SortableTable.module.scss';
 import { nanoid } from 'nanoid';
 import EllipsisText from 'react-ellipsis-text';
 import convertStringToDate from 'utils/convertStringToDate';
+import Delete from '../../assets/images/delete-button-min.svg'
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -63,7 +64,7 @@ const useSortableData = (items, config = null) => {
 };
 
 const Row = props => {
-  const { date, isIncome, category, comment, amount, balance } = props;
+  const { date, isIncome, category, comment, amount, balance, deleteTrans, id } = props;
   return (
     <tr className={css.trSortTable}>
       <td key={nanoid()} className={css.tdSortTable}>
@@ -84,12 +85,16 @@ const Row = props => {
       <td key={nanoid()} className={css.tdSortTable}>
         {balance}
       </td>
+      <td key={nanoid()}  onClick={()=>deleteTrans(id)} className={css.tdSortTable} >
+              <img className={css.delete_icon} src={Delete} alt="delete" />
+            </td>      
     </tr>
   );
 };
 
 const SortableTable = props => {
   const { items, requestSort, sortConfig } = useSortableData(props.data);
+  const { deleteTrans } = props;
   const getClassNamesFor = name => {
     if (!sortConfig) {
       return css.noneSort;
@@ -159,6 +164,7 @@ const SortableTable = props => {
       <tbody className={css.bodySortTable}>
         {items.map(item => (
           <Row
+          id={item._id}
             key={nanoid()}
             isIncome={item.isIncome}
             date={item.date}
@@ -166,6 +172,7 @@ const SortableTable = props => {
             comment={item.comment}
             amount={item.amount}
             balance={item.balance}
+            deleteTrans={deleteTrans}
           />
         ))}
       </tbody>
