@@ -133,7 +133,7 @@ export default function Diagram({ arrForRenderDonat }) {
   return (
     <div className={styles.diagram}>
       <Doughnut data={data} options={{ plugins: { tooltip: false } }} />
-      <p className={styles.sumExpensesIntoDiagram}>{bal}</p>
+      <p className={styles.sumExpensesIntoDiagram}>{bal.toFixed(2)}</p>
     </div>
   );
 }

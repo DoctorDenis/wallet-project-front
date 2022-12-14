@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout } from './auth-operations';
+import { register, login, logout, getCurrentUser } from './auth-operations';
 import {
   // getTransaction,
   addTransaction,
   getTransaction,
   deleteTransaction,
 } from '../transaction/transaction-operations';
+
 const initialState = {
   user: { email: '', name: '' },
   accesToken: '',
@@ -69,14 +70,17 @@ const authSlice = createSlice({
     [addTransaction.fulfilled]: (state, action) => {
       state.user.balance = action.payload.balance;
     },
-    [addTransaction.rejected]: (state, action) => {
-      state.isLoggedIn = false;
-    },
-    [getTransaction.rejected]: (state, action) => {
-      state.isLoggedIn = false;
-    },
+    // [addTransaction.rejected]: (state, action) => {
+    //   state.isLoggedIn = false;
+    // },
+    // [getTransaction.rejected]: (state, action) => {
+    //   state.isLoggedIn = false;
+    // },
     [deleteTransaction.fulfilled]: (state, action) => {
       state.user.balance = action.payload.balance;
+    },
+    [getCurrentUser.fulfilled]: (state, action) => {
+      state.user.balance = action.payload.data.user.balance;
     },
   },
 });

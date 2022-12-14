@@ -15,7 +15,7 @@ export const getTransaction = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(Notify.failure('Failed to get transactions'));
     }
   }
 );

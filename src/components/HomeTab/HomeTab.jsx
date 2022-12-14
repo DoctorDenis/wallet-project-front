@@ -66,10 +66,10 @@ const Table = props => {
               key={nanoid()}
               className={row.isIncome ? css.rows_true : css.rows_false}
             >
-              {row.amount}
+              {row.amount.toFixed(2)}
             </td>
             <td key={nanoid()} className={css.rows}>
-              {row.balance}
+              {row.balance.toFixed(2)}
             </td>
 
             <td
@@ -167,10 +167,14 @@ const HomeTab = () => {
             <span className="sr-only"></span>
           </div>
         </div>
-      ) : reverseTransactions?.length === 0 ? (
+      ) : reverseTransactions?.length === 0 && query === '' ? (
         <div className={css.not_trans}>
           <img src={NotTransactions} alt="" />
         </div>
+      ) : reverseTransactions?.length === 0 && query !== '' ? (
+        <h5 className={css.search_message}>
+          There are no transactions that match '{query}' search query
+        </h5>
       ) : (
         <>
           <Media queries={{ mobile: { maxWidth: 767 } }}>

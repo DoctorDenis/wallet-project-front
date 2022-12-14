@@ -62,13 +62,11 @@ const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
 
-  const balance = useSelector(state => state.auth.user.balance)
- 
+  const balance = useSelector(state => state.auth.user.balance);
 
   const [dateA, setDate] = useState('');
 
   const dispatch = useDispatch();
-
 
   const handlClose = event => {
     if (event.currentTarget === event.target) {
@@ -97,25 +95,21 @@ const ModalAddTransactions = ({ onClose }) => {
   );
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
-
-  
-   if (balance < amount && !income) {
-        Notiflix.Notify.warning('You have not enough money on your balance')
-   } else {
-     dispatch(
-      addTransaction({
+    if (balance < amount && !income) {
+      Notiflix.Notify.warning('You have not enough money on your balance');
+    } else {
+      dispatch(
+        addTransaction({
           isIncome: income,
           category: select,
-          amount,
-           date: dateA ? dateA : currentDate,
+          amount: Number(amount.toFixed(2)),
+          date: dateA ? dateA : currentDate,
           comment,
         })
       );
       resetForm();
       dispatch(changeModalStatus(!modalAddTransactionStatus));
-     
-      }
-    
+    }
   };
 
   const handleChangeSelect = event => {

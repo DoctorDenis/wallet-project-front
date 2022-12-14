@@ -38,7 +38,9 @@ export const login = createAsyncThunk(
       Notify.success('Success login');
       return data;
     } catch (error) {
-      return rejectWithValue(alert("Can't log in or user does not exist"));
+      return rejectWithValue(
+        Notify.failure("Can't log in or user does not exist")
+      );
     }
   }
 );
@@ -68,10 +70,13 @@ export const logout = createAsyncThunk(
 
 export const getCurrentUser = createAsyncThunk(
   'users/current',
-  async (userToken, { rejectWithValue }) => {
+  async (userToken, { rejectWithValue, getState }) => {
     try {
-      token.set(userToken);
-      const { data } = await axios.get('users/current');
+      const { data } = await axios.get('users/current', {
+        headers: {
+          Authorization: `Bearer ${getState().auth.accesToken}`,
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.payload);

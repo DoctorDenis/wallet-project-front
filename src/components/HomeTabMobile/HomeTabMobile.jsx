@@ -138,7 +138,7 @@ const HomeTabMobile = ({ query }) => {
                   item.isIncome ? css.value_income_true : css.value_income_false
                 }
               >
-                {item.amount}
+                {item.amount.toFixed(2)}
               </p>
             </li>
             <li
@@ -148,7 +148,7 @@ const HomeTabMobile = ({ query }) => {
               }
             >
               <p className={css.name}>Balance</p>
-              <p className={css.value}>{item.balance}</p>
+              <p className={css.value}>{item.balance.toFixed(2)}</p>
             </li>
             <li
               onClick={() => deleteTrans(item._id)}
