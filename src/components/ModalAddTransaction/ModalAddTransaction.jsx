@@ -28,6 +28,7 @@ import calendar from '../../assets/images/date.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
+import Notiflix from 'notiflix';
 
 import './react-datetime.css';
 // import "react-datetime/css/react-datetime.css";
@@ -60,7 +61,12 @@ const currentDate = moment();
 const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
+
+  const balance = useSelector(state => state.auth.user.balance)
+ 
+
   const [dateA, setDate] = useState('');
+
   const dispatch = useDispatch();
 
 
@@ -91,17 +97,25 @@ const ModalAddTransactions = ({ onClose }) => {
   );
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
-    dispatch(
+
+  
+   if (balance < amount && !income) {
+        Notiflix.Notify.warning('You have not enough money on your balance')
+   } else {
+     dispatch(
       addTransaction({
-        isIncome: income,
-        category: select,
-        amount,
-        date: dateA ? dateA : currentDate,
-        comment,
-      })
-    );
-    resetForm();
-    dispatch(changeModalStatus(!modalAddTransactionStatus));
+          isIncome: income,
+          category: select,
+          amount,
+           date: dateA ? dateA : currentDate,
+          comment,
+        })
+      );
+      resetForm();
+      dispatch(changeModalStatus(!modalAddTransactionStatus));
+     
+      }
+    
   };
 
   const handleChangeSelect = event => {
