@@ -12,17 +12,17 @@
   }
 }
 
-@keyframes showModal {
-  0% {
-    opacity: 0;
-    transform: translateY(-500px);
-  }
+// @keyframes showModal {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(-500px);
+//   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0px);
+//   }
+// }
 
 .backdrop {
   // position: fixed;
@@ -74,6 +74,7 @@
   background: $color-white;
   transition: all 0.3s;
   animation: showModal 0.3s ease-out;
+
   @include media-tablet {
     align-items: center;
     overflow-y: hidden;
@@ -198,12 +199,46 @@
     padding-left: 0px;
     width: 190px;
 
-    text-align: center;
+    // text-align: center;
   }
 }
 
 .input::placeholder {
   color: $color-grey-light;
+}
+
+.inputAmount {
+  @include media-tablet {
+    padding-left: 0px;
+    text-align: center;
+  }
+}
+
+.inputDate {
+  margin-bottom: 10px;
+  padding-left: 0px;
+
+  @include media-tablet {
+    padding-left: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.dateContainer {
+  position: relative;
+  // text-align: center;
+  // padding-left: 16px;
+  // padding-right: 16px;
+}
+
+.iconDate {
+  position: absolute;
+  top: 12%;
+  right: 4%;
+
+  @include media-tablet {
+    top: 6%;
+  }
 }
 
 .textareaContainer {
@@ -240,7 +275,7 @@
 }
 
 .errorMessageAmount {
-  top: 24%;
+  top: 34%;
 
   @include media-tablet {
     top: 49%;
@@ -248,13 +283,13 @@
   }
 }
 
-.errorMessageDate {
-  bottom: 16%;
+// .errorMessageDate {
+//   bottom: 16%;
 
-  @include media-tablet {
-    bottom: 30%;
-  }
-}
+//   @include media-tablet {
+//     bottom: 30%;
+//   }
+// }
 
 .errorMessageComment {
   bottom: 28%;

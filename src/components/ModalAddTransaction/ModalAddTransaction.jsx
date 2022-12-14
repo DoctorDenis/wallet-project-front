@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Datetime from 'react-datetime';
+import moment from 'moment';
+// import 'moment/locale/'
 import Select from 'react-select';
 import Switch from 'react-switch';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -20,11 +23,15 @@ import { addTransaction } from '../../redux/transaction/transaction-operations';
 import minus from '../../assets/images/Vectors.svg';
 import vertical from '../../assets/images/Vector 5.svg';
 import close from '../../assets/images/Close-min.svg';
+import calendar from '../../assets/images/date.svg';
 
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
 import Notiflix from 'notiflix';
+
+import './react-datetime.css';
+// import "react-datetime/css/react-datetime.css";
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -37,23 +44,31 @@ const initialValues = {
 
 const validationSchema = Yup.object().shape({
   category: Yup.string(),
-  amount: Yup.number().required('Amount is required'),
-  date: Yup.date().required('Date is required'),
+  amount: Yup.number()
+    .required('Amount is required')
+    .max(1000000, 'Amount cannot be more than 1000000')
+    .min(0, 'Amount cannot be negative'),
   comment: Yup.string()
     .matches(
       /^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/,
-      'Only alphabets are allowed for this field '
+      'Only alphabets are allowed for this field'
     )
     .max(100, 'A maximum of 100 characters can be added'),
 });
 
+const currentDate = moment();
+
 const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
+
   const balance = useSelector(state => state.auth.user.balance)
-  console.log(balance)
+ 
+
+  const [dateA, setDate] = useState('');
+
   const dispatch = useDispatch();
-  
+
 
   const handlClose = event => {
     if (event.currentTarget === event.target) {
@@ -82,6 +97,7 @@ const ModalAddTransactions = ({ onClose }) => {
   );
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
+
   
    if (balance < amount && !income) {
         Notiflix.Notify.warning('You have not enough money on your balance')
@@ -89,9 +105,9 @@ const ModalAddTransactions = ({ onClose }) => {
      dispatch(
       addTransaction({
           isIncome: income,
-          category: select || 'Main expenses',
+          category: select,
           amount,
-          date,
+           date: dateA ? dateA : currentDate,
           comment,
         })
       );
@@ -99,16 +115,28 @@ const ModalAddTransactions = ({ onClose }) => {
       dispatch(changeModalStatus(!modalAddTransactionStatus));
      
       }
-      
-
     
-    
-  
-
   };
 
-  const handleChange = event => {
+  const handleChangeSelect = event => {
     setSelect(event.label);
+  };
+
+  const handleChangeDate = date => {
+    setDate(date.format('M-D-YYYY'));
+  };
+
+  const isValidDate = currentDate => {
+    const tomorrowMoment = moment().add(0, 'day');
+
+    return currentDate.isBefore(tomorrowMoment);
+    // current.isAfter(moment2017) &&
+  };
+
+  const inputProps = {
+    required: true,
+    readOnly: true,
+    className: `${style.input} ${style.inputDate}`,
   };
 
   return createPortal(
@@ -177,7 +205,8 @@ const ModalAddTransactions = ({ onClose }) => {
                   blurInputOnSelect={false}
                   theme={selectDefaultColor}
                   styles={selectStyles}
-                  onChange={handleChange}
+                  onChange={handleChangeSelect}
+                  required
                 />
               ) : (
                 <>
@@ -192,7 +221,8 @@ const ModalAddTransactions = ({ onClose }) => {
                     tabSelectsValue
                     theme={selectDefaultColor}
                     styles={selectStyles}
-                    onChange={handleChange}
+                    onChange={handleChangeSelect}
+                    required
                   />
                 </>
               )}
@@ -202,7 +232,7 @@ const ModalAddTransactions = ({ onClose }) => {
                   type="number"
                   name="amount"
                   placeholder="0.00"
-                  className={style.input}
+                  className={`${style.input} ${style.inputAmount}`}
                   // onKeyDown={evt => evt.key !== 69 && evt.preventDefault()}
                 />
                 <ErrorMessage
@@ -211,17 +241,33 @@ const ModalAddTransactions = ({ onClose }) => {
                   className={`${style.errorMessage} ${style.errorMessageAmount}`}
                 />
 
-                <Field
+                {/* <Field
                   type="date"
                   name="date"
                   placeholder="Select date"
                   className={style.input}
-                />
-                <ErrorMessage
+                /> */}
+                <div className={style.dateContainer}>
+                  <Datetime
+                    initialValue={currentDate}
+                    value={dateA}
+                    dateFormat="D-M-YYYY"
+                    inputProps={inputProps}
+                    closeOnSelect={true}
+                    isValidDate={isValidDate}
+                    name="date"
+                    timeFormat={false}
+                    onChange={handleChangeDate}
+                    className={style.input}
+                  />
+
+                  <img src={calendar} alt="date" className={style.iconDate} />
+                  {/* <ErrorMessage
                   name="date"
                   component="div"
                   className={`${style.errorMessage} ${style.errorMessageDate}`}
-                />
+                /> */}
+                </div>
               </div>
               <div className={style.textareaContainer}>
                 <Field
