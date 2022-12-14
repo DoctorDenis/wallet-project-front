@@ -24,6 +24,7 @@ import close from '../../assets/images/Close-min.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
+import Notiflix from 'notiflix';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -49,7 +50,8 @@ const validationSchema = Yup.object().shape({
 const ModalAddTransactions = ({ onClose }) => {
   const [income, setIncome] = useState(false);
   const [select, setSelect] = useState('');
-
+  const balance = useSelector(state => state.auth.user.balance)
+  console.log(balance)
   const dispatch = useDispatch();
   
 
@@ -81,11 +83,11 @@ const ModalAddTransactions = ({ onClose }) => {
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
   
-  
-      
-
-      dispatch(
-        addTransaction({
+   if (balance < amount && !income) {
+        Notiflix.Notify.warning('You have not enough money on your balance')
+   } else {
+     dispatch(
+      addTransaction({
           isIncome: income,
           category: select || 'Main expenses',
           amount,
@@ -95,6 +97,11 @@ const ModalAddTransactions = ({ onClose }) => {
       );
       resetForm();
       dispatch(changeModalStatus(!modalAddTransactionStatus));
+     
+      }
+      
+
+    
     
   
 
