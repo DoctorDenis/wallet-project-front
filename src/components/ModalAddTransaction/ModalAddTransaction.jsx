@@ -28,7 +28,7 @@ import calendar from '../../assets/images/date.svg';
 import { changeModalStatus } from '../../redux/global/global-actions';
 
 import style from './modalAddTransaction.module.scss';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 
 import './react-datetime.css';
 // import "react-datetime/css/react-datetime.css";
@@ -45,9 +45,9 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   category: Yup.string(),
   amount: Yup.number()
+    .positive('Amount cannot be negative')
     .required('Amount is required')
-    .max(1000000, 'Amount cannot be more than 1000000')
-    .min(0, 'Amount cannot be negative'),
+    .max(1000000, 'Amount cannot be more than 1000000'),
   comment: Yup.string()
     .matches(
       /^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/,
@@ -96,7 +96,7 @@ const ModalAddTransactions = ({ onClose }) => {
 
   const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
     if (balance < amount && !income) {
-      Notiflix.Notify.warning('You have not enough money on your balance');
+      Notify.warning('You have not enough money on your balance');
     } else {
       dispatch(
         addTransaction({
