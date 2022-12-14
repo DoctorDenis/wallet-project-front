@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './HomeTab.module.scss';
-import EllipsisText from 'react-ellipsis-text';
+//import EllipsisText from 'react-ellipsis-text';
 import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
@@ -17,7 +17,7 @@ const Table = props => {
   return (
     <table className={css.table}>
       <thead className={css.table_head}>
-        <tr>
+        <tr className={css.tr_head}>
           <td key={nanoid()} className={css.header_table}>
             Date
           </td>
@@ -36,6 +36,9 @@ const Table = props => {
           <td key={nanoid()} className={css.header_table}>
             Balance
           </td>
+          {/* <td key={nanoid()} className={css.header_table}>
+            
+          </td> */}
         </tr>
       </thead>
 
@@ -51,11 +54,13 @@ const Table = props => {
             >
               {row.isIncome ? '+' : '-'}
             </td>
-            <td key={nanoid()} className={css.rows}>
-              {<EllipsisText text={row.category} length={10} />}
+            <td key={nanoid()} className={css.rows_com}>
+              {row.category}
+              {/* {<EllipsisText text={row.category} length={10} />} */}
             </td>
-            <td key={nanoid()} className={css.rows}>
-              {<EllipsisText text={row.comment} length={13} />}
+            <td key={nanoid()} className={css.rows_com}>
+              {row.comment}
+              {/* {<EllipsisText  text={row.comment} length={10} />} */}
             </td>
             <td
               key={nanoid()}
@@ -66,10 +71,11 @@ const Table = props => {
             <td key={nanoid()} className={css.rows}>
               {row.balance}
             </td>
+
             <td
               key={nanoid()}
               onClick={() => deleteTrans(row._id)}
-              className={css.rows}
+              className={css.rows_del}
             >
               <img className={css.delete_icon} src={Delete} alt="delete" />
             </td>
