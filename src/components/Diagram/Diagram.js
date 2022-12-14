@@ -5,13 +5,16 @@ import { useSelector } from 'react-redux';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+import { optionsChart } from 'utils/optionsChart';
 import colors from '../../assets/styles/_colors.scss';
+
 import styles from './Diagram.module.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Diagram({ arrForRenderDonat }) {
   const bal = useSelector(state => state.auth.user.balance);
+  const [options, setOptionsChart] = useState(optionsChart);
 
   const [data, setData] = useState({
     datasets: [
@@ -107,12 +110,11 @@ export default function Diagram({ arrForRenderDonat }) {
           },
         ],
       };
+      const newOptionsChart = { plugins: { tooltip: true } };
+      setOptionsChart(newOptionsChart);
       setData(newData);
     } else {
       const newData = {
-        // options: {
-        //   tooltips: false,
-        // },
         datasets: [
           {
             label: 'You are have not expenses in current period',
@@ -126,13 +128,16 @@ export default function Diagram({ arrForRenderDonat }) {
         ],
         labelTextColors: colors.colorGreenDeep,
       };
+      const newOptionsChart = { plugins: { tooltip: false } };
+
+      setOptionsChart(newOptionsChart);
       setData(newData);
     }
   }, [arrForRenderDonat]);
 
   return (
     <div className={styles.diagram}>
-      <Doughnut data={data} options={{ plugins: { tooltip: false } }} />
+      <Doughnut data={data} options={options} />
       <p className={styles.sumExpensesIntoDiagram}>{bal.toFixed(2)}</p>
     </div>
   );
