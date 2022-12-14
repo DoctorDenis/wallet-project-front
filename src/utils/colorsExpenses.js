@@ -10,4 +10,11 @@ export const colorsExpenses = [
   colors.colorGreenLight,
   colors.colorGreen,
   colors.colorGreenDeep,
+  colors.colorRed,
+  colors.colorBlueNotactive,
+  colors.colorMainText,
+  colors.colorAccent,
+  colors.colorWhite,
+  colors.colorGrey,
+  colors.colorGreyLight,
 ];

@@ -1,4 +1,4 @@
-import EllipsisText from 'react-ellipsis-text';
+//import EllipsisText from 'react-ellipsis-text';
 import React from 'react';
 import { useEffect } from 'react';
 import css from './HomeTabMobile.module.scss';
@@ -88,8 +88,9 @@ dispatch(deleteTransaction(id))
               }
             >
               <p className={css.name}>Category</p>
-              <p className={css.value}>
-                {<EllipsisText text={item.category} length={8} />}
+              <p className={css.value_com}>
+                {item.category}
+                {/* {<EllipsisText text={item.category} length={8} />} */}
               </p>
             </li>
             <li
@@ -99,8 +100,9 @@ dispatch(deleteTransaction(id))
               }
             >
               <p className={css.name}>Comment</p>
-              <p className={css.value}>
-                {<EllipsisText text={item.comment} length={8} />}
+              <p className={css.value_com}>
+                {item.comment}
+                {/* {<EllipsisText text={item.comment} length={8} />} */}
               </p>
             </li>
             <li

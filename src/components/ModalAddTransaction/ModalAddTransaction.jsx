@@ -63,6 +63,7 @@ const ModalAddTransactions = ({ onClose }) => {
   const [dateA, setDate] = useState('');
   const dispatch = useDispatch();
 
+
   const handlClose = event => {
     if (event.currentTarget === event.target) {
       onClose();
