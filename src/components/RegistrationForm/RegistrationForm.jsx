@@ -47,7 +47,11 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must contain at least 6 characters')
     .max(16, 'Password must contain 16 characters or less')
-    .required('Password is required'),
+    .required('Password is required')
+    .matches(/^[A-Za-z0-9!@#$%^&*()_+!А-Яа-я]+$/, {
+      message: 'Password must not contain space sign',
+      excludeEmptyString: true,
+    }),
   confirmPass: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Password must match')
     .required('Confirm password is required'),

@@ -3,7 +3,7 @@ import { register, login, logout, getCurrentUser } from './auth-operations';
 import {
   // getTransaction,
   addTransaction,
-  getTransaction,
+  // getTransaction,
   deleteTransaction,
 } from '../transaction/transaction-operations';
 
