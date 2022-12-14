@@ -2,23 +2,20 @@
 @import '../../assets/styles/_font.scss';
 @import '../../assets/styles/colors';
 
-
-
-.table_body{
-min-width: 100px;
-display: block;
-//width: 720px;
-max-height: 350px;
-overflow-y: scroll;
-
+.table_body {
+  min-width: 100px;
+  display: block;
+  //width: 720px;
+  max-height: 350px;
+  overflow-y: scroll;
 }
-.tr{
+.tr {
   min-width: 100px;
   height: 58px;
-      // display: flex;
-      //   justify-content: space-between;
+  // display: flex;
+  //   justify-content: space-between;
   padding: 15px;
-  border-bottom: 1px solid #DCDCDF;
+  border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
@@ -26,15 +23,14 @@ overflow-y: scroll;
   display: block;
   @include font-circe-medium;
   border-radius: 30px;
-   overflow: hidden;
-    //width: 720px;
+  overflow: hidden;
+  //width: 720px;
   background-color: white;
   margin-top: 16px;
   margin-bottom: 16px;
   border-right: none;
-  
+
   color: $color-main-text;
-  
 }
 
 .header_table {
@@ -44,10 +40,8 @@ overflow-y: scroll;
   text-align: center;
 }
 
-
-
 .rows {
-@include font-circe-small;
+  @include font-circe-small;
   text-align: center;
   min-width: 100px;
   height: 52px;
@@ -55,90 +49,88 @@ overflow-y: scroll;
   color: $color-main-text;
 }
 
-.rows_com{
+.rows_com {
   text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-      text-align: center;
-        max-width: 100px;
-        height: 52px;
-        padding-left: 8px;
-        color: $color-main-text;
-        &:hover{
-          overflow: visible;
-          white-space:pre-wrap;
-        }
-}
-.rows_del{
+  overflow: hidden;
+  white-space: nowrap;
   text-align: center;
-    min-width: 50px;
-    height: 52px;
-    padding-left: 8px;
+  max-width: 100px;
+  height: 52px;
+  padding-left: 8px;
+  color: $color-main-text;
+  &:hover {
+    overflow: visible;
+    white-space: pre-wrap;
+  }
 }
-.home_tab{
-    
-        @media screen and (min-width: 1280px) {
-          //min-height: 600px;
-          position: absolute;
-          // border-left: 1px solid #E7E5F2;
-          //   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
-            left: 620px;
-        top: 130px;
-        }
+.rows_del {
+  text-align: center;
+  min-width: 50px;
+  height: 52px;
+  padding-left: 8px;
+}
+.home_tab {
+  @media screen and (min-width: 1280px) {
+    //min-height: 600px;
+    position: absolute;
+    // border-left: 1px solid #E7E5F2;
+    //   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+    left: 620px;
+    top: 130px;
+  }
 }
 .rows_true {
- 
-@include font-circe-small;
+  @include font-circe-small;
   text-align: center;
   min-width: 100px;
   height: 52px;
   padding-left: 8px;
 
-    color: $color-green;
-    
-  }
+  color: $color-green;
+}
 
 .rows_false {
-@include font-circe-small;
+  @include font-circe-small;
   text-align: center;
   min-width: 100px;
   height: 52px;
- padding-left: 8px;
-color: $color-red;
-  
+  padding-left: 8px;
+  color: $color-red;
 }
 
-.not_trans{
+.not_trans {
   width: 280px;
   margin: 0 auto;
-    @media screen and (min-width: 1280px) {
-      margin-right: 300px;
-    }
+  @media screen and (min-width: 1280px) {
+    margin-right: 300px;
+  }
 }
-.input_search{
-      border-radius: 15px;
-        padding: 10px;
-        border: 0;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 20px;
-        @media screen and (min-width: 768px) {
-           margin: 0;
-          margin-bottom: 5px;
-
-          }
-       @media screen and (min-width: 1280px) {
-          position: absolute;
-              right: 20px;
-                top: 50px;
-                padding: 15px;
-                width: 25%;
-              
-             }
-      
+.input_search {
+  border-radius: 15px;
+  padding: 10px;
+  width: 280px;
+  border: 0;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  &:focus {
+    outline: none;
+    border: 2px solid $color-accent;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    padding: 15px;
+    width: 25%;
+  }
 }
 
-.delete_icon{
+.delete_icon {
   width: 24px;
   height: 24px;
   display: flex;
@@ -146,15 +138,13 @@ color: $color-red;
   align-items: center;
   cursor: pointer;
 }
-.spiner{
-display: flex;
-justify-content: center;
-    @media screen and (min-width: 1280px) {
-      position: absolute;
-        right: 400px;
-    
-      }
-  
+.spiner {
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    right: 400px;
+  }
 }
 // .tr_head{
 //   min-width: 115px;
