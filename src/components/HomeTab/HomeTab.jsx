@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './HomeTab.module.scss';
-//import EllipsisText from 'react-ellipsis-text';
 import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import HomeTabMobile from 'components/HomeTabMobile/HomeTabMobile';
@@ -36,9 +35,6 @@ const Table = props => {
           <td key={nanoid()} className={css.header_table}>
             Balance
           </td>
-          {/* <td key={nanoid()} className={css.header_table}>
-            
-          </td> */}
         </tr>
       </thead>
 
@@ -56,11 +52,9 @@ const Table = props => {
             </td>
             <td key={nanoid()} className={css.rows_com}>
               {row.category}
-              {/* {<EllipsisText text={row.category} length={10} />} */}
             </td>
             <td key={nanoid()} className={css.rows_com}>
               {row.comment}
-              {/* {<EllipsisText  text={row.comment} length={10} />} */}
             </td>
             <td
               key={nanoid()}

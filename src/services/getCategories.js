@@ -9,6 +9,5 @@ export async function getCategories() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  console.log('data-categories:', data);
   return data;
 }

@@ -9,14 +9,10 @@ import Currency from './Currency/Currency.jsx';
 import Media from 'react-media';
 
 import Loader from './Loader/Loader';
-// import { useEffect } from 'react';
-// import axios from 'axios';
+
 import PrivateRoute from 'Routes/PrivateRoute.js';
 import PublicRoute from 'Routes/PublicRoute.js';
 
-// import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
-// import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
-// import LoginPage from '../pages/LoginPage/LoginPage';
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage.jsx')
 );
@@ -61,13 +57,11 @@ export const App = () => {
             </PrivateRoute>
           }
         >
-          {/* <Route index element={<Navigate to="/home" />} /> */}
           <Route
             index
             element={
               <Media queries={{ table: '(min-width: 767px)' }}>
                 {matches => {
-                  console.log('matches');
                   matches.table && <Navigate to="/home" />;
                 }}
               </Media>
@@ -81,7 +75,6 @@ export const App = () => {
             element={
               <Media queries={{ small: '(max-width: 767px)' }}>
                 {matches => {
-                  console.log('matches small');
                   matches.small ? <Currency /> : <Navigate to="/home" />;
                 }}
               </Media>

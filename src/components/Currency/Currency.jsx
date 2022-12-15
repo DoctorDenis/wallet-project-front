@@ -64,7 +64,6 @@ const Currency = () => {
       axios
         .get(`https://wallet-project.cyclic.app/currency`)
         .then(res => {
-          console.log(res.data.length);
           if (res.data.length) {
             localStorage.setItem('currency', JSON.stringify(res.data));
 

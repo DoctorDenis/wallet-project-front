@@ -5,9 +5,6 @@
   bottom: 4%;
   right: 6%;
 
-  //   position: absolute;
-  //   bottom: 30px;
-  //   right: 40px;
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -19,15 +16,10 @@
   }
 
   cursor: pointer;
-  @media screen and (min-width: 768px) {
-    // right: 30px;
-    // bottom: -100px;
-  }
+
   @media screen and (min-width: 1028px) {
     right: 2%;
-    // right: 30px;
-    // bottom: -150px;
-    // top: 650px;
+
   }
 }
 
