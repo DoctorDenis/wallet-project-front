@@ -3,18 +3,27 @@ import * as Yup from 'yup';
 const registerSchema = Yup.object().shape({
   email: Yup.string()
     .email('E-mail is invalid')
+    .matches(/^[A-Za-z0-9._-]{1,}@.+$/, {
+      message: 'Name section of email must not contain special symbols',
+      excludeEmptyString: true,
+    })
+    .email('E-mail is invalid')
     .min(10, 'E-mail must contain at least 10 characters')
     .max(63)
-    .matches(/^.{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.+$/, {
+    .matches(/^.{2,}@.+$/, {
       message: 'Name section of email must have at least 2 characters',
       excludeEmptyString: true,
     })
-    .matches(/^.+.\w{2,3}$/, {
-      message: 'Domain section invalid',
+    // .matches(/^.+.\w{2,3}$/, {
+    //   message: 'Domain section invalid',
+    //   excludeEmptyString: true,
+    // })
+    .matches(/^[A-Za-z0-9._]{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.\w+$/, {
+      message: 'Email must not start with "-"',
       excludeEmptyString: true,
     })
-    .matches(/^[A-Za-z0-9.]{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.\w{2,3}$/, {
-      message: 'Email must not start with "-"',
+    .matches(/^.+\.\w{2,3}$/, {
+      message: 'Domain section of email must not contain 2 or 3 letters',
       excludeEmptyString: true,
     })
     .required('E-mail is required'),

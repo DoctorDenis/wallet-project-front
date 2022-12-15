@@ -143,3 +143,15 @@
 .input_search_hidden{
   display: none;
 }
+ .search_message {
+  text-align: center;
+        padding-top: 2rem;
+    @media screen and (min-width: 768px) {
+      padding-top: 2rem;
+text-align: center;
+      }
+    
+      @media screen and (min-width: 1280px) {
+text-align: right;
+      }
+ }
