@@ -1,5 +1,6 @@
 @import '../../assets/styles/colors';
 @import '../../assets/styles/font';
+@import '../../assets//styles/media';
 
 .titleTable {
   display: flex;
@@ -32,4 +33,15 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.list {max-height: 500px;
+  @include media-tablet {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+            @include media-desktop {
+      max-height: 500px;
+        overflow-y: scroll;
+            }
 }

@@ -12,24 +12,7 @@
   }
 }
 
-// @keyframes showModal {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(-500px);
-//   }
-
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0px);
-//   }
-// }
-
 .backdrop {
-  // position: fixed;
-  // top: 69px;
-  // right: 0;
-  // left: 0;
-  // bottom: 0;
   position: fixed;
   top: 0;
   right: 0;
@@ -37,40 +20,29 @@
   width: 100vw;
   height: 100%;
 
-  // display: flex;
-  // justify-content: center;
-  // align-items: flex-start;
   transition: all 0.3s;
   animation: showBackdrop 0.3s ease-out;
   @include media-tablet {
-    // top: 0;
-    // align-items: center;
     background-color: rgba(0, 0, 0, 0.25);
   }
 }
 
 .modal {
   padding-top: 20px;
-  // padding-bottom: 37;
-  // padding-right: 20px;
-  // padding-left: 20px;
+
   position: fixed;
   top: 50%;
   left: 50%;
-  // top: 0;
+
   transform: translate(-50%, -50%) scaleX(1);
 
   width: 100%;
-  // min-height: 609px;
   height: 100%;
   overflow-y: scroll;
 
-  // position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start; // width: 100%;
-  // height: 100%;
-  // padding-top: 15px;
+  align-items: flex-start;
   background: $color-white;
   transition: all 0.3s;
   animation: showModal 0.3s ease-out;
@@ -105,9 +77,8 @@
 
 .wrapper {
   padding-top: 20px;
-  padding-bottom: 37;
-  // padding-right: 20px;
-  // padding-left: 20px;
+  padding-bottom: 50px;
+  margin-top: 50px;
   width: 280px;
   @include media-tablet {
     width: 100%;
@@ -198,8 +169,6 @@
   @include media-tablet {
     padding-left: 0px;
     width: 190px;
-
-    // text-align: center;
   }
 }
 
@@ -226,9 +195,6 @@
 
 .dateContainer {
   position: relative;
-  // text-align: center;
-  // padding-left: 16px;
-  // padding-right: 16px;
 }
 
 .iconDate {
@@ -282,14 +248,6 @@
     left: 0;
   }
 }
-
-// .errorMessageDate {
-//   bottom: 16%;
-
-//   @include media-tablet {
-//     bottom: 30%;
-//   }
-// }
 
 .errorMessageComment {
   bottom: 28%;

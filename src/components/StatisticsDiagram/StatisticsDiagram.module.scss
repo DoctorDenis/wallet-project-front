@@ -11,15 +11,10 @@
   }
   @include media-desktop {
     position: absolute;
-    // outline: 1px solid black;
-    // width: 784px;
-    // height: 773px;
     top: 0;
     left: 480px;
     padding: 32px 0px 44px 69px;
-    // border-left: 1px solid #e7e5f2;
-    // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-    //   1px 0px 0px #e7e5f2;
+
   }
 }
 
@@ -41,7 +36,6 @@
     flex-direction: inherit;
     justify-content: space-between;
     width: 336px;
-    // padding-top: 20px;
   }
 
   @include media-desktop {

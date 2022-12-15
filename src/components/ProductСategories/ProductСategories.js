@@ -14,7 +14,7 @@ export default class ProductСategories extends Component {
           <p>Category</p>
           <p>Sum</p>
         </div>
-        <ul>
+        <ul className={styles.list}>
           {statisctics?.map((statisctic, index) => (
             <li className={styles.item} key={statisctic._id}>
               <div

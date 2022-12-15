@@ -69,12 +69,13 @@ textBtn:hover {
   width: 280px;
 
   @include media-tablet {
-    height: auto;
+    height: 500px;
     width: 160px;
   }
 
   @include media-desktop {
     width: 182px;
+    max-height: auto;
   }
 }
 
