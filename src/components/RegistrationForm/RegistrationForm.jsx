@@ -1,17 +1,14 @@
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-// import {
-//   // useState,
-//   useEffect,
-// } from 'react';
+
 import { register } from '../../redux/auth/auth-operations';
-// import axios from 'axios';
 import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
 import TextField from '../TextField/TextField';
 import LogoWallet from '../LogoWallet/LogoWallet';
+
+import registerSchema from '../../shared/schemas/registerSchema';
 
 import style from './RegistrationForm.module.scss';
 
@@ -26,74 +23,11 @@ const initialValues = {
   name: '',
 };
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('E-mail is invalid')
-    .min(10, 'E-mail must contain at least 10 characters')
-    .max(63)
-    .matches(/^.{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.+$/, {
-      message: 'Name section of email must have at least 2 characters',
-      excludeEmptyString: true,
-    })
-    .matches(/^.+.\w{2,3}$/, {
-      message: 'Domain section invalid',
-      excludeEmptyString: true,
-    })
-    .matches(/^[A-Za-z0-9.]{1}[A-Za-z0-9._-]{1,}@[A-Za-z0-9]+.\w{2,3}$/, {
-      message: 'Email must not start with "-"',
-      excludeEmptyString: true,
-    })
-    .required('E-mail is required'),
-  password: Yup.string()
-    .min(6, 'Password must contain at least 6 characters')
-    .max(16, 'Password must contain 16 characters or less')
-    .required('Password is required')
-    .matches(/^[A-Za-z0-9!@#$%^&*()_+!А-Яа-я]+$/, {
-      message: 'Password must not contain space sign',
-      excludeEmptyString: true,
-    }),
-  confirmPass: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Password must match')
-    .required('Confirm password is required'),
-  name: Yup.string()
-    .min(1)
-    .max(12, 'Name must contain 12 characters or less')
-    .matches(
-      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/,
-      {
-        message:
-          'Name must contain only latin, cyrillic (ukrainian), space or hyphen',
-      }
-    )
-    .required('Name is required'),
-});
-
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [currency, setCurrency] = useState([]);
-
-  // useEffect(() => {
-  //   const currencyObj = JSON.parse(localStorage.getItem('currency'));
-  //   if (!currencyObj) {
-  //     axios
-  //       .get(`https://wallet-project.cyclic.app/currency`)
-  //       .then(res => {
-  //         localStorage.setItem('currency', JSON.stringify(res.data));
-  //         // setCurrency(res.data);
-  //       })
-  //       .catch(err => {
-  //         throw err;
-  //       });
-  //   }
-  //   // else {
-  //   //   setCurrency(currencyObj);
-  //   // }
-  //   // eslint-disable-next-line
-  // }, []);
 
   const handleSubmit = ({ email, password, name }, { resetForm }) => {
-    // const emailToLowerCase = email.toLowerCase();
     dispatch(register({ email, password, name }));
     resetForm();
   };
@@ -108,7 +42,7 @@ const RegistrationForm = () => {
       <LogoWallet />
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
         <Form className={style.form}>

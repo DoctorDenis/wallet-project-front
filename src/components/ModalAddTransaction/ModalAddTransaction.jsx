@@ -3,12 +3,10 @@ import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-// import 'moment/locale/'
 import Select from 'react-select';
 import Switch from 'react-switch';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-// import { useToken } from '../../shared/hooks/useToken';
+import { Notify } from 'notiflix';
 
 import Button from '../Button/Button';
 import ButtonActive from '../ButtonActive/ButtonActive';
@@ -20,6 +18,8 @@ import { selectStyles } from '../../helpers/styles/selectStyles';
 import { selectDefaultColor } from '../../helpers/styles/selectDefaultColor';
 import { addTransaction } from '../../redux/transaction/transaction-operations';
 
+import transactionsSchema from '../../shared/schemas/transactionsSchema';
+
 import minus from '../../assets/images/Vectors.svg';
 import vertical from '../../assets/images/Vector 5.svg';
 import close from '../../assets/images/Close-min.svg';
@@ -27,11 +27,8 @@ import calendar from '../../assets/images/date.svg';
 
 import { changeModalStatus } from '../../redux/global/global-actions';
 
-import style from './modalAddTransaction.module.scss';
-import Notiflix from 'notiflix';
-
 import './react-datetime.css';
-// import "react-datetime/css/react-datetime.css";
+import style from './modalAddTransaction.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -41,20 +38,6 @@ const initialValues = {
   date: '',
   comment: '',
 };
-
-const validationSchema = Yup.object().shape({
-  category: Yup.string(),
-  amount: Yup.number()
-    .required('Amount is required')
-    .max(1000000, 'Amount cannot be more than 1000000')
-    .min(0, 'Amount cannot be negative'),
-  comment: Yup.string()
-    .matches(
-      /^[aA-zZ\sА-ЩЬЮЯҐЄІЇа-щьюяґєії.,']+$/,
-      'Only alphabets are allowed for this field'
-    )
-    .max(100, 'A maximum of 100 characters can be added'),
-});
 
 const currentDate = moment();
 
@@ -94,9 +77,9 @@ const ModalAddTransactions = ({ onClose }) => {
     state => state.global.isModalAddTransactionOpen
   );
 
-  const handleSubmit = ({ amount, date, comment }, { resetForm }) => {
+  const handleSubmit = ({ amount, comment }, { resetForm }) => {
     if (balance < amount && !income) {
-      Notiflix.Notify.warning('You have not enough money on your balance');
+      Notify.warning('You have not enough money on your balance');
     } else {
       dispatch(
         addTransaction({
@@ -122,9 +105,7 @@ const ModalAddTransactions = ({ onClose }) => {
 
   const isValidDate = currentDate => {
     const tomorrowMoment = moment().add(0, 'day');
-
     return currentDate.isBefore(tomorrowMoment);
-    // current.isAfter(moment2017) &&
   };
 
   const inputProps = {
@@ -183,7 +164,7 @@ const ModalAddTransactions = ({ onClose }) => {
           </div>
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            validationSchema={transactionsSchema}
             onSubmit={handleSubmit}
           >
             <Form className={style.form}>
@@ -227,7 +208,6 @@ const ModalAddTransactions = ({ onClose }) => {
                   name="amount"
                   placeholder="0.00"
                   className={`${style.input} ${style.inputAmount}`}
-                  // onKeyDown={evt => evt.key !== 69 && evt.preventDefault()}
                 />
                 <ErrorMessage
                   name="amount"
@@ -235,12 +215,6 @@ const ModalAddTransactions = ({ onClose }) => {
                   className={`${style.errorMessage} ${style.errorMessageAmount}`}
                 />
 
-                {/* <Field
-                  type="date"
-                  name="date"
-                  placeholder="Select date"
-                  className={style.input}
-                /> */}
                 <div className={style.dateContainer}>
                   <Datetime
                     initialValue={currentDate}
@@ -256,11 +230,6 @@ const ModalAddTransactions = ({ onClose }) => {
                   />
 
                   <img src={calendar} alt="date" className={style.iconDate} />
-                  {/* <ErrorMessage
-                  name="date"
-                  component="div"
-                  className={`${style.errorMessage} ${style.errorMessageDate}`}
-                /> */}
                 </div>
               </div>
               <div className={style.textareaContainer}>

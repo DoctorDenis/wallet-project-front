@@ -7,11 +7,14 @@
     position: absolute;
     top: 30px;
     left: 420px;
+    // top: 40px;
+    // right: 32px;
     background-color: $color-accent;
     border-radius: 30px;
     height: 182px;
     // width: 336px;
     background-repeat: no-repeat;
+    background-size: contain;
     background-image: url(../../assets/images/Rectangle.png);
   }
 
