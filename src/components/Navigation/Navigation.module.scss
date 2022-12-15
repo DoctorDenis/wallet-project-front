@@ -51,11 +51,13 @@
 .svg{
     width: 38px;
     transition: 2s;
+  
         height: 38px;
     filter:opacity(75%) ;
 }
 .svg:hover {
      transition: 1s;
+   
     filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
      
   

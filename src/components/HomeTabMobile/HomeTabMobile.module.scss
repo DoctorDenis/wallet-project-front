@@ -14,11 +14,14 @@
 
 .transactions_false{
   margin-bottom: 1px;
-    padding-right: 25px;
+   
     height: 47px;
     display: flex;
    align-items: center;
     border-bottom: 1px solid #DCDCDF;
+    &:not(:last-child){
+padding-right: 25px;
+    }
  
 &::before {
         content: '';
@@ -34,11 +37,14 @@
 }
 .transactions_true {
     margin-bottom: 1px;
-    padding-right: 25px;
+
     height: 47px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #DCDCDF;
+        &:not(:last-child) {
+                padding-right: 25px;
+            }
 
     &::before {
         content: '';

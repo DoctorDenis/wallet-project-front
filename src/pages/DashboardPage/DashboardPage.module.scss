@@ -12,17 +12,21 @@
 }
 
 .backg {
-  padding-top: 85px;
-  min-height: 600px;
+    padding-top: 60px;
+  min-height: 100vh;
   background-color: $color-grey-bg-register;
   @media screen and (min-width: 768px) {
-    min-height: 1024px;
+min-height: 100vh;
+padding-top: 85px;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-image: url(../../assets/images/BackgrTablet.png);
   }
 
   @media screen and (min-width: 1280px) {
-    height: 1000px;
+    //height: 1000px;
+    min-height: 100vh;
     background-image: url(../../assets/images/BackgrDesctop.png);
   }
 }
@@ -36,7 +40,7 @@
     top: -15px;
     left: 450px;
     background-color: #c6c4d2;
-    height: 900px;
+    height: calc(100vh - 87px);
     border: 1px solid #c6c4d2;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
