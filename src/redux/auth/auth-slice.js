@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logout, getCurrentUser } from './auth-operations';
 import {
-  // getTransaction,
   addTransaction,
-  // getTransaction,
   deleteTransaction,
 } from '../transaction/transaction-operations';
 
@@ -44,8 +42,6 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       state.accesToken = payload.accesToken;
-
-      // state.refreshToken = payload.refreshToken;
     },
     [login.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -70,12 +66,7 @@ const authSlice = createSlice({
     [addTransaction.fulfilled]: (state, action) => {
       state.user.balance = action.payload.balance;
     },
-    // [addTransaction.rejected]: (state, action) => {
-    //   state.isLoggedIn = false;
-    // },
-    // [getTransaction.rejected]: (state, action) => {
-    //   state.isLoggedIn = false;
-    // },
+
     [deleteTransaction.fulfilled]: (state, action) => {
       state.user.balance = action.payload.balance;
     },

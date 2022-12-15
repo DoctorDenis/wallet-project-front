@@ -2,7 +2,6 @@
 @import '../../assets/styles/media';
 
 .blockdiagram {
-  // outline: 1px solid tomato;
   display: flex;
   flex-direction: column;
   @include media-tablet {

@@ -14,7 +14,6 @@ import storage from 'redux-persist/lib/storage';
 import combineReducers from './global/global-reducer';
 import authReducer from './auth/auth-slice';
 import transactionReducer from './transaction/transaction-slice';
-// import { transactionsReducer } from './slices/transactions';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 const persistConfig = {
@@ -29,7 +28,6 @@ export const store = configureStore({
   reducer: {
     global: combineReducers,
     auth: persistedReducer,
-    // transactions: transactionReducer,
     transactions: transactionReducer,
   },
   middleware: getDefaultMiddleware => [

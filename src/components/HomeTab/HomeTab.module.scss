@@ -5,7 +5,6 @@
 .table_body {
   min-width: 100px;
   display: block;
-  //width: 720px;
   height: 400px;
   overflow-y: scroll;
     @media screen and (min-width: 1280px) {
@@ -15,8 +14,6 @@
 .tr {
   min-width: 100px;
   height: 58px;
-  // display: flex;
-  //   justify-content: space-between;
   padding: 15px;
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
@@ -27,7 +24,6 @@
   @include font-circe-medium;
   border-radius: 30px;
   overflow: hidden;
-  //width: 720px;
   background-color: white;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -39,7 +35,6 @@
 .header_table {
   min-width: 100px;
   height: 58px;
-  //padding-left:15px;
   text-align: center;
 }
 
@@ -74,10 +69,7 @@
 }
 .home_tab {
   @media screen and (min-width: 1280px) {
-    //min-height: 600px;
     position: absolute;
-    // border-left: 1px solid #E7E5F2;
-    //   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
     left: 580px;
     top: 130px;
   }
@@ -118,7 +110,6 @@
   margin-bottom: 20px;
   &:focus {
     outline: 2px solid $color-accent;
-    // border: 2px solid $color-accent;
   }
   @media screen and (min-width: 768px) {
     margin: 0;
@@ -152,11 +143,3 @@
 .input_search_hidden{
   display: none;
 }
-// .tr_head{
-//   min-width: 115px;
-//       // width: 100%;
-//       //   display: flex;
-//       //   justify-content: space-around;
-//       //   align-items: center;
-//       //   padding: 15px;
-// }

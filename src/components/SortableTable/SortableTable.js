@@ -1,16 +1,9 @@
-// Таблиця для HomeTab з сортуванням
-// Використання
-// import SortableTable from 'components/SortableTable/SortableTable';
-// ...
-// <SortableTable data={reverseTransactions} />
-
-
 import React from 'react';
 import css from './SortableTable.module.scss';
 import { nanoid } from 'nanoid';
 import EllipsisText from 'react-ellipsis-text';
 import convertStringToDate from 'utils/convertStringToDate';
-import Delete from '../../assets/images/delete-button-min.svg'
+import Delete from '../../assets/images/delete-button-min.svg';
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -29,17 +22,18 @@ const useSortableData = (items, config = null) => {
             return sortConfig.direction === css.ascendingSort ? 1 : -1;
           }
         } else {
-          if (sortConfig.key === 'amount' || sortConfig.key === 'balance'){
-              return sortConfig.direction === css.ascendingSort ? b[sortConfig.key]-a[sortConfig.key] : a[sortConfig.key]-b[sortConfig.key];          
+          if (sortConfig.key === 'amount' || sortConfig.key === 'balance') {
+            return sortConfig.direction === css.ascendingSort
+              ? b[sortConfig.key] - a[sortConfig.key]
+              : a[sortConfig.key] - b[sortConfig.key];
           } else {
-          if (a[sortConfig.key] < b[sortConfig.key]) {
-            return sortConfig.direction === css.ascendingSort ? -1 : 1;
+            if (a[sortConfig.key] < b[sortConfig.key]) {
+              return sortConfig.direction === css.ascendingSort ? -1 : 1;
+            }
+            if (a[sortConfig.key] > b[sortConfig.key]) {
+              return sortConfig.direction === css.ascendingSort ? 1 : -1;
+            }
           }
-          if (a[sortConfig.key] > b[sortConfig.key]) {
-            return sortConfig.direction === css.ascendingSort ? 1 : -1;
-          }
-        }
-
         }
 
         return 0;
@@ -64,14 +58,23 @@ const useSortableData = (items, config = null) => {
 };
 
 const Row = props => {
-  const { date, isIncome, category, comment, amount, balance, deleteTrans, id } = props;
+  const {
+    date,
+    isIncome,
+    category,
+    comment,
+    amount,
+    balance,
+    deleteTrans,
+    id,
+  } = props;
   return (
     <tr className={css.trSortTable}>
       <td key={nanoid()} className={css.tdSortTable}>
-      {convertStringToDate(date)}
+        {convertStringToDate(date)}
       </td>
-      <td key={nanoid()} className={isIncome ?  css.rows_true : css.rows_false}>
-      {isIncome ? '+' : '-'}
+      <td key={nanoid()} className={isIncome ? css.rows_true : css.rows_false}>
+        {isIncome ? '+' : '-'}
       </td>
       <td key={nanoid()} className={css.tdSortTable}>
         {<EllipsisText text={category} length={10} />}
@@ -79,15 +82,19 @@ const Row = props => {
       <td key={nanoid()} className={css.tdSortTable}>
         {<EllipsisText text={comment} length={13} />}
       </td>
-      <td key={nanoid()} className={isIncome ?  css.rows_true : css.rows_false}>
+      <td key={nanoid()} className={isIncome ? css.rows_true : css.rows_false}>
         {amount}
       </td>
       <td key={nanoid()} className={css.tdSortTable}>
         {balance}
       </td>
-      <td key={nanoid()}  onClick={()=>deleteTrans(id)} className={css.tdSortTable} >
-              <img className={css.delete_icon} src={Delete} alt="delete" />
-            </td>      
+      <td
+        key={nanoid()}
+        onClick={() => deleteTrans(id)}
+        className={css.tdSortTable}
+      >
+        <img className={css.delete_icon} src={Delete} alt="delete" />
+      </td>
     </tr>
   );
 };
@@ -164,7 +171,7 @@ const SortableTable = props => {
       <tbody className={css.bodySortTable}>
         {items.map(item => (
           <Row
-          id={item._id}
+            id={item._id}
             key={nanoid()}
             isIncome={item.isIncome}
             date={item.date}

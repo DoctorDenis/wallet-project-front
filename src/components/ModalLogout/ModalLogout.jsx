@@ -27,7 +27,6 @@ const ModalLogout = ({ isOpened, closeModal }) => {
     >
       <div className="modal_body">
         <button className="modal_close" onClick={() => closeModal()}>
-          {/* × */}
           <img className="close_svg" src={Close} alt="Close" />
         </button>
         <h2>Do you want to exit?</h2>
