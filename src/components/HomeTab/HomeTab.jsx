@@ -152,15 +152,17 @@ const HomeTab = () => {
 
   return (
     <>
-      <input
-        placeholder="Search"
-        className={transactions?.length===0 ? css.input_search_hidden : css.input_search}
-        value={query}
-        type={'text'}
-        onChange={e => {
-          setQuery(e.currentTarget.value);
-        }}
-      />
+      {transactions && transactions.length > 0 && (
+        <input
+          placeholder="Search"
+          className={css.input_search}
+          value={query}
+          type={'text'}
+          onChange={e => {
+            setQuery(e.currentTarget.value);
+          }}
+        />
+      )}
       {status ? (
         <div className={css.spiner}>
           <div className="spinner-border" role="status">
