@@ -2,12 +2,28 @@
 @import '../../assets/styles/_font.scss';
 @import '../../assets/styles/colors';
 
-.theadSortTable {
+.table_body {
+  min-width: 100px;
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+  @media screen and (min-width: 1280px) {
+    height: 540px;
+  }
+}
+.tr {
+  min-width: 100px;
+  height: 58px;
+  padding: 15px;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.table_head {
   display: block;
   @include font-circe-medium;
   border-radius: 30px;
   overflow: hidden;
-  width: 704px;
   background-color: white;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -16,32 +32,79 @@
   color: $color-main-text;
 }
 
-.thSortTable {
-  min-width: 115px;
+.header_table {
+  min-width: 100px;
   height: 58px;
   text-align: center;
 }
 
-.bodySortTable {
-  min-width: 115px;
-  display: block;
-  height: 350px;
-overflow: scroll;
-}
-
-.trSortTable {
-  height: 58px;
-  border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-}
-
-.tdSortTable {
+.rows {
   @include font-circe-small;
   text-align: center;
-  min-width: 115px;
+  min-width: 100px;
+  max-width: 100px;
   height: 52px;
   padding-left: 8px;
   color: $color-main-text;
+}
+
+.rows_com {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  max-width: 105px;
+  min-width: 105px;
+  height: 52px;
+  padding-left: 8px;
+  color: $color-main-text;
+  &:hover {
+    overflow: visible;
+    white-space: pre-wrap;
+  }
+}
+.rows_del {
+  text-align: center;
+  max-width: 50px;
+  min-width: 50px;
+  height: 52px;
+  padding-left: 8px;
+}
+.home_tab {
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    left: 580px;
+    top: 130px;
+  }
+}
+.rows_true {
+  @include font-circe-small;
+  text-align: center;
+  max-width: 100px;
+  min-width: 100px;
+  height: 52px;
+  padding-left: 8px;
+
+  color: $color-green;
+}
+
+.rows_false {
+  @include font-circe-small;
+  text-align: center;
+  max-width: 100px;
+  min-width: 100px;
+  height: 52px;
+  padding-left: 8px;
+  color: $color-red;
+}
+
+.delete_icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  cursor: pointer;
 }
 
 thead button {
@@ -74,35 +137,3 @@ thead button {
   display: inline-block;
   margin-left: 3px;
 }
-
-
-.rows_true {
- 
-  @include font-circe-small;
-    text-align: center;
-    min-width: 115px;
-    height: 52px;
-    padding-left: 8px;
-  
-      color: $color-green;
-      
-    }
-  
-  .rows_false {
-  @include font-circe-small;
-    text-align: center;
-    min-width: 115px;
-    height: 52px;
-    padding-left: 8px;
-  color: $color-red;
-    
-  }
-
-  .delete_icon{
-    width: 24px;
-    height: 24px;
-    display: flex;
-    border-radius: 50px;
-    align-items: center;
-    cursor: pointer;
-  }
