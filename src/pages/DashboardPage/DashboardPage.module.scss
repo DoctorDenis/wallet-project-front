@@ -12,6 +12,7 @@
 }
 
 .backg {
+
   padding-top: 85px;
   padding-bottom: 30px;
   height: 100%;
@@ -25,6 +26,7 @@
 
   @media screen and (min-width: 1280px) {
     // height: 1000px;
+
     background-image: url(../../assets/images/BackgrDesctop.png);
   }
 }
@@ -38,7 +40,7 @@
     top: -15px;
     left: 450px;
     background-color: #c6c4d2;
-    height: 900px;
+    height: calc(100vh - 87px);
     border: 1px solid #c6c4d2;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
