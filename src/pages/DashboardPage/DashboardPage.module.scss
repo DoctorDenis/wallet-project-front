@@ -2,47 +2,45 @@
 @import '../../assets/styles/_font.scss';
 @import '../../assets/styles/colors';
 
-
 .container {
-    @media screen and (min-width: 768px) {
-         position: relative;
-    }
-    
-        @media screen and (min-width: 1280px) {}
-    
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
 }
 
 .backg {
-min-height: 600px;
-background-color:$color-grey-bg-register;
-@media screen and (min-width: 768px) {
-    min-height: 1024px;
- background-size:cover;
-background-image: url(../../assets/images/BackgrTablet.png);
+  min-height: calc(100vh - 60px);
+  background-color: $color-grey-bg-register;
+  @media screen and (min-width: 768px) {
+min-height: calc(100vh - 85px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../../assets/images/BackgrTablet.png);
+  }
 
-
+  @media screen and (min-width: 1280px) {
+    //height: 1000px;
+    min-height: calc(100vh - 85px);
+    background-image: url(../../assets/images/BackgrDesctop.png);
+  }
 }
 
-    @media screen and (min-width: 1280px) {
-        height: 1000px;
-background-image: url(../../assets/images/BackgrDesctop.png)
-    }
-   
-}
-
-.vertical{
-    display: none;
-    @media screen and (min-width: 1280px) {
-                width: 0px;
-                display: block;
-                position: absolute;
-                top: -15px;
-                left: 450px;
-                background-color: #c6c4d2;
-                height: 900px;
-                border: 1px solid #c6c4d2;
-                box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-                1px 0px 0px rgba(255, 255, 255, 0.6);
-
-}
+.vertical {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    width: 0px;
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 450px;
+    background-color: #c6c4d2;
+    height: calc(100vh - 85px);
+    border: 1px solid #c6c4d2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
 }

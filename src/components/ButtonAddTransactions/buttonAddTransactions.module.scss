@@ -10,6 +10,9 @@
 
     background-color: $color-green;
     cursor: pointer;
+    &:hover{
+        background-color: $color-green-dark;
+    }
 @media screen and (min-width: 768px) {
     right: 30px;
       bottom: -100px;

@@ -104,7 +104,7 @@ const ModalAddTransactions = ({ onClose }) => {
           category: select,
           amount: Number(amount.toFixed(2)),
           date: dateA ? dateA : currentDate,
-          comment,
+          comment: "No comment",
         })
       );
       resetForm();

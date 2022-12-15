@@ -154,7 +154,7 @@ const HomeTab = () => {
     <>
       <input
         placeholder="Search"
-        className={css.input_search}
+        className={transactions?.length===0 ? css.input_search_hidden : css.input_search}
         value={query}
         type={'text'}
         onChange={e => {
