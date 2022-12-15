@@ -2,7 +2,7 @@
   "name": "wallet-project-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://doctordenis.github.io/wallet-project-front/",
+  "homepage": "https://639b26615080cd199f498b80--frabjous-crostata-3bb425.netlify.app/wallet-project-front/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.3",
