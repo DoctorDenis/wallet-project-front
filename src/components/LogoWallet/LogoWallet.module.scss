@@ -19,8 +19,7 @@
 }
 
 .text {
-  @include font-poppins-medium-light;
-  font-size: 18px;
+  @include font-poppins-medium;
 
   @media (min-width: 768px) {
     @include font-poppins-medium-big;

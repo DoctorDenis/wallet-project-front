@@ -11,26 +11,29 @@ const Header = ({ openModalLogout }) => {
 
   return (
     <Container>
-      <header className={css.header}>
-        <Link className={css.header_right} to="/home">
-          <img className={css.header_logo} src={Wallet} alt="wallet" />
-          <h1 className={css.title}>Wallet</h1>
-        </Link>
-        <div className={css.header_left}>
-          <p className={css.text}>{name}</p>
-          <img
-            className={css.exit_svg}
-            src={Exit}
-            alt="exit"
-            onClick={() => openModalLogout()}
-          />
-
-          {/* <button className={css.exit_button} onClick={() => dispatch(logout())}> */}
-          <button className={css.exit_button} onClick={() => openModalLogout()}>
-            Exit
-          </button>
-        </div>
-      </header>
+      <div className={css.header_container}>
+        <header className={css.header}>
+          <Link className={css.header_right} to="/home">
+            <img className={css.header_logo} src={Wallet} alt="wallet" />
+            <h1 className={css.title}>Wallet</h1>
+          </Link>
+          <div className={css.header_left}>
+            <p className={css.text}>{name}</p>
+            <img
+              className={css.exit_svg}
+              src={Exit}
+              alt="exit"
+              onClick={() => openModalLogout()}
+            />
+            <button
+              className={css.exit_button}
+              onClick={() => openModalLogout()}
+            >
+              Exit
+            </button>
+          </div>
+        </header>
+      </div>
     </Container>
   );
 };
