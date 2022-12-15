@@ -12,21 +12,21 @@
 }
 
 .backg {
-    padding-top: 60px;
-  min-height: 100vh;
+
+  padding-top: 85px;
+  padding-bottom: 30px;
+  height: 100%;
   background-color: $color-grey-bg-register;
   @media screen and (min-width: 768px) {
-min-height: 100vh;
-padding-top: 85px;
+    // min-height: 1024px;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+      height: 100vh;
     background-image: url(../../assets/images/BackgrTablet.png);
   }
 
   @media screen and (min-width: 1280px) {
-    //height: 1000px;
-    min-height: 100vh;
+    // height: 1000px;
+
     background-image: url(../../assets/images/BackgrDesctop.png);
   }
 }

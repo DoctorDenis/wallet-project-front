@@ -6,8 +6,11 @@
   min-width: 100px;
   display: block;
   //width: 720px;
-  max-height: 350px;
+  height: 400px;
   overflow-y: scroll;
+    @media screen and (min-width: 1280px) {
+  height: 540px;
+      }
 }
 .tr {
   min-width: 100px;
@@ -75,7 +78,7 @@
     position: absolute;
     // border-left: 1px solid #E7E5F2;
     //   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
-    left: 620px;
+    left: 580px;
     top: 130px;
   }
 }
@@ -114,8 +117,8 @@
   margin: 0 auto;
   margin-bottom: 20px;
   &:focus {
-    outline: none;
-    border: 2px solid $color-accent;
+    outline: 2px solid $color-accent;
+    // border: 2px solid $color-accent;
   }
   @media screen and (min-width: 768px) {
     margin: 0;
@@ -123,7 +126,7 @@
   }
   @media screen and (min-width: 1280px) {
     position: absolute;
-    right: 20px;
+    right: 40px;
     top: 50px;
     padding: 15px;
     width: 25%;

@@ -1,4 +1,3 @@
-//import EllipsisText from 'react-ellipsis-text';
 import React from 'react';
 import { useEffect } from 'react';
 import css from './HomeTabMobile.module.scss';
@@ -109,10 +108,7 @@ const HomeTabMobile = ({ query }) => {
               }
             >
               <p className={css.name}>Category</p>
-              <p className={css.value_com}>
-                {item.category}
-                {/* {<EllipsisText text={item.category} length={8} />} */}
-              </p>
+              <p className={css.value_com}>{item.category}</p>
             </li>
             <li
               key={nanoid()}
@@ -121,10 +117,7 @@ const HomeTabMobile = ({ query }) => {
               }
             >
               <p className={css.name}>Comment</p>
-              <p className={css.value_com}>
-                {item.comment}
-                {/* {<EllipsisText text={item.comment} length={8} />} */}
-              </p>
+              <p className={css.value_com}>{item.comment}</p>
             </li>
             <li
               key={nanoid()}

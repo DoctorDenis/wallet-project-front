@@ -5,7 +5,7 @@
 .section {
   @include media-tablet {
     position: relative;
-    padding-top: 60px;
+    padding-top: 20px;
     padding-bottom: 48px;
     background-color: $color-grey-bg-register;
     margin: 0 auto;
@@ -14,7 +14,7 @@
   @include media-desktop {
     padding-top: 52px;
     padding-bottom: 52px;
-
+height: 100vh;
     background-image: url('../../assets/images/BackgrDesckRideSide.png');
     background-repeat: no-repeat;
     background-size: 55% 100%;
@@ -68,7 +68,7 @@
     justify-content: space-evenly;
 
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
 
   @include media-desktop {
