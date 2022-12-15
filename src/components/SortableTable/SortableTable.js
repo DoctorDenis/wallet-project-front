@@ -1,7 +1,12 @@
+// Таблиця для HomeTab з сортуванням
+// Використання
+// import SortableTable from 'components/SortableTable/SortableTable';
+// ...
+// <SortableTable data={reverseTransactions} />
+
 import React from 'react';
 import css from './SortableTable.module.scss';
 import { nanoid } from 'nanoid';
-import EllipsisText from 'react-ellipsis-text';
 import convertStringToDate from 'utils/convertStringToDate';
 import Delete from '../../assets/images/delete-button-min.svg';
 
@@ -69,29 +74,29 @@ const Row = props => {
     id,
   } = props;
   return (
-    <tr className={css.trSortTable}>
-      <td key={nanoid()} className={css.tdSortTable}>
+    <tr className={css.tr}>
+      <td key={nanoid()} className={css.rows}>
         {convertStringToDate(date)}
       </td>
       <td key={nanoid()} className={isIncome ? css.rows_true : css.rows_false}>
         {isIncome ? '+' : '-'}
       </td>
-      <td key={nanoid()} className={css.tdSortTable}>
-        {<EllipsisText text={category} length={10} />}
+      <td key={nanoid()} className={css.rows_com}>
+        {category}
       </td>
-      <td key={nanoid()} className={css.tdSortTable}>
-        {<EllipsisText text={comment} length={13} />}
+      <td key={nanoid()} className={css.rows_com}>
+        {comment}
       </td>
       <td key={nanoid()} className={isIncome ? css.rows_true : css.rows_false}>
-        {amount}
+        {amount.toFixed(2)}
       </td>
-      <td key={nanoid()} className={css.tdSortTable}>
-        {balance}
+      <td key={nanoid()} className={css.rows}>
+        {balance.toFixed(2)}
       </td>
       <td
         key={nanoid()}
         onClick={() => deleteTrans(id)}
-        className={css.tdSortTable}
+        className={css.rows_del}
       >
         <img className={css.delete_icon} src={Delete} alt="delete" />
       </td>
@@ -110,9 +115,9 @@ const SortableTable = props => {
   };
   return (
     <table>
-      <thead className={css.theadSortTable}>
-        <tr>
-          <th className={css.thSortTable}>
+      <thead className={css.table_head}>
+        <tr className={css.tr_head}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('date')}
@@ -121,7 +126,7 @@ const SortableTable = props => {
               Date
             </button>
           </th>
-          <th className={css.thSortTable}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('isIncome')}
@@ -130,7 +135,7 @@ const SortableTable = props => {
               Type
             </button>
           </th>
-          <th className={css.thSortTable}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('category')}
@@ -139,7 +144,7 @@ const SortableTable = props => {
               Category
             </button>
           </th>
-          <th className={css.thSortTable}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('comment')}
@@ -148,7 +153,7 @@ const SortableTable = props => {
               Comment
             </button>
           </th>
-          <th className={css.thSortTable}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('amount')}
@@ -157,7 +162,7 @@ const SortableTable = props => {
               Sum
             </button>
           </th>
-          <th className={css.thSortTable}>
+          <th className={css.header_table}>
             <button
               type="button"
               onClick={() => requestSort('balance')}
@@ -168,7 +173,7 @@ const SortableTable = props => {
           </th>
         </tr>
       </thead>
-      <tbody className={css.bodySortTable}>
+      <tbody className={css.table_body}>
         {items.map(item => (
           <Row
             id={item._id}
