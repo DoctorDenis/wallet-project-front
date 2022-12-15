@@ -93,6 +93,7 @@
   width: 18px;
   height: 18px;
 
+
   @include media-tablet {
     margin-right: 8px;
   }
@@ -107,6 +108,11 @@
   color: $color-grey-light;
   background-color: $color-white;
   border: none;
+  transition: 200ms;
+  &:hover {
+    color: $color-accent;
+    font-size: 20px;
+  }
 
   @include media-tablet {
     display: block;
